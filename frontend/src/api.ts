@@ -15,6 +15,7 @@ export interface ChunkInfo { id: string; page: string | null; preview: string }
 export interface NotesSummary {
   notebook_id: string; chunks: number; pages: number[];
   source: string; file: string; size: number; index: ChunkInfo[];
+  files: { name: string; chunks: number; size: number }[];
 }
 export interface QuizQ {
   q: string; type: "mcq" | "short"; options?: string[];
@@ -47,4 +48,8 @@ export const api = {
     req("/api/quiz/generate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ difficulty, notebook_id: nb }) }),
   quizEval: (answers: (string | null)[], nb = "default"): Promise<{ score: number; total: number; results: { correct: boolean; explanation: string; hint: string }[] }> =>
     req("/api/quiz/evaluate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ answers, notebook_id: nb }) }),
+  flashcards: (nb = "default"): Promise<{ cards: { front: string; back: string; chunk?: number; page?: string | null }[] }> =>
+    req("/api/flashcards", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ notebook_id: nb }) }),
+  chunk: (nb: string, cid: string): Promise<{ id: string; page: string | null; text: string }> =>
+    req(`/api/chunks/${nb}/${cid}`),
 };

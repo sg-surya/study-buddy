@@ -13,7 +13,7 @@ const verdictStyle: Record<string, string> = {
 /** Renders [c0]-style markers as clickable evidence chips. */
 import React, { Fragment } from "react";
 
-function CiteChip({ id, onJump }: { id: string; onJump: (chunkId: string) => void }) {
+export function CiteChip({ id, onJump }: { id: string; onJump: (chunkId: string) => void }) {
   return (
     <button onClick={() => onJump(id)}
       className="inline-block mx-0.5 px-1.5 py-px text-[12px] font-bold bg-orange-100 text-orange-800 hover:bg-orange-600 hover:text-white transition align-baseline">
@@ -22,7 +22,7 @@ function CiteChip({ id, onJump }: { id: string; onJump: (chunkId: string) => voi
   );
 }
 
-function withCites(node: React.ReactNode, onJump: (chunkId: string) => void, key = "w"): React.ReactNode {
+export function withCites(node: React.ReactNode, onJump: (chunkId: string) => void, key = "w"): React.ReactNode {
   if (typeof node === "string") {
     const parts = node.split(/(\[c\d+\])/g);
     if (parts.length === 1) return node;
@@ -41,7 +41,7 @@ function withCites(node: React.ReactNode, onJump: (chunkId: string) => void, key
   return node;
 }
 
-const citeWrap = (Tag: string, onJump: (chunkId: string) => void) =>
+export const citeWrap = (Tag: string, onJump: (chunkId: string) => void) =>
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function Cited({ children, ...rest }: any) {
     return React.createElement(Tag, rest, withCites(children, onJump));

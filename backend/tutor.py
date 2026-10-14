@@ -138,6 +138,28 @@ def build_extractive_quiz(chunks, pages=None):
     return (quiz, "extractive-rag") if len(quiz) >= 3 else (CANNED_QUIZ, "canned")
 
 
+def build_flashcards(chunks, pages=None, n=12):
+    """Term-definition flip cards mined from real notes. Returns [{front, back, chunk, page}]."""
+    sents = [s for _, s in key_sentences(chunks, per_chunk=3) if not is_header(s)]
+    if len(sents) < 3:
+        return []
+    all_terms, caps = content_terms(chunks)
+    cards, used = [], set()
+    for ci, s in enumerate(key_sentences(chunks, per_chunk=3)):
+        if is_header(s[1]):
+            continue
+        key = pick_keyword(s[1], all_terms, caps, used)
+        if not key:
+            continue
+        used.add(key)
+        cards.append({"front": f"What is '{key}'?",
+                      "back": s[1][:280], "chunk": s[0],
+                      "page": page_tag(pages, s[0])})
+        if len(cards) >= n:
+            break
+    return cards
+
+
 def generate_quiz(chunks, difficulty="Easy", pages=None, nb_id=None):
     diverse = [t for _, _, t in retrieve("key concepts definitions stages factors examples", chunks, k=6, nb_id=nb_id)[0]]
     ctx = "\n\n".join(diverse or chunks[:6])[:4000]

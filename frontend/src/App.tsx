@@ -1,13 +1,14 @@
-import { ArrowRight, BookMarked, CheckCircle2, ChevronDown, CircleDashed, FileText, Lightbulb, ListChecks, Loader2, MessageCircleQuestion, Paperclip, Search, Trash2, UploadCloud, X } from "lucide-react";
+import { ArrowRight, BookMarked, BookOpenText, Bot, Check, ChevronDown, ChevronLeft, ChevronRight, Copy, ExternalLink, FileText, Layers, Lightbulb, ListChecks, Loader2, MessageCircleQuestion, MoreVertical, Paperclip, Pencil, Plus, Search, SendHorizontal, Shuffle, ThumbsDown, ThumbsUp, Trash2, UploadCloud, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { BrowserRouter, Link, Route, Routes, useNavigate, useParams } from "react-router-dom";
 import { api, type ChunkInfo, type NotesSummary } from "./api";
-import { AnswerCard } from "./components/AskTab";
+import { citeWrap } from "./components/AskTab";
+import ReactMarkdown from "react-markdown";
 import ExplainTab from "./components/ExplainTab";
 import QuizTab from "./components/QuizTab";
-import { appendMsg, loadConvos, newNotebook, type Convo } from "./store";
+import { appendMsg, deleteNotebook, loadConvos, newNotebook, refreshMeta, renameNotebook, type Convo } from "./store";
 
-type Tab = "ask" | "explain" | "quiz";
+type Tab = "ask" | "explain" | "quiz" | "cards";
 
 /* ================= upload transition: horizontal strips wipe once into notebook ================= */
 function UploadTransition({ name }: { name: string }) {
@@ -249,29 +250,75 @@ function SourcePanel({ index, cited, flashId, refs, bare }: {
   );
 }
 
+/* ================= flashcards ================= */
+function FlashcardsTab({ nb }: { nb: string }) {
+  const [cards, setCards] = useState<{ front: string; back: string; chunk?: number; page?: string | null }[]>([]);
+  const [idx, setIdx] = useState(0);
+  const [flip, setFlip] = useState(false);
+  const [err, setErr] = useState("");
+  useEffect(() => {
+    api.flashcards(nb).then((r) => {
+      if ((r as any).error) setErr((r as any).error);
+      else { setCards(r.cards); setIdx(0); setFlip(false); }
+    }).catch(() => setErr("Backend unreachable."));
+  }, [nb]);
+  if (err) return <div className="text-sm text-red-700 bg-red-50 border border-red-200 p-4">{err}</div>;
+  if (!cards.length) return <div className="text-sm text-stone-500 animate-pulse">Making flashcards from your notes…</div>;
+  const c = cards[idx];
+  function go(d: number) {
+    setFlip(false);
+    setTimeout(() => setIdx((i) => (i + d + cards.length) % cards.length), 120);
+  }
+  return (
+    <div className="max-w-xl mx-auto">
+      <div className="text-xs font-bold text-stone-400 tracking-widest text-center">{idx + 1} / {cards.length}</div>
+      <div className="mt-2 [perspective:1200px]">
+        <button onClick={() => setFlip((f) => !f)}
+          className={`flip-inner relative w-full min-h-56 text-left border bg-white shadow-sm p-6 ${flip ? "flipped border-orange-500" : "border-stone-200"}`}>
+          <div className={`flip-face ${flip ? "hidden" : ""}`}>
+            <div className="text-[11px] font-bold text-orange-700 tracking-widest">TERM</div>
+            <div className="text-xl font-bold mt-2">{c.front}</div>
+            <div className="text-xs text-stone-400 mt-4">Click to flip</div>
+          </div>
+          <div className={`flip-face flip-back absolute inset-0 p-6 bg-orange-50 ${flip ? "" : "hidden"}`}>
+            <div className="text-[11px] font-bold text-orange-700 tracking-widest">DEFINITION {c.page ? `· ${c.page}` : ""}</div>
+            <div className="text-[15px] mt-2 text-stone-800">{c.back}</div>
+          </div>
+        </button>
+      </div>
+      <div className="mt-3 flex items-center justify-center gap-2">
+        <button onClick={() => go(-1)} className="px-4 py-2 border border-stone-200 bg-white text-sm font-bold hover:border-orange-500" aria-label="previous"><ChevronLeft size={16} /></button>
+        <button onClick={() => { const o = [...cards].sort(() => Math.random() - 0.5); setCards(o); setIdx(0); setFlip(false); }}
+          className="px-4 py-2 border border-stone-200 bg-white text-sm font-bold hover:border-orange-500 flex items-center gap-1.5"><Shuffle size={14} /> Shuffle</button>
+        <button onClick={() => go(1)} className="px-4 py-2 bg-stone-950 text-white text-sm font-bold hover:bg-orange-600" aria-label="next"><ChevronRight size={16} /></button>
+      </div>
+    </div>
+  );
+}
+
 /* ================= notebook page: /notebook/:id ================= */
 function Notebook({ health }: { health: { chat_model: string | null; embed_model: string | null } | null }) {
   const { id } = useParams();
+  const nav = useNavigate();
   const [sum, setSum] = useState<NotesSummary | null>(null);
   const [convo, setConvo] = useState<Convo | null>(null);
   const [tab, setTab] = useState<Tab>("ask");
   const [busy, setBusy] = useState(false);
   const [q, setQ] = useState("");
   const [flashId, setFlashId] = useState<string | null>(null);
-  const [revealed, setRevealed] = useState(0);
+  const [preview, setPreview] = useState<{ id: string; page: string | null; text: string } | null>(null);
+  const [editing, setEditing] = useState(false);
+  const [menu, setMenu] = useState(false);
+  const [votes, setVotes] = useState<Record<number, 1 | -1>>({});
+  const [copied, setCopied] = useState<number | null>(null);
   const refs = useRef<Record<string, HTMLDivElement | null>>({});
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const moreRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     if (!id) return;
     api.summary(id).then(setSum).catch(() => setSum(null));
     setConvo(loadConvos().find((c) => c.id === id) ?? null);
-  }, [id]);
-
-  /* pipeline process plays on the notebook page itself */
-  useEffect(() => {
-    setRevealed(0);
-    const timers = [1, 2, 3, 4].map((n) => setTimeout(() => setRevealed(n), n * 350));
-    return () => timers.forEach(clearTimeout);
   }, [id]);
 
   async function send(question: string) {
@@ -286,103 +333,265 @@ function Notebook({ health }: { health: { chat_model: string | null; embed_model
     setBusy(false);
   }
 
+  async function summarize() {
+    if (busy || !id) return;
+    setBusy(true);
+    try {
+      const r = await api.explain("Detailed", id);
+      const msg = { q: "Summarize this chapter", r: { answer: r.text, evidence: [], verdict: "SUPPORTED" as const, model: r.model } };
+      setConvo((c) => (c ? { ...c, messages: [...c.messages, msg] } : c));
+      appendMsg(id, msg);
+    } catch { /* noop */ }
+    setBusy(false);
+  }
+
+  async function uploadMore(list: FileList | undefined) {
+    if (!list || !id) return;
+    const picked = [...list].filter((f) => /\.(pdf|txt|md)$/i.test(f.name)).slice(0, 5);
+    if (!picked.length) return;
+    setBusy(true);
+    try {
+      let s: NotesSummary | null = null;
+      for (const f of picked) s = await api.upload(f, id);
+      if (s) {
+        setSum(s);
+        const meta = { name: s.file, size: s.size, pages: s.pages.length, chunks: s.chunks, secs: convo?.file?.secs ?? 0 };
+        refreshMeta(id, meta, s.source);
+        setConvo((c) => (c ? { ...c, file: meta, source: s!.source } : c));
+      }
+    } catch { /* noop */ }
+    setBusy(false);
+  }
+
   function jump(chunkId: string) {
     setFlashId(chunkId);
+    if (id) api.chunk(id, chunkId).then((p) => setPreview(p)).catch(() => {});
     setTimeout(() => refs.current[chunkId]?.scrollIntoView({ behavior: "smooth", block: "center" }), 80);
     setTimeout(() => setFlashId(null), 2400);
   }
 
+  function copy(i: number, text: string) {
+    navigator.clipboard?.writeText(text).catch(() => {});
+    setCopied(i);
+    setTimeout(() => setCopied(null), 1500);
+  }
+
   if (!convo) return <div className="p-10 text-center text-stone-500">Notebook not found. <Link to="/" className="underline font-bold">Home</Link></div>;
   const cited = [...new Set(convo.messages.flatMap((m) => m.r.evidence.map((e) => e.chunk_id)))];
-  const steps = [
-    { label: `Uploaded ${convo.file?.name ?? convo.source}`, working: "Uploading file…", sub: convo.file ? `${(convo.file.size / 1024).toFixed(0)} KB` : "", done: true },
-    { label: sum ? `Parsed ${sum.pages.length > 0 ? `${sum.pages.length} pages` : "text"}` : "Parsed", working: "Parsing pages…", sub: "", done: !!sum },
-    { label: sum ? `Chunked into ${sum.chunks} pieces` : "Chunked", working: "Chunking notes…", sub: "", done: !!sum },
-    { label: health?.embed_model ? `Retrieval: ${health.embed_model.slice(0, 26)}` : "Retrieval: TF-IDF fallback", working: "Linking evidence…", sub: "", done: !!health },
+  const allChunks = sum?.chunks ?? 0;
+  const allPages = sum?.pages.length ?? 0;
+  const files = sum?.files ?? [];
+
+  const chips: { label: string; run: () => void }[] = [
+    { label: "Summarize this chapter", run: summarize },
+    { label: "Give key points", run: () => send("Give me the key points from my notes") },
+    { label: "Explain simply", run: () => send("Explain the toughest topic in my notes simply") },
+    { label: "Make a quiz from this", run: () => setTab("quiz") },
   ];
 
   return (
     <div className="min-h-full bg-[#faf7f1]">
-      <header className="border-b border-stone-200 bg-white px-4 py-3 flex items-center gap-3 sticky top-0 z-10">
-        <Link to="/" className="font-display text-lg">SC<span className="text-orange-600">.</span></Link>
+      {/* header */}
+      <header className="border-b border-stone-200 bg-white px-3 sm:px-5 py-3 flex items-center gap-3 sticky top-0 z-10">
+        <span className="w-9 h-9 bg-orange-600 text-white grid place-items-center shrink-0"><BookOpenText size={18} /></span>
         <div className="min-w-0">
-          <div className="font-bold text-sm truncate">{convo.title}</div>
+          {editing ? (
+            <input autoFocus defaultValue={convo.title} maxLength={60}
+              onBlur={(e) => { const t = e.target.value.trim(); if (t) { renameNotebook(convo.id, t); setConvo({ ...convo, title: t }); } setEditing(false); }}
+              onKeyDown={(e) => e.key === "Enter" && (e.target as HTMLInputElement).blur()}
+              className="font-bold text-base border border-orange-500 px-2 py-0.5 outline-none w-full max-w-64" />
+          ) : (
+            <div className="font-bold text-base truncate flex items-center gap-1.5">
+              {convo.title}
+              <button onClick={() => setEditing(true)} aria-label="rename" className="p-1 text-stone-400 hover:text-orange-700"><Pencil size={13} /></button>
+            </div>
+          )}
           <div className="text-[11px] text-stone-500 truncate">
-            {convo.file ? `${convo.file.name} · indexed in ${convo.file.secs.toFixed(1)}s` : convo.source} · {convo.messages.length} questions
+            {files.length} file{files.length === 1 ? "" : "s"} · {allPages > 0 ? `${allPages} pages` : `${allChunks} chunks`} · {convo.messages.length} questions
           </div>
         </div>
-        <Link to="/" className="ml-auto text-xs font-bold px-3 py-1.5 border border-stone-200 hover:border-orange-500 hover:text-orange-700 rounded-none">New notebook</Link>
+        <div className="ml-auto flex items-center gap-2">
+          <span className={`hidden sm:inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 border ${health?.chat_model ? "border-emerald-200 bg-emerald-50 text-emerald-700" : "border-red-200 bg-red-50 text-red-600"}`}>
+            <span className={`w-2 h-2 rounded-full ${health?.chat_model ? "bg-emerald-500" : "bg-red-500"}`} />
+            {health?.chat_model ? "Ready" : "No LLM"}
+          </span>
+          <input ref={moreRef} type="file" accept=".pdf,.txt,.md" multiple className="hidden"
+            onChange={(e) => { uploadMore(e.target.files ?? undefined); e.target.value = ""; }} />
+          <button onClick={() => moreRef.current?.click()}
+            className="text-xs font-bold px-3 py-2 border border-stone-200 hover:border-orange-500 hover:text-orange-700 flex items-center gap-1.5">
+            <Plus size={14} /> <span className="hidden sm:inline">Upload More</span>
+          </button>
+          <div className="relative">
+            <button onClick={() => setMenu((m) => !m)} aria-label="menu" className="p-2 hover:bg-stone-100"><MoreVertical size={17} /></button>
+            {menu && (
+              <div className="absolute right-0 mt-1 w-44 bg-white border border-stone-200 shadow-xl z-20">
+                <button onClick={() => { setEditing(true); setMenu(false); }} className="w-full text-left text-sm px-4 py-2.5 hover:bg-stone-50">Rename</button>
+                <button onClick={async () => {
+                  if (id) { try { await api.clear(id); } catch { /* noop */ } deleteNotebook(id); }
+                  nav("/");
+                }} className="w-full text-left text-sm px-4 py-2.5 hover:bg-red-50 text-red-700">Delete notebook</button>
+              </div>
+            )}
+          </div>
+        </div>
       </header>
+
       {!sum && (
         <div className="max-w-6xl mx-auto px-4 mt-4 text-xs font-bold bg-amber-50 border border-amber-200 p-3 text-amber-800">
           Backend restarted or notes cleared — re-upload this file from <Link to="/" className="underline">home</Link> to keep asking here.
         </div>
       )}
-      <div className="max-w-7xl mx-auto px-4 py-5 grid lg:grid-cols-[340px_1fr] gap-5 items-start">
-        <div className="lg:sticky lg:top-16 max-h-[calc(100vh-5rem)] overflow-auto space-y-4 pr-0.5">
-          <div className="border border-stone-200 bg-white p-4">
-            <div className="flex items-center gap-2.5">
-              <span className="w-10 h-10 bg-orange-600 text-white grid place-items-center shrink-0"><FileText size={18} /></span>
-              <div className="min-w-0">
-                <div className="font-bold text-sm truncate">{convo.file?.name ?? convo.source}</div>
-                <div className="text-[11px] text-stone-500">
-                  {sum ? `${sum.chunks} chunks${sum.pages.length > 0 ? ` · ${sum.pages.length} pages` : ""}` : "indexing…"}
-                </div>
-              </div>
-            </div>
-            <div className="mt-3 space-y-1.5">
-              {steps.map((s, i) => {
-                const shown = i < revealed && s.done;
-                const working = i === revealed && !s.done;
-                return (
-                  <div key={i} className={`rise-in flex items-center gap-2 text-xs ${shown ? "" : "opacity-0"}`}>
-                    {shown
-                      ? <CheckCircle2 size={14} className="text-emerald-600 shrink-0" />
-                      : <CircleDashed size={14} className="text-stone-300 animate-spin shrink-0" />}
-                    <span className={`min-w-0 truncate ${shown ? "text-stone-700 font-medium" : "text-stone-400"}`}>
-                      {working ? s.working : s.label}
-                    </span>
-                    {s.sub && shown && <span className="text-stone-400 ml-auto shrink-0">{s.sub}</span>}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          {sum
-            ? <SourcePanel bare index={sum.index} cited={cited} flashId={flashId} refs={refs} />
-            : <div className="border border-dashed border-stone-300 p-6 text-center text-xs text-stone-400">Sources appear after loading notes.</div>}
-        </div>
-        <div>
-          <div className="grid grid-cols-3 gap-2 mb-4">
+
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-5 grid lg:grid-cols-[1fr_340px] gap-5 items-start">
+        {/* left: chat */}
+        <div className="min-w-0">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
             {([
-              { id: "ask", label: "Ask", icon: <MessageCircleQuestion size={16} /> },
-              { id: "explain", label: "Explain", icon: <Lightbulb size={16} /> },
-              { id: "quiz", label: "Quiz", icon: <ListChecks size={16} /> },
-            ] as { id: Tab; label: string; icon: React.ReactNode }[]).map((t) => (
-              <button key={t.id} onClick={() => setTab(t.id)}
-                className={`flex items-center justify-center gap-2 px-4 py-3 border transition text-sm font-bold ${tab === t.id ? "bg-stone-950 border-stone-950 text-white" : "bg-white border-stone-200 hover:border-stone-400"}`}>
-                {t.icon} {t.label}
+              { id: "ask", icon: <MessageCircleQuestion size={17} />, t: "Ask", d: "Chat with your notes", run: () => { setTab("ask"); inputRef.current?.focus(); } },
+              { id: "explain", icon: <Lightbulb size={17} />, t: "Summarize", d: "Key topics in seconds", run: summarize },
+              { id: "quiz", icon: <ListChecks size={17} />, t: "Quiz", d: "Practice questions", run: () => setTab("quiz") },
+              { id: "cards", icon: <Layers size={17} />, t: "Flashcards", d: "Turn notes into cards", run: () => setTab("cards") },
+            ] as { id: Tab | "cards"; icon: React.ReactNode; t: string; d: string; run: () => void }[]).map((a) => (
+              <button key={a.id} onClick={a.run}
+                className="text-left bg-white border border-stone-200 p-3 hover:border-orange-500 hover:-translate-y-0.5 transition shadow-sm">
+                <span className="text-orange-600">{a.icon}</span>
+                <span className="block font-bold text-sm mt-1.5">{a.t}</span>
+                <span className="block text-[11px] text-stone-500">{a.d}</span>
               </button>
             ))}
           </div>
+
           {tab === "ask" && (
             <div>
-              <div className="space-y-4">
-                {convo.messages.map((m, i) => <AnswerCard key={i} h={m} onJump={jump} />)}
+              {convo.messages.length === 0 && (
+                <div className="border border-dashed border-stone-300 p-8 text-center text-sm text-stone-500 bg-white/60">
+                  <span className="inline-grid place-items-center w-11 h-11 bg-orange-600 text-white mb-2"><Bot size={20} /></span>
+                  <div className="font-bold text-stone-700">Ask Meeko anything about your notes</div>
+                  <div className="text-xs mt-1">Answers carry page-tagged sources — or an honest NOT_FOUND.</div>
+                </div>
+              )}
+              <div className="space-y-5 mt-2">
+                {convo.messages.map((m, i) => (
+                  <div key={i}>
+                    <div className="flex justify-end">
+                      <div className="max-w-[85%] bg-orange-100 text-stone-900 text-[14px] px-4 py-2.5 flex items-center gap-2">
+                        <span className="flex-1">{m.q}</span>
+                        <span className="w-7 h-7 bg-orange-600 text-white text-xs font-bold grid place-items-center shrink-0">S</span>
+                      </div>
+                    </div>
+                    <div className="flex gap-2.5 mt-3">
+                      <span className="w-8 h-8 bg-stone-950 text-orange-500 grid place-items-center shrink-0"><Bot size={17} /></span>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="font-bold text-sm">Meeko</span>
+                          <span className="text-[11px] text-stone-400">Powered by Gemma 4</span>
+                          <span className={`text-[10px] font-bold px-2 py-px border ${m.r.verdict === "SUPPORTED" ? "border-emerald-200 bg-emerald-50 text-emerald-700" : "border-red-200 bg-red-50 text-red-700"}`}>
+                            {m.r.verdict}
+                          </span>
+                        </div>
+                        <div className="md-body text-[14.5px] mt-1.5 text-stone-800">
+                          <ReactMarkdown components={{
+                            p: citeWrap("p", jump), li: citeWrap("li", jump),
+                            strong: citeWrap("strong", jump), em: citeWrap("em", jump),
+                          }}>{m.r.answer}</ReactMarkdown>
+                        </div>
+                        <div className="flex items-center gap-1 mt-1.5">
+                          <button onClick={() => copy(i, m.r.answer)} title="copy" className="p-1.5 text-stone-400 hover:text-orange-700 hover:bg-orange-50">
+                            {copied === i ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
+                          </button>
+                          <button onClick={() => setVotes((v) => ({ ...v, [i]: 1 }))} title="good"
+                            className={`p-1.5 hover:bg-orange-50 ${votes[i] === 1 ? "text-orange-600" : "text-stone-400 hover:text-orange-700"}`}><ThumbsUp size={14} /></button>
+                          <button onClick={() => setVotes((v) => ({ ...v, [i]: -1 }))} title="bad"
+                            className={`p-1.5 hover:bg-orange-50 ${votes[i] === -1 ? "text-orange-600" : "text-stone-400 hover:text-orange-700"}`}><ThumbsDown size={14} /></button>
+                        </div>
+                        {m.r.evidence.length > 0 && (
+                          <div className="grid sm:grid-cols-3 gap-2 mt-2">
+                            {m.r.evidence.filter((e, j, a) => a.findIndex((x) => x.chunk_id === e.chunk_id) === j).slice(0, 3).map((e, j) => (
+                              <button key={j} onClick={() => jump(e.chunk_id)}
+                                className="text-left border border-orange-200 bg-orange-50/70 p-2.5 hover:bg-orange-100 transition min-w-0">
+                                <span className="flex items-center gap-1 text-[11px] font-bold text-orange-800">
+                                  <FileText size={12} /> {e.chunk_id}{e.page ? ` · ${e.page}` : ""}
+                                  <ExternalLink size={11} className="ml-auto shrink-0" />
+                                </span>
+                                <span className="block text-[12px] text-stone-600 mt-1 line-clamp-3">“{e.quote.slice(0, 140)}…”</span>
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-              {busy && <div className="text-sm text-stone-500 mt-3 animate-pulse">Gemma is reading your notes…</div>}
+              {busy && <div className="text-sm text-stone-500 mt-3 animate-pulse">Meeko is reading your notes…</div>}
               <div className="sticky bottom-3 mt-4">
-                <div className="bg-white border border-stone-200 shadow-lg p-2 flex gap-2">
-                  <input value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send(q)}
-                    placeholder="Follow-up question…" className="flex-1 min-w-0 bg-transparent px-4 py-2.5 outline-none text-[15px]" />
-                  <button onClick={() => send(q)} disabled={busy}
-                    className="px-5 bg-orange-600 text-white font-bold text-sm disabled:opacity-50 hover:bg-orange-700 rounded-none">Ask</button>
+                <div className="bg-white border border-stone-200 shadow-lg p-2">
+                  <div className="flex gap-2 items-center">
+                    <button onClick={() => moreRef.current?.click()} title="add files" className="p-2.5 text-stone-400 hover:text-orange-700"><Paperclip size={16} /></button>
+                    <input ref={inputRef} value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send(q)}
+                      placeholder="Ask Meeko anything about your notes…" className="flex-1 min-w-0 bg-transparent px-1 py-2.5 outline-none text-[15px]" />
+                    <button onClick={() => send(q)} disabled={busy} aria-label="send"
+                      className="w-11 h-11 shrink-0 bg-orange-600 text-white grid place-items-center disabled:opacity-50 hover:bg-orange-700"><SendHorizontal size={17} /></button>
+                  </div>
+                </div>
+                <div className="flex gap-1.5 mt-2 overflow-x-auto pb-1">
+                  {chips.map((c) => (
+                    <button key={c.label} onClick={c.run}
+                      className="shrink-0 text-[12px] font-medium px-3 py-1.5 bg-orange-100/70 text-stone-700 hover:bg-orange-200 transition">
+                      {c.label}
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
           )}
           {tab === "explain" && id && <ExplainTab nb={id} />}
           {tab === "quiz" && id && <QuizTab nb={id} />}
+          {tab === "cards" && id && <FlashcardsTab nb={id} />}
+        </div>
+
+        {/* right rail */}
+        <div className="space-y-4 lg:sticky lg:top-16 min-w-0">
+          <div className="border border-stone-200 bg-white">
+            <div className="px-4 pt-3 flex gap-4 text-[13px] font-bold border-b border-stone-100">
+              <span className="text-orange-700 border-b-2 border-orange-600 pb-2 -mb-px">Preview</span>
+              <span className="text-stone-400 pb-2">Sources · {cited.length} cited</span>
+            </div>
+            <div className="p-4">
+              {preview ? (
+                <>
+                  <div className="text-[11px] font-bold text-orange-700">{preview.id.toUpperCase()}{preview.page ? ` · ${preview.page}` : ""}</div>
+                  <div className="text-[13.5px] text-stone-700 mt-1.5 max-h-64 overflow-auto whitespace-pre-wrap">{preview.text}</div>
+                </>
+              ) : (
+                <div className="text-[13px] text-stone-400">Click any source card to read the full passage here.</div>
+              )}
+            </div>
+          </div>
+
+          {sum
+            ? <SourcePanel bare index={sum.index} cited={cited} flashId={flashId} refs={refs} />
+            : <div className="border border-dashed border-stone-300 p-6 text-center text-xs text-stone-400">Sources appear after loading notes.</div>}
+
+          <div className="border border-stone-200 bg-white p-4">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-extrabold">Notebook Files</span>
+              <button onClick={() => moreRef.current?.click()} className="text-[11px] font-bold text-orange-700 hover:underline flex items-center gap-1"><Plus size={12} /> Add Files</button>
+            </div>
+            <div className="space-y-2">
+              {(sum?.files ?? []).map((f) => (
+                <div key={f.name} className="flex items-center gap-2 text-[13px] border border-stone-100 bg-stone-50/60 px-2.5 py-2 min-w-0">
+                  <FileText size={14} className="text-orange-600 shrink-0" />
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate font-semibold">{f.name}</span>
+                    <span className="block text-[11px] text-stone-500">{f.chunks} chunks · {(f.size / 1024).toFixed(0)} KB</span>
+                  </span>
+                  <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 shrink-0">Processed</span>
+                </div>
+              ))}
+              {files.length === 0 && <div className="text-xs text-stone-400">No files yet.</div>}
+            </div>
+          </div>
         </div>
       </div>
     </div>

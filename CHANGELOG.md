@@ -2,7 +2,19 @@
 
 All notable changes tracked here (newest first).
 
+## [0.12.0] - 2026-10-14
+### Notebook page (NotebookLM-style)
+- Header: orange book icon, inline rename, files/pages/questions meta, Ready badge, Upload More (appends to same notebook), menu (Rename/Delete)
+- Chat: peach user bubbles, Meeko avatar row with copy + vote buttons, clickable citation chips, 3-up source cards with full-text Preview reader in right rail
+- Action cards (Ask/Summarize/Quiz/Flashcards) + suggestion chips + attach + model tag in dock
+- New Flashcards tab (flip/shuffle/prev-next, mined from real notes) via `POST /api/flashcards`
+- Right rail: Preview reader + cited-first Sources + Notebook Files with Processed badges + Add Files
+### Backend
+- Per-file tracking + `GET /api/chunks/{nb}/{cid}` full-text endpoint
+- Verified: build passes; flashcards 12 cards; chunk endpoint live
+
 ## [0.11.0] - 2026-10-14
+
 ### Changed (minimal Meeko popup + URL sources)
 - Popup exactly per spec: Create Notebook + Meeko subtitle, required name (auto-suggested from filename), Upload (multi-file drag-drop + list) / Paste / Link tabs, orange Create Notebook button with inline validation hints
 - Backend: multi-file append into one notebook (page offsets continue), new `POST /api/notes/url` (article fetch + text extract), notebook titles use the given name

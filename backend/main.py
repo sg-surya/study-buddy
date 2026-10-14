@@ -9,8 +9,8 @@ from pydantic import BaseModel
 from llm import call_gemma
 from rag import (chunk_pdf_pages, chunk_text, embed_lmstudio, extract_pdf_text,
                  lmstudio_models, page_tag)
-from tutor import (explain_notes, generate_quiz, grade_mcq, grade_short,
-                   grounded_ask)
+from tutor import (build_flashcards, explain_notes, generate_quiz, grade_mcq,
+                   grade_short, grounded_ask)
 
 app = FastAPI(title="Study Companion PS-01")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
@@ -23,7 +23,7 @@ NOTEBOOKS: dict = {}
 def nb(nid: str | None) -> dict:
     nid = nid or "default"
     return NOTEBOOKS.setdefault(nid, {"raw": "", "chunks": [], "pages": [], "quiz": [],
-                                      "source": "", "files": [], "size": 0, "created": time.time()})
+                                      "source": "", "files": [], "fileinfo": [], "size": 0, "created": time.time()})
 
 
 def _ingest_text(s, text, label, fname, size):
@@ -38,6 +38,7 @@ def _ingest_text(s, text, label, fname, size):
     s["chunks"] += nc
     s["pages"] += [None] * len(nc)
     s["files"].append(fname)
+    s["fileinfo"].append({"name": fname, "chunks": len(nc), "size": size})
     s["source"] = label if first else s["source"] + f" + {fname}"
     s["quiz"] = []
     s["size"] += size
@@ -55,6 +56,7 @@ def _ingest_pdf(s, page_texts, label, fname, size):
     s["chunks"] += nc
     s["pages"] += [p + off for p in np]
     s["files"].append(fname)
+    s["fileinfo"].append({"name": fname, "chunks": len(nc), "size": size})
     s["source"] = label if first else s["source"] + f" + {fname}"
     s["quiz"] = []
     s["size"] += size
@@ -123,6 +125,10 @@ class QuizEvalIn(BaseModel):
     notebook_id: str = "default"
 
 
+class NbIn(BaseModel):
+    notebook_id: str = "default"
+
+
 class UrlIn(BaseModel):
     url: str
     notebook_id: str = "default"
@@ -138,6 +144,7 @@ def summary(nid: str):
     return {"notebook_id": nid, "chunks": len(s["chunks"]),
             "pages": sorted(set(p for p in s["pages"] if p)),
             "source": s["source"], "file": display_file(s), "size": s["size"],
+            "files": s.get("fileinfo", []),
             "index": [{"id": f"c{i}", "page": page_tag(s["pages"], i),
                        "preview": c[:140]} for i, c in enumerate(s["chunks"])]}
 
@@ -168,6 +175,7 @@ def load_sample(body: TextIn):
     s["quiz"] = []
     s["source"] = "sample: photosynthesis"
     s["files"] = ["photosynthesis.md"]
+    s["fileinfo"] = [{"name": "photosynthesis.md", "chunks": len(s["chunks"]), "size": len(s["raw"])}]
     s["size"] = len(s["raw"])
     return summary(body.notebook_id)
 
@@ -221,8 +229,26 @@ async def upload(file: UploadFile = File(...), notebook_id: str = Form("default"
 @app.post("/api/notes/clear")
 def clear(body: TextIn):
     NOTEBOOKS[body.notebook_id] = {"raw": "", "chunks": [], "pages": [], "quiz": [],
-                                   "source": "", "files": [], "size": 0, "created": time.time()}
+                                   "source": "", "files": [], "fileinfo": [], "size": 0, "created": time.time()}
     return {"ok": True}
+
+
+@app.get("/api/chunks/{nid}/{cid}")
+def chunk_text_full(nid: str, cid: str):
+    s = nb(nid)
+    try:
+        i = int(cid[1:])
+        return {"id": cid, "page": page_tag(s["pages"], i), "text": s["chunks"][i]}
+    except (IndexError, ValueError):
+        return {"error": "Chunk not found."}
+
+
+@app.post("/api/flashcards")
+def flashcards(body: NbIn):
+    s = nb(body.notebook_id)
+    if not s["chunks"]:
+        return {"error": "Load notes first."}
+    return {"cards": build_flashcards(s["chunks"], s["pages"])}
 
 
 @app.post("/api/tutor/ask")

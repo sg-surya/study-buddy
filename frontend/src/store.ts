@@ -31,3 +31,21 @@ export function appendMsg(id: string, m: Msg): Convo[] {
   save(cs);
   return cs;
 }
+
+export function renameNotebook(id: string, title: string): Convo[] {
+  const cs = loadConvos().map((c) => (c.id === id ? { ...c, title } : c));
+  save(cs);
+  return cs;
+}
+
+export function refreshMeta(id: string, file: FileMeta, source: string): Convo[] {
+  const cs = loadConvos().map((c) => (c.id === id ? { ...c, file, source } : c));
+  save(cs);
+  return cs;
+}
+
+export function deleteNotebook(id: string): Convo[] {
+  const cs = loadConvos().filter((c) => c.id !== id);
+  save(cs);
+  return cs;
+}
