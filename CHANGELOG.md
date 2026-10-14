@@ -2,6 +2,15 @@
 
 All notable changes tracked here (newest first).
 
+## [0.8.0] - 2026-10-14
+### Added (notebook view /c/id)
+- HashRouter: home `/` + notebook `/c/{uuid}` (persisted in localStorage, follow-ups stay in thread)
+- Notebook layout: thread with SOURCES cards + cited-first source panel; full chunk list collapsed with search filter (no more 46-chunk dump)
+- Studio source panel also cited-first + searchable
+### Fixed
+- `p.p.1` double-prefix everywhere (backend already returns `p.N`); hero status now `46 chunks · 44 pages`
+- Verified: `npm run build` passes
+
 ## [0.7.4] - 2026-10-14
 ### Changed (icons + centered hero + responsive)
 - Removed empty-state box + judges-script section; studio renders only after notes load (+ footer)

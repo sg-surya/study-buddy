@@ -1,74 +1,165 @@
-import { ArrowRight, ArrowUpRight, BookMarked, Check, FileText, GraduationCap, Lightbulb, ListChecks, Menu, MessageCircleQuestion, Paperclip, PenLine, Trash2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookMarked, Check, ChevronDown, FileText, GraduationCap, Lightbulb, ListChecks, Menu, MessageCircleQuestion, Paperclip, PenLine, Search, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { HashRouter, Link, Route, Routes, useNavigate, useParams } from "react-router-dom";
 import { api, type ChunkInfo, type NotesSummary } from "./api";
 import AskTab from "./components/AskTab";
+import { AnswerCard } from "./components/AskTab";
 import ExplainTab from "./components/ExplainTab";
 import QuizTab from "./components/QuizTab";
+import { appendMsg, loadConvos, newConvo, type Convo } from "./store";
 
 type Tab = "ask" | "explain" | "quiz";
 
-export default function App() {
-  const [health, setHealth] = useState<{ chat_model: string | null; embed_model: string | null } | null>(null);
-  const [notes, setNotes] = useState<NotesSummary | null>(null);
-  const [tab, setTab] = useState<Tab>("ask");
-  const [paste, setPaste] = useState("");
+/* ---------- shared source panel: cited first, rest searchable + collapsed ---------- */
+function SourcePanel({ index, cited, flashId, refs }: {
+  index: ChunkInfo[]; cited: string[]; flashId: string | null;
+  refs: React.MutableRefObject<Record<string, HTMLDivElement | null>>;
+}) {
+  const [q, setQ] = useState("");
+  const [open, setOpen] = useState(false);
+  const citedSet = new Set(cited);
+  const citedItems = index.filter((c) => citedSet.has(c.id));
+  const rest = index.filter((c) => !citedSet.has(c.id) &&
+    (!q.trim() || (c.preview + c.id).toLowerCase().includes(q.toLowerCase())));
+  return (
+    <aside id="source-panel" className="border border-stone-200 rounded-3xl p-4 bg-white shadow-sm lg:sticky lg:top-4 max-h-[70vh] overflow-auto">
+      <h2 className="text-sm font-extrabold mb-1 flex items-center gap-1.5">
+        <BookMarked size={15} className="text-orange-600" /> Sources
+        <span className="font-normal text-stone-400">· {citedItems.length} cited · {index.length} total</span>
+      </h2>
+      {citedItems.length > 0 && (
+        <div className="space-y-2 mt-2">
+          {citedItems.map((c) => (
+            <div key={c.id} ref={(el) => { refs.current[c.id] = el; }}
+              className={`border rounded-xl p-2.5 text-[13px] transition ${flashId === c.id ? "evidence-flash border-orange-500" : "border-orange-200 bg-orange-50/60"}`}>
+              <div className="text-[11px] font-bold text-orange-700 mb-0.5">{c.id}{c.page ? ` · ${c.page}` : ""}</div>
+              <div className="text-stone-600">{c.preview}…</div>
+            </div>
+          ))}
+        </div>
+      )}
+      <button onClick={() => setOpen((o) => !o)}
+        className="mt-3 w-full text-xs font-bold px-3 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 transition flex items-center justify-center gap-1">
+        {open ? "Hide" : "Show"} all {index.length} chunks <ChevronDown size={14} className={open ? "rotate-180" : ""} />
+      </button>
+      {open && (
+        <>
+          <div className="relative mt-2">
+            <Search size={14} className="absolute left-3 top-2.5 text-stone-400" />
+            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Filter chunks…"
+              className="w-full text-sm bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 outline-none focus:border-orange-500" />
+          </div>
+          <div className="space-y-2 mt-2">
+            {rest.slice(0, 60).map((c) => (
+              <div key={c.id} ref={(el) => { refs.current[c.id] = el; }}
+                className={`border rounded-xl p-2.5 text-[13px] transition ${flashId === c.id ? "evidence-flash border-orange-500" : "border-stone-100 bg-stone-50/60"}`}>
+                <div className="text-[11px] font-bold text-stone-500 mb-0.5">{c.id}{c.page ? ` · ${c.page}` : ""}</div>
+                <div className="text-stone-600">{c.preview}…</div>
+              </div>
+            ))}
+            {rest.length > 60 && <div className="text-[11px] text-stone-400">+{rest.length - 60} more — refine the filter</div>}
+          </div>
+        </>
+      )}
+    </aside>
+  );
+}
+
+/* ---------- notebook view: /c/:id ---------- */
+function Notebook({ notes }: { notes: NotesSummary | null }) {
+  const { id } = useParams();
+  const [convo, setConvo] = useState<Convo | null>(null);
   const [busy, setBusy] = useState(false);
-  const [flash, setFlash] = useState<string | null>(null);
-  const [heroQ, setHeroQ] = useState("");
-  const [pendingQ, setPendingQ] = useState<string>("");
-  const [showPaste, setShowPaste] = useState(false);
-  const fileRef = useRef<HTMLInputElement | null>(null);
-  const chunkRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const [q, setQ] = useState("");
+  const [flashId, setFlashId] = useState<string | null>(null);
+  const refs = useRef<Record<string, HTMLDivElement | null>>({});
 
-  useEffect(() => { api.health().then(setHealth).catch(() => {}); }, []);
+  useEffect(() => {
+    setConvo(loadConvos().find((c) => c.id === id) ?? null);
+  }, [id]);
 
-  async function wrap(fn: () => Promise<NotesSummary>) {
+  async function send(question: string) {
+    if (!question.trim() || busy || !id) return;
     setBusy(true);
-    try { setNotes(await fn()); } catch { alert("Backend unreachable — run start.bat first."); }
+    try {
+      const r = await api.ask(question);
+      setConvo({ ...(convo as Convo), messages: [...(convo?.messages ?? []), { q: question, r }] });
+      appendMsg(id, { q: question, r });
+      setQ("");
+    } catch { /* noop */ }
     setBusy(false);
   }
 
-  async function onFile(f: File | undefined) {
-    if (!f) return;
-    await wrap(() => api.upload(f));
-    api.health().then(setHealth).catch(() => {});
-  }
-
   function jump(chunkId: string) {
-    document.getElementById("source-panel")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    setFlash(chunkId);
-    setTimeout(() => chunkRefs.current[chunkId]?.scrollIntoView({ behavior: "smooth", block: "center" }), 100);
-    setTimeout(() => setFlash(null), 2400);
+    setFlashId(chunkId);
+    setTimeout(() => refs.current[chunkId]?.scrollIntoView({ behavior: "smooth", block: "center" }), 80);
+    setTimeout(() => setFlashId(null), 2400);
   }
 
-  function goStudio(t?: Tab) {
-    if (t) setTab(t);
-    document.getElementById("studio")?.scrollIntoView({ behavior: "smooth" });
-  }
+  if (!convo) return <div className="p-10 text-center text-stone-500">Notebook not found. <Link to="/" className="underline">Home</Link></div>;
+  const cited = [...new Set(convo.messages.flatMap((m) => m.r.evidence.map((e) => e.chunk_id)))];
 
-  function askFromHero() {
-    if (!heroQ.trim()) return;
-    setPendingQ(heroQ); setHeroQ("");
-    goStudio("ask");
-  }
+  return (
+    <div className="min-h-full">
+      <header className="border-b border-stone-200 bg-white/85 backdrop-blur px-4 py-3 flex items-center gap-3 sticky top-0 z-10">
+        <Link to="/" className="font-display text-lg">SC<span className="text-orange-600">.</span></Link>
+        <div className="min-w-0">
+          <div className="font-bold text-sm truncate">{convo.title}</div>
+          <div className="text-[11px] text-stone-500 truncate">{convo.source} · {convo.messages.length} questions</div>
+        </div>
+        <Link to="/" className="ml-auto text-xs font-bold px-3 py-1.5 rounded-full border border-stone-200 hover:border-orange-500 hover:text-orange-700">New notebook</Link>
+      </header>
+      {!notes && (
+        <div className="max-w-6xl mx-auto px-4 mt-4 text-xs bg-amber-50 border border-amber-200 rounded-2xl p-3 text-amber-800">
+          Notes were cleared or the backend restarted — reload notes on the <Link to="/" className="underline font-bold">home hero</Link> to keep asking in this notebook.
+        </div>
+      )}
+      <div className="max-w-6xl mx-auto px-4 py-5 grid lg:grid-cols-[1fr_330px] gap-5 items-start">
+        <div>
+          <div className="space-y-4">
+            {convo.messages.map((m, i) => <AnswerCard key={i} h={m} onJump={jump} />)}
+          </div>
+          {busy && <div className="text-sm text-stone-500 mt-3 animate-pulse">Gemma is reading your notes…</div>}
+          <div className="sticky bottom-3 mt-4">
+            <div className="bg-white border border-stone-200 rounded-3xl shadow-lg p-2 flex gap-2">
+              <input value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send(q)}
+                placeholder="Follow-up question…" className="flex-1 min-w-0 bg-transparent px-4 py-2.5 outline-none text-[15px]" />
+              <button onClick={() => send(q)} disabled={busy}
+                className="px-5 rounded-2xl bg-orange-600 text-white font-bold text-sm disabled:opacity-50 hover:bg-orange-700">Ask</button>
+            </div>
+          </div>
+        </div>
+        {notes
+          ? <SourcePanel index={notes.index} cited={cited} flashId={flashId} refs={refs} />
+          : <div className="border border-dashed border-stone-300 rounded-3xl p-6 text-center text-xs text-stone-400">Sources appear after loading notes.</div>}
+      </div>
+    </div>
+  );
+}
 
+/* ---------- home: hero + studio ---------- */
+function Home({ health, notes, wrap, onFile, tab, setTab, paste, setPaste, busy, flashId, chunkRefs, jump, heroQ, setHeroQ, pendingQ, setPendingQ, showPaste, setShowPaste, fileRef, askFromHero, goStudio, setNotes }: any) {
+  const nav = useNavigate();
   const steps = [
     { n: 1, label: "Source", done: !!notes },
     { n: 2, label: "Ask", done: false },
     { n: 3, label: "Quiz", done: false },
   ];
-
   const tabs: { id: Tab; label: string; hint: string; icon: React.ReactNode }[] = [
     { id: "ask", label: "Ask", hint: "Grounded answers with evidence", icon: <MessageCircleQuestion size={16} /> },
     { id: "explain", label: "Explain", hint: "Simple, detailed or exam-cram", icon: <Lightbulb size={16} /> },
     { id: "quiz", label: "Quiz", hint: "Test yourself with feedback", icon: <ListChecks size={16} /> },
   ];
-
   const ticker = "TRACK 1 · BEST USE OF GEMMA 4 · PS-01 · EVIDENCE-FIRST TUTOR · PAGE-TAGGED ANSWERS · HONEST NOT_FOUND · ".repeat(4);
 
+  async function sendAndOpen(question: string) {
+    const r = await api.ask(question);
+    const c = newConvo(notes?.source || "notes", { q: question, r });
+    nav(`/c/${c.id}`);
+  }
+
   return (
-    <div className="min-h-full">
-      {/* ============ HERO — full viewport ============ */}
+    <>
       <div className="relative bg-orange-600 text-white min-h-[100svh] flex flex-col overflow-hidden">
         <div className="absolute inset-0 hero-grid" />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -83,11 +174,9 @@ export default function App() {
             ))}
             <button onClick={() => goStudio()} className="hover:text-stone-900 transition">SOURCE</button>
           </nav>
-          <button onClick={() => goStudio("ask")} aria-label="menu"
-            className="ml-auto md:ml-0 hover:text-stone-900 transition"><Menu size={22} /></button>
+          <button onClick={() => goStudio("ask")} aria-label="menu" className="ml-auto md:ml-0 hover:text-stone-900 transition"><Menu size={22} /></button>
         </header>
 
-        {/* centered hero content */}
         <div className="relative z-10 flex-1 flex flex-col items-center justify-center w-full max-w-2xl mx-auto px-4 md:px-6 text-center py-10">
           <div className="font-mono2 text-[11px] tracking-[0.25em] text-orange-100 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-white inline-block" /> EVIDENCE-FIRST TUTOR — TRACK 1 · GEMMA 4
@@ -99,7 +188,6 @@ export default function App() {
             Upload once, ask anything, and verify every answer against page-tagged evidence.
           </p>
 
-          {/* white ask + upload box */}
           <div className="w-full mt-6 bg-white rounded-2xl shadow-2xl p-2 text-left">
             <div className="flex gap-2 items-center">
               <button onClick={() => fileRef.current?.click()} title="Upload .txt / .md / .pdf" aria-label="attach notes"
@@ -130,7 +218,7 @@ export default function App() {
                 className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-stone-100 hover:bg-orange-100 hover:text-orange-700 transition disabled:opacity-50 flex items-center gap-1">
                 <FileText size={12} /> Sample
               </button>
-              <button onClick={() => setShowPaste((s) => !s)}
+              <button onClick={() => setShowPaste((s: boolean) => !s)}
                 className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-stone-100 hover:bg-orange-100 hover:text-orange-700 transition flex items-center gap-1">
                 <PenLine size={12} /> Paste
               </button>
@@ -139,7 +227,7 @@ export default function App() {
                 <>
                   <span className="text-[11px] text-stone-500">
                     <b className="text-emerald-700">{notes.chunks} chunks</b>
-                    {notes.pages.length > 0 && ` · p.${notes.pages.join(", p.")}`} · {notes.source}
+                    {notes.pages.length > 0 && ` · ${notes.pages.length} pages`} · {notes.source}
                   </span>
                   <button onClick={() => { api.clear(); setNotes(null); }} aria-label="clear notes"
                     className="p-1 rounded-full hover:text-red-600"><Trash2 size={13} /></button>
@@ -163,7 +251,6 @@ export default function App() {
           </div>
         </div>
 
-        {/* floating live-model card */}
         <div className="hidden lg:block absolute top-24 right-10 z-20 w-64 bg-white text-stone-900 rounded-lg shadow-2xl overflow-hidden">
           <div className="p-2">
             <div className="bg-stone-950 text-white text-[10px] font-mono2 rounded px-2 py-2 flex items-center gap-2">
@@ -181,7 +268,6 @@ export default function App() {
           </div>
         </div>
 
-        {/* bottom strip */}
         <div className="relative z-20 border-t border-white/25 overflow-hidden">
           <div className="ticker-track font-mono2 text-[11px] tracking-widest text-orange-100 py-2">
             <span className="pr-4">{ticker}</span><span className="pr-4">{ticker}</span>
@@ -189,7 +275,6 @@ export default function App() {
         </div>
       </div>
 
-      {/* ============ STUDIO ============ */}
       {notes && (
         <div id="studio" className="scroll-mt-4">
           <div className="max-w-6xl mx-auto px-4 py-5">
@@ -207,25 +292,11 @@ export default function App() {
                     </button>
                   ))}
                 </div>
-                {tab === "ask" && <AskTab onJump={jump} pendingQ={pendingQ} clearPending={() => setPendingQ("")} />}
+                {tab === "ask" && <AskTab onJump={jump} pendingQ={pendingQ} clearPending={() => setPendingQ("")} messages={[]} onSend={sendAndOpen} />}
                 {tab === "explain" && <ExplainTab />}
                 {tab === "quiz" && <QuizTab />}
               </div>
-              <aside id="source-panel" className="border border-stone-200 rounded-3xl p-4 bg-white shadow-sm lg:sticky lg:top-4 max-h-[70vh] overflow-auto">
-                <h2 className="text-sm font-extrabold mb-1 flex items-center gap-1.5">
-                  <BookMarked size={15} className="text-orange-600" /> Source
-                  <span className="font-normal text-stone-400">— click evidence to jump here</span>
-                </h2>
-                <div className="space-y-2 mt-2">
-                  {notes.index.map((c: ChunkInfo) => (
-                    <div key={c.id} ref={(el) => { chunkRefs.current[c.id] = el; }}
-                      className={`border rounded-xl p-2.5 text-[13px] transition ${flash === c.id ? "evidence-flash border-orange-500" : "border-stone-100 bg-stone-50/60"}`}>
-                      <div className="text-[11px] font-bold text-orange-700 mb-0.5">{c.id}{c.page ? ` · p.${c.page}` : ""}</div>
-                      <div className="text-stone-600">{c.preview}…</div>
-                    </div>
-                  ))}
-                </div>
-              </aside>
+              <SourcePanel index={notes.index} cited={[]} flashId={flashId} refs={chunkRefs} />
             </div>
           </div>
           <footer className="border-t border-stone-200 mt-4 py-5 text-center text-xs text-stone-400">
@@ -233,6 +304,70 @@ export default function App() {
           </footer>
         </div>
       )}
-    </div>
+    </>
+  );
+}
+
+/* ---------- shell: shared state above router ---------- */
+function Shell() {
+  const [health, setHealth] = useState<{ chat_model: string | null; embed_model: string | null } | null>(null);
+  const [notes, setNotesState] = useState<NotesSummary | null>(null);
+  const [tab, setTab] = useState<Tab>("ask");
+  const [paste, setPaste] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [flashId, setFlashId] = useState<string | null>(null);
+  const [heroQ, setHeroQ] = useState("");
+  const [pendingQ, setPendingQ] = useState("");
+  const [showPaste, setShowPaste] = useState(false);
+  const fileRef = useRef<HTMLInputElement | null>(null);
+  const chunkRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  useEffect(() => { api.health().then(setHealth).catch(() => {}); }, []);
+
+  async function wrap(fn: () => Promise<NotesSummary>) {
+    setBusy(true);
+    try { setNotesState(await fn()); } catch { alert("Backend unreachable — run start.bat first."); }
+    setBusy(false);
+  }
+  async function onFile(f: File | undefined) {
+    if (!f) return;
+    await wrap(() => api.upload(f));
+    api.health().then(setHealth).catch(() => {});
+  }
+  function jump(chunkId: string) {
+    document.getElementById("source-panel")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    setFlashId(chunkId);
+    setTimeout(() => chunkRefs.current[chunkId]?.scrollIntoView({ behavior: "smooth", block: "center" }), 100);
+    setTimeout(() => setFlashId(null), 2400);
+  }
+  function askFromHero() {
+    if (!heroQ.trim()) return;
+    setPendingQ(heroQ); setHeroQ("");
+    setTab("ask");
+  }
+  function goStudio(t?: Tab) {
+    if (t) setTab(t);
+    document.getElementById("studio")?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  return (
+    <Routes>
+      <Route path="/" element={
+        <Home health={health} notes={notes} wrap={wrap} onFile={onFile} tab={tab} setTab={setTab}
+          paste={paste} setPaste={setPaste} busy={busy} flashId={flashId} chunkRefs={chunkRefs} jump={jump}
+          heroQ={heroQ} setHeroQ={setHeroQ} pendingQ={pendingQ} setPendingQ={setPendingQ}
+          showPaste={showPaste} setShowPaste={setShowPaste} fileRef={fileRef}
+          askFromHero={askFromHero} goStudio={goStudio} setNotes={setNotesState} />
+      } />
+      <Route path="/c/:id" element={<Notebook notes={notes} />} />
+    </Routes>
+  );
+}
+
+export default function App() {
+  return (
+    <HashRouter>
+      <Shell />
+    </HashRouter>
   );
 }

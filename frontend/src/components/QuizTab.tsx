@@ -46,7 +46,7 @@ export default function QuizTab() {
           <div key={i} className="border border-stone-200 rounded-3xl p-4 sm:p-5 bg-white shadow-sm">
             <div className="font-semibold">Q{i + 1}. {item.q}
               <span className="ml-2 text-[11px] font-normal text-stone-400 inline-flex items-center gap-1">
-                {item.type}{item.page ? <><FileText size={11} /> p.{item.page}</> : ""}
+                {item.type}{item.page ? <><FileText size={11} /> {item.page}</> : ""}
               </span>
             </div>
             {item.type === "mcq" ? (
