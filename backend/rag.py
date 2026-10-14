@@ -117,23 +117,59 @@ def retrieve_tfidf(query, chunks, k=3):
     return sorted(out, key=lambda x: x[1], reverse=True)[:k]
 
 
-def retrieve(query, chunks, k=3):
-    """LM Studio embeddings first, TF-IDF fallback. Returns [(idx, score, text)]."""
+import hashlib
+
+EMB_CACHE: dict = {}
+
+
+def chunk_hash(text):
+    return hashlib.md5(text.encode("utf-8", "ignore")).hexdigest()[:12]
+
+
+def embed_cached(chunks, nb_id=None):
+    """Chunk embeddings cached per notebook — big speedup on 40+ page PDFs."""
     if not chunks:
-        return []
+        return None, "empty"
+    key = lambda c: (nb_id or "default", chunk_hash(c))
+    missing = [c for c in chunks if key(c) not in EMB_CACHE]
+    if missing:
+        vecs, mid = embed_lmstudio(missing)
+        if not isinstance(vecs, list) or len(vecs) != len(missing):
+            return None, mid
+        for c, v in zip(missing, vecs):
+            EMB_CACHE[key(c)] = v
+        model = mid
+    else:
+        ids = lmstudio_models()
+        emb = [i for i in ids if "embed" in i.lower()] or ids
+        model = emb[0] if emb else "cached"
+    try:
+        return [EMB_CACHE[key(c)] for c in chunks], model
+    except KeyError:
+        EMB_CACHE.clear()
+        return None, "cache-miss"
+
+
+def retrieve(query, chunks, k=3, nb_id=None):
+    """LM Studio embeddings (cached per notebook) first, TF-IDF fallback.
+    Returns (results, method) where results = [(idx, score, text)]."""
+    if not chunks:
+        return [], "none"
     if len(chunks) == 1:
-        return [(0, 1.0, chunks[0])]
-    vecs, _ = embed_lmstudio(chunks + [query])
-    if isinstance(vecs, list) and len(vecs) == len(chunks) + 1:
-        qv, scored = vecs[-1], []
-        for i, cv in enumerate(vecs[:-1]):
-            try:
-                scored.append((i, float(_cos(qv, cv)), chunks[i]))
-            except Exception:
-                pass
-        if scored:
-            return sorted(scored, key=lambda x: x[1], reverse=True)[:k]
-    return retrieve_tfidf(query, chunks, k)
+        return [(0, 1.0, chunks[0])], "single"
+    vecs, _ = embed_cached(chunks, nb_id)
+    if isinstance(vecs, list) and len(vecs) == len(chunks):
+        qv, _ = embed_lmstudio([query])
+        if isinstance(qv, list) and len(qv) == 1:
+            qv, scored = qv[0], []
+            for i, cv in enumerate(vecs):
+                try:
+                    scored.append((i, float(_cos(qv, cv)), chunks[i]))
+                except Exception:
+                    pass
+            if scored:
+                return sorted(scored, key=lambda x: x[1], reverse=True)[:k], "embeddings"
+    return retrieve_tfidf(query, chunks, k), "tfidf"
 
 
 def is_header(s):

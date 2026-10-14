@@ -137,7 +137,7 @@ def ask(body: AskIn):
     s = nb(body.notebook_id)
     if not s["chunks"]:
         return {"error": "Load notes first."}
-    return grounded_ask(body.question, s["chunks"], s["pages"])
+    return grounded_ask(body.question, s["chunks"], s["pages"], body.notebook_id)
 
 
 @app.post("/api/tutor/explain")
@@ -154,7 +154,7 @@ def quiz_gen(body: QuizGenIn):
     s = nb(body.notebook_id)
     if not s["chunks"]:
         return {"error": "Load notes first."}
-    items, src = generate_quiz(s["chunks"], body.difficulty, s["pages"])
+    items, src = generate_quiz(s["chunks"], body.difficulty, s["pages"], body.notebook_id)
     s["quiz"] = items
     return {"questions": items, "source": src}
 

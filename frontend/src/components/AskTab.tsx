@@ -1,4 +1,4 @@
-import { ArrowUp, FileText, MessageCircle } from "lucide-react";
+import { ArrowUp, Check, Copy, FileText, MessageCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { api } from "../api";
@@ -10,18 +10,70 @@ const verdictStyle: Record<string, string> = {
   NOT_FOUND: "bg-red-50 text-red-700 border-red-200",
 };
 
-export function AnswerCard({ h, onJump }: { h: Msg; onJump: (chunkId: string) => void }) {
+/** Renders [c0]-style markers as clickable evidence chips. */
+import React, { Fragment } from "react";
+
+function CiteChip({ id, onJump }: { id: string; onJump: (chunkId: string) => void }) {
   return (
-    <div className="border border-stone-200 rounded-3xl p-4 sm:p-5 bg-white shadow-sm">
+    <button onClick={() => onJump(id)}
+      className="inline-block mx-0.5 px-1.5 py-px text-[12px] font-bold bg-orange-100 text-orange-800 hover:bg-orange-600 hover:text-white transition align-baseline">
+      {id}
+    </button>
+  );
+}
+
+function withCites(node: React.ReactNode, onJump: (chunkId: string) => void, key = "w"): React.ReactNode {
+  if (typeof node === "string") {
+    const parts = node.split(/(\[c\d+\])/g);
+    if (parts.length === 1) return node;
+    return parts.map((p, i) => {
+      const m = p.match(/^\[(c\d+)\]$/);
+      return m
+        ? <CiteChip key={`${key}-${i}`} id={m[1]} onJump={onJump} />
+        : <Fragment key={`${key}-${i}`}>{p}</Fragment>;
+    });
+  }
+  if (Array.isArray(node)) return node.map((n, i) => <Fragment key={`${key}-${i}`}>{withCites(n, onJump, `${key}-${i}`)}</Fragment>);
+  if (React.isValidElement(node)) {
+    const el = node as React.ReactElement<{ children?: React.ReactNode }>;
+    return React.cloneElement(el, undefined, withCites(el.props.children, onJump, key));
+  }
+  return node;
+}
+
+const citeWrap = (Tag: string, onJump: (chunkId: string) => void) =>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function Cited({ children, ...rest }: any) {
+    return React.createElement(Tag, rest, withCites(children, onJump));
+  };
+
+export function AnswerCard({ h, onJump }: { h: Msg; onJump: (chunkId: string) => void }) {
+  const [copied, setCopied] = useState(false);
+  function copy() {
+    navigator.clipboard?.writeText(h.r.answer).catch(() => {});
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  }
+  return (
+    <div className="border border-stone-200 p-4 sm:p-5 bg-white shadow-sm">
       <div className="flex items-center gap-2 flex-wrap">
-        <span className="font-semibold">{h.q}</span>
-        <span className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${verdictStyle[h.r.verdict] ?? "border-stone-200 text-stone-500"}`}>
+        <span className="font-semibold flex-1 min-w-0">{h.q}</span>
+        <span className={`text-[11px] font-semibold px-2.5 py-0.5 border ${verdictStyle[h.r.verdict] ?? "border-stone-200 text-stone-500"}`}>
           {h.r.verdict}
         </span>
-        {h.r.model && <code className="text-[11px] text-stone-400">{h.r.model}</code>}
+        <button onClick={copy} title="Copy answer" className="p-1.5 text-stone-400 hover:text-orange-700 hover:bg-orange-50">
+          {copied ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
+        </button>
       </div>
+      {h.r.model && <code className="text-[11px] text-stone-400 block mt-1">{h.r.model}</code>}
       <div className="md-body text-[15px] mt-2 text-stone-700">
-        <ReactMarkdown>{h.r.answer}</ReactMarkdown>
+        <ReactMarkdown components={{
+          p: citeWrap("p", onJump), li: citeWrap("li", onJump),
+          h1: citeWrap("h1", onJump), h2: citeWrap("h2", onJump), h3: citeWrap("h3", onJump),
+          strong: citeWrap("strong", onJump), em: citeWrap("em", onJump),
+        }}>
+          {h.r.answer}
+        </ReactMarkdown>
       </div>
       {h.r.evidence.length > 0 && (
         <div className="mt-3">
@@ -29,7 +81,7 @@ export function AnswerCard({ h, onJump }: { h: Msg; onJump: (chunkId: string) =>
           <div className="grid gap-2">
             {h.r.evidence.filter((e, j, a) => a.findIndex((x) => x.chunk_id === e.chunk_id) === j).map((e, j) => (
               <button key={j} onClick={() => onJump(e.chunk_id)} title="Jump to source"
-                className="text-left text-[13px] border border-orange-200 bg-orange-50 rounded-2xl px-3 sm:px-4 py-2.5 hover:bg-orange-100 transition flex items-start gap-1.5">
+                className="text-left text-[13px] border border-orange-200 bg-orange-50 px-3 sm:px-4 py-2.5 hover:bg-orange-100 transition flex items-start gap-1.5">
                 <FileText size={14} className="text-orange-700 shrink-0 mt-0.5" />
                 <span>
                   <span className="text-orange-700 font-bold">{e.chunk_id}{e.page ? ` · ${e.page}` : ""}</span>
@@ -41,8 +93,8 @@ export function AnswerCard({ h, onJump }: { h: Msg; onJump: (chunkId: string) =>
         </div>
       )}
       {h.r.scores && h.r.scores.length > 0 && (
-        <div className="text-[11px] text-stone-400 mt-2">
-          RAG retrieval: {h.r.scores.slice(0, 4).map(([c, s]) => `c${c}=${s}`).join(" · ")}
+        <div className="text-[11px] text-stone-400 mt-2 truncate">
+          RAG · {h.r.retrieval ?? "retrieval"}: {h.r.scores.slice(0, 4).map(([c, s]) => `c${c}=${s}`).join(" · ")}
         </div>
       )}
     </div>

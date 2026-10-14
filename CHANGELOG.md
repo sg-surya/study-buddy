@@ -2,7 +2,18 @@
 
 All notable changes tracked here (newest first).
 
+## [0.10.0] - 2026-10-14
+### Backend (faster + cleaner)
+- Chunk embeddings cached per notebook (`embed_cached`) — repeat questions skip re-embedding 40+ chunks
+- `retrieve()` returns `(results, method)`; responses carry `retrieval: embeddings|tfidf`; evidence deduped per chunk
+- Fixed a merged-lines IndentationError in `rag.py`
+### Notebook UI (user-friendly)
+- Inline `[c0]` markers render as clickable chips jumping to source; copy-answer button per card; sharp-edge cards
+- Left column = single scroll (source card + cited-first sources); retrieval label truncated; model label shortened
+- Verified: build passes; ask → SUPPORTED/embeddings/1 evidence card; 2nd ask served from cache
+
 ## [0.9.3] - 2026-10-14
+
 ### Changed
 - Model status back as floating top-right card (full `google/gemma-4-e2b` id, float animation); header pill removed
 - Verified: `npm run build` passes

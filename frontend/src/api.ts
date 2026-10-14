@@ -9,7 +9,7 @@ async function req(path: string, init?: RequestInit) {
 export interface Evidence { chunk_id: string; quote: string; page: string | null }
 export interface AskResult {
   answer: string; evidence: Evidence[]; verdict: string;
-  model?: string; scores?: [number, number][];
+  model?: string; scores?: [number, number][]; retrieval?: string;
 }
 export interface ChunkInfo { id: string; page: string | null; preview: string }
 export interface NotesSummary {

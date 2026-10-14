@@ -26,24 +26,26 @@ CANNED_QUIZ = [
 ]
 
 
-def extractive_answer(question, chunks, pages=None):
-    top = retrieve(question, chunks, k=3)
+def extractive_answer(question, chunks, pages=None, nb_id=None):
+    top, method = retrieve(question, chunks, k=3, nb_id=nb_id)
     scores = [(i, round(s, 3)) for i, s, _ in top]
     if not top or top[0][1] < 0.12:
         return {"answer": "I couldn't find this in your notes. Try asking about what the notes actually cover, or add more notes.",
-                "evidence": [], "verdict": "NOT_FOUND", "model": "extractive-fallback", "scores": scores}
+                "evidence": [], "verdict": "NOT_FOUND", "model": "extractive-fallback",
+                "scores": scores, "retrieval": method}
     i, _, txt = top[0]
     ev = [{"chunk_id": f"c{i}", "quote": txt[:280], "page": page_tag(pages, i)}]
     return {"answer": txt[:600], "evidence": ev, "verdict": "SUPPORTED",
-            "model": "extractive-fallback", "scores": scores}
+            "model": "extractive-fallback", "scores": scores, "retrieval": method}
 
 
-def grounded_ask(question, chunks, pages=None):
-    top = retrieve(question, chunks, k=4)
+def grounded_ask(question, chunks, pages=None, nb_id=None):
+    top, method = retrieve(question, chunks, k=4, nb_id=nb_id)
     scores = [(i, round(s, 3)) for i, s, _ in top]
     if not top or top[0][1] < 0.12:
         return {"answer": "I couldn't find this in your notes. Ask about something the notes cover, or add notes on this topic.",
-                "evidence": [], "verdict": "NOT_FOUND", "model": "extractive-fallback", "scores": scores}
+                "evidence": [], "verdict": "NOT_FOUND", "model": "extractive-fallback",
+                "scores": scores, "retrieval": method}
     ctx = "\n\n".join(f"[c{i}] {t}" for i, _, t in top)
     prompt = ("You are a tutor. Answer ONLY from NOTE CHUNKS. Cite like [c0]. "
               "If absent, reply exactly: NOT_FOUND. Keep under 150 words.\n\n"
@@ -51,7 +53,7 @@ def grounded_ask(question, chunks, pages=None):
               'Reply as JSON: {"answer":"...","evidence":[{"chunk_id":"c0","quote":"..."}],"verdict":"SUPPORTED|NOT_FOUND"}')
     raw, model = call_gemma(prompt)
     if raw is None:
-        r = extractive_answer(question, chunks, pages)
+        r = extractive_answer(question, chunks, pages, nb_id)
         r["model"] = f"extractive-fallback ({model})"
         return r
     try:
@@ -65,15 +67,22 @@ def grounded_ask(question, chunks, pages=None):
                     e["page"] = page_tag(pages, ci)
                     ok_ev.append(e)
                     break
-        data["evidence"] = ok_ev
-        if not ok_ev:
+        # dedupe: one card per chunk, keep longest quote
+        seen = {}
+        for e in ok_ev:
+            prev = seen.get(e["chunk_id"])
+            if not prev or len(e.get("quote", "")) > len(prev.get("quote", "")):
+                seen[e["chunk_id"]] = e
+        data["evidence"] = list(seen.values())
+        if not data["evidence"]:
             data["verdict"] = "NOT_FOUND"
             data["answer"] = "I couldn't find solid evidence in your notes for this. " + data.get("answer", "")
         data["model"] = model
         data["scores"] = scores
+        data["retrieval"] = method
         return data
     except Exception:
-        r = extractive_answer(question, chunks, pages)
+        r = extractive_answer(question, chunks, pages, nb_id)
         r["model"] = f"{model}+extractive"
         return r
 
@@ -129,8 +138,8 @@ def build_extractive_quiz(chunks, pages=None):
     return (quiz, "extractive-rag") if len(quiz) >= 3 else (CANNED_QUIZ, "canned")
 
 
-def generate_quiz(chunks, difficulty="Easy", pages=None):
-    diverse = [t for _, _, t in retrieve("key concepts definitions stages factors examples", chunks, k=6)]
+def generate_quiz(chunks, difficulty="Easy", pages=None, nb_id=None):
+    diverse = [t for _, _, t in retrieve("key concepts definitions stages factors examples", chunks, k=6, nb_id=nb_id)[0]]
     ctx = "\n\n".join(diverse or chunks[:6])[:4000]
     prompt = (f"From these NOTES write 5 questions (3 MCQ with 4 options, 2 short-answer). "
               f"Difficulty: {difficulty}. Spread across different parts. Stay strictly within notes.\nNOTES:\n{ctx}\n"

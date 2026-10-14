@@ -126,9 +126,9 @@ function CreateModal({ onClose }: { onClose: () => void }) {
 }
 
 /* ================= shared source panel ================= */
-function SourcePanel({ index, cited, flashId, refs }: {
+function SourcePanel({ index, cited, flashId, refs, bare }: {
   index: ChunkInfo[]; cited: string[]; flashId: string | null;
-  refs: React.MutableRefObject<Record<string, HTMLDivElement | null>>;
+  refs: React.MutableRefObject<Record<string, HTMLDivElement | null>>; bare?: boolean;
 }) {
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
@@ -137,7 +137,7 @@ function SourcePanel({ index, cited, flashId, refs }: {
   const rest = index.filter((c) => !citedSet.has(c.id) &&
     (!q.trim() || (c.preview + c.id).toLowerCase().includes(q.toLowerCase())));
   return (
-    <aside id="source-panel" className="border border-stone-200 bg-white shadow-sm lg:sticky lg:top-4 max-h-[75vh] overflow-auto p-4">
+    <aside id="source-panel" className={`border border-stone-200 bg-white shadow-sm p-4 ${bare ? "" : "lg:sticky lg:top-4 max-h-[75vh] overflow-auto"}`}>
       <h2 className="text-sm font-extrabold mb-1 flex items-center gap-1.5">
         <BookMarked size={15} className="text-orange-600" /> Sources
         <span className="font-normal text-stone-400">· {citedItems.length} cited · {index.length} total</span>
@@ -242,7 +242,7 @@ function Notebook({ health }: { health: { chat_model: string | null; embed_model
         </div>
       )}
       <div className="max-w-7xl mx-auto px-4 py-5 grid lg:grid-cols-[340px_1fr] gap-5 items-start">
-        <div className="space-y-4">
+        <div className="lg:sticky lg:top-16 max-h-[calc(100vh-5rem)] overflow-auto space-y-4 pr-0.5">
           <div className="border border-stone-200 bg-white p-4">
             <div className="flex items-center gap-2.5">
               <span className="w-10 h-10 bg-orange-600 text-white grid place-items-center shrink-0"><FileText size={18} /></span>
@@ -259,14 +259,14 @@ function Notebook({ health }: { health: { chat_model: string | null; embed_model
                   {s.done
                     ? <CheckCircle2 size={14} className="text-emerald-600 shrink-0" />
                     : <CircleDashed size={14} className="text-stone-300 animate-spin shrink-0" />}
-                  <span className={s.done ? "text-stone-700 font-medium" : "text-stone-400"}>{s.label}</span>
-                  {s.sub && <span className="text-stone-400 ml-auto">{s.sub}</span>}
+                  <span className={`min-w-0 truncate ${s.done ? "text-stone-700 font-medium" : "text-stone-400"}`}>{s.label}</span>
+                  {s.sub && <span className="text-stone-400 ml-auto shrink-0">{s.sub}</span>}
                 </div>
               ))}
             </div>
           </div>
           {sum
-            ? <SourcePanel index={sum.index} cited={cited} flashId={flashId} refs={refs} />
+            ? <SourcePanel bare index={sum.index} cited={cited} flashId={flashId} refs={refs} />
             : <div className="border border-dashed border-stone-300 p-6 text-center text-xs text-stone-400">Sources appear after loading notes.</div>}
         </div>
         <div>
