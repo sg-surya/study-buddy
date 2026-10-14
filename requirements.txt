@@ -1,0 +1,5 @@
+streamlit>=1.30
+google-generativeai>=0.8
+pypdf>=5
+requests>=2.31
+# note: no scikit-learn/scipy — retrieval is stdlib (numpy2 conflict avoided)
