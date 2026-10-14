@@ -2,7 +2,15 @@
 
 All notable changes tracked here (newest first).
 
+## [0.9.0] - 2026-10-14
+### Changed (landing + notebook flow)
+- Landing = hero only with CREATE NOTEBOOK CTA; white sharp-edge modal (orange corner cutouts) with Upload incl. drag-drop / Paste / Sample
+- Upload creates `/notebook/{uuid}`: left panel = source card + live pipeline steps (upload → parse → chunk → retrieval) + cited-first searchable sources; right = Ask/Quiz/Explain
+- Backend multi-notebook store (`notebook_id` everywhere + `GET /api/notebooks/{id}`); recent notebooks on hero with delete
+- Verified: `npm run build` passes; multi-notebook API live (sample→testnb→summary round-trip OK)
+
 ## [0.8.0] - 2026-10-14
+
 ### Added (notebook view /c/id)
 - HashRouter: home `/` + notebook `/c/{uuid}` (persisted in localStorage, follow-ups stay in thread)
 - Notebook layout: thread with SOURCES cards + cited-first source panel; full chunk list collapsed with search filter (no more 46-chunk dump)

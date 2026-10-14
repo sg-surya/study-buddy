@@ -2,7 +2,7 @@ import { CheckCircle2, FileText, XCircle } from "lucide-react";
 import { useState } from "react";
 import { api, type QuizQ } from "../api";
 
-export default function QuizTab() {
+export default function QuizTab({ nb }: { nb: string }) {
   const [diff, setDiff] = useState("Easy");
   const [quiz, setQuiz] = useState<QuizQ[]>([]);
   const [src, setSrc] = useState("");
@@ -13,7 +13,7 @@ export default function QuizTab() {
   async function gen() {
     setBusy(true); setGraded(null);
     try {
-      const r = await api.quizGen(diff);
+      const r = await api.quizGen(diff, nb);
       setQuiz(r.questions); setSrc(r.source); setAns({});
     } catch { setSrc("backend unreachable"); }
     setBusy(false);
@@ -23,7 +23,7 @@ export default function QuizTab() {
     setBusy(true);
     try {
       const payload = quiz.map((_, i) => ans[i] ?? null);
-      setGraded(await api.quizEval(payload));
+      setGraded(await api.quizEval(payload, nb));
     } catch { /* noop */ }
     setBusy(false);
   }

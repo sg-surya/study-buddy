@@ -3,7 +3,7 @@ import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { api } from "../api";
 
-export default function ExplainTab() {
+export default function ExplainTab({ nb }: { nb: string }) {
   const [level, setLevel] = useState("Simple");
   const [text, setText] = useState("");
   const [model, setModel] = useState("");
@@ -12,7 +12,7 @@ export default function ExplainTab() {
   async function run() {
     setBusy(true);
     try {
-      const r = await api.explain(level);
+      const r = await api.explain(level, nb);
       setText(r.text); setModel(r.model);
     } catch { setText("Backend unreachable. Run `start.bat` first."); }
     setBusy(false);
