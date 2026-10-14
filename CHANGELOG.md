@@ -2,12 +2,33 @@
 
 All notable changes tracked here (newest first).
 
-## [0.9.0] - 2026-10-14
+## [0.9.3] - 2026-10-14
+### Changed
+- Model status back as floating top-right card (full `google/gemma-4-e2b` id, float animation); header pill removed
+- Verified: `npm run build` passes
+
+### Changed (clean hero)
+- Removed features strip + footer; removed all floating hero cards
+- Eyebrow moved to top; LEARN FROM YOUR NOTES. now giant bottom-left; center holds only CTA + recent notebooks
+- Verified: `npm run build` passes
+
+### Changed
+- Clean URLs: HashRouter → BrowserRouter (`/notebook/{uuid}`, no `#`; dev-server use karo)
+- Creative landing: mouse-parallax watermark, glow orbs, floating evidence/quiz/NOT_FOUND cards, features strip
+- Verified: `npm run build` passes
+
 ### Changed (landing + notebook flow)
 - Landing = hero only with CREATE NOTEBOOK CTA; white sharp-edge modal (orange corner cutouts) with Upload incl. drag-drop / Paste / Sample
 - Upload creates `/notebook/{uuid}`: left panel = source card + live pipeline steps (upload → parse → chunk → retrieval) + cited-first searchable sources; right = Ask/Quiz/Explain
 - Backend multi-notebook store (`notebook_id` everywhere + `GET /api/notebooks/{id}`); recent notebooks on hero with delete
-- Verified: `npm run build` passes; multi-notebook API live (sample→testnb→summary round-trip OK)
+- Verified: `npm run build` passes (0.9.3)
+
+## [0.9.2] - 2026-10-14
+
+## [0.9.1] - 2026-10-14
+
+## [0.9.0] - 2026-10-14
+- Verified: multi-notebook API live (sample→testnb→summary round-trip OK)
 
 ## [0.8.0] - 2026-10-14
 

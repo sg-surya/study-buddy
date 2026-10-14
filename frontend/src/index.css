@@ -17,6 +17,12 @@ body { background: #faf7f1; color: #1c1917; font-family: "Space Grotesk", ui-san
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .ticker-track { display: inline-flex; white-space: nowrap; animation: ticker 26s linear infinite; }
 
+@keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+.floaty { animation: floaty 6s ease-in-out infinite; }
+.floaty-slow { animation: floaty 9s ease-in-out infinite; }
+
+.orb { position: absolute; border-radius: 9999px; filter: blur(90px); pointer-events: none; }
+
 .evidence-flash { animation: evflash 2.2s ease; border-radius: 0.75rem; }
 @keyframes evflash {
   0%, 60% { background: rgba(234, 88, 12, 0.14); border-color: #ea580c; }
