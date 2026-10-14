@@ -9,119 +9,188 @@ import { appendMsg, loadConvos, newNotebook, type Convo } from "./store";
 
 type Tab = "ask" | "explain" | "quiz";
 
+/* ================= upload transition: horizontal strips wipe once into notebook ================= */
+function UploadTransition({ name }: { name: string }) {
+  const rows = ["bg-orange-600", "bg-orange-500", "bg-stone-950", "bg-orange-600", "bg-amber-500"];
+  return (
+    <div className="transition-exit fixed inset-0 z-[60] bg-stone-950 text-white flex flex-col overflow-hidden">
+      <div className="absolute inset-0 flex flex-col pointer-events-none">
+        {rows.map((c, i) => (
+          <div key={i} className={`strip-row flex-1 ${c}`} style={{ animationDelay: `${i * 0.08}s` }} />
+        ))}
+      </div>
+      <div className="rise-in relative z-10 flex-1 flex flex-col items-center justify-center px-6 text-center" style={{ animationDelay: "0.35s" }}>
+        <div className="font-display text-2xl tracking-wide">SC<span className="text-orange-500">.</span></div>
+        <div className="mt-2 text-sm font-bold tracking-widest">NOTEBOOK READY</div>
+        <div className="mt-1 text-xs text-white/70 truncate max-w-xs">{name}</div>
+      </div>
+    </div>
+  );
+}
 /* ================= create-notebook modal: white, sharp edges, orange cutouts ================= */
 function CreateModal({ onClose }: { onClose: () => void }) {
   const nav = useNavigate();
-  const [mTab, setMTab] = useState<"upload" | "paste">("upload");
+  const [mTab, setMTab] = useState<"upload" | "paste" | "link">("upload");
   const [drag, setDrag] = useState(false);
+  const [name, setName] = useState("");
+  const [files, setFiles] = useState<File[]>([]);
   const [paste, setPaste] = useState("");
+  const [url, setUrl] = useState("");
   const [busy, setBusy] = useState(false);
+  const [progress, setProgress] = useState("");
+  const [leaving, setLeaving] = useState<string | null>(null);
   const [err, setErr] = useState("");
   const fileRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    const h = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    const h = (e: KeyboardEvent) => e.key === "Escape" && !busy && !leaving && onClose();
     window.addEventListener("keydown", h);
     return () => window.removeEventListener("keydown", h);
-  }, [onClose]);
+  }, [onClose, busy, leaving]);
 
-  async function finish(sum: NotesSummary, secs: number) {
-    newNotebook(sum.notebook_id, sum.source,
-      { name: sum.file, size: sum.size, pages: sum.pages.length, chunks: sum.chunks, secs });
-    onClose();
-    nav(`/notebook/${sum.notebook_id}`);
+  function suggestName(f: File | undefined) {
+    if (name.trim() || !f) return;
+    setName(f.name.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ").trim().slice(0, 60));
   }
 
-  async function doFile(f: File | undefined) {
-    if (!f || busy) return;
+  function addFiles(list: FileList | undefined) {
+    if (!list) return;
+    const picked = [...list].filter((f) => /\.(pdf|txt|md)$/i.test(f.name));
+    if (!picked.length) { setErr("Only PDF, TXT or MD files."); return; }
+    setErr("");
+    setFiles((p) => [...p, ...picked].slice(0, 5));
+    suggestName(picked[0]);
+  }
+
+  const ready = name.trim().length > 0 &&
+    (files.length > 0 || paste.trim().length > 0 || url.trim().length > 0);
+
+  async function create() {
+    if (!ready || busy) return;
     setBusy(true); setErr("");
     const t0 = performance.now();
+    const nid = crypto.randomUUID().slice(0, 8);
     try {
-      const sum = await api.upload(f, crypto.randomUUID().slice(0, 8));
-      if ((sum as any).error) setErr((sum as any).error);
-      else await finish(sum, (performance.now() - t0) / 1000);
-    } catch { setErr("Upload failed — is the backend running (start.bat)?"); }
-    setBusy(false);
+      let sum: NotesSummary | null = null;
+      for (let i = 0; i < files.length; i++) {
+        setProgress(`Uploading ${i + 1}/${files.length}…`);
+        const r = await api.upload(files[i], nid);
+        if ((r as any).error) throw new Error((r as any).error);
+        sum = r;
+      }
+      if (paste.trim()) {
+        setProgress("Adding pasted notes…");
+        const r = await api.text(paste, nid);
+        if ((r as any).error) throw new Error((r as any).error);
+        sum = r;
+      }
+      if (url.trim()) {
+        setProgress("Fetching link…");
+        const r = await api.url(url.trim(), nid);
+        if ((r as any).error) throw new Error((r as any).error);
+        sum = r;
+      }
+      if (!sum) {
+        const r = await api.sample(nid);
+        sum = r;
+      }
+      const secs = (performance.now() - t0) / 1000;
+      newNotebook(nid, sum.source,
+        { name: sum.file, size: sum.size, pages: sum.pages.length, chunks: sum.chunks, secs },
+        name.trim());
+      setLeaving(name.trim());
+      setTimeout(() => { onClose(); nav(`/notebook/${nid}`); }, 1650);
+    } catch (e: any) {
+      setBusy(false); setProgress("");
+      setErr(e?.message || "Failed — is the backend running (start.bat)?");
+    }
   }
 
-  async function doPaste() {
-    if (!paste.trim() || busy) return;
-    setBusy(true); setErr("");
-    const t0 = performance.now();
-    try {
-      const sum = await api.text(paste, crypto.randomUUID().slice(0, 8));
-      await finish(sum, (performance.now() - t0) / 1000);
-    } catch { setErr("Failed — is the backend running (start.bat)?"); }
-    setBusy(false);
-  }
-
-  async function doSample() {
-    setBusy(true); setErr("");
-    const t0 = performance.now();
-    try {
-      const sum = await api.sample(crypto.randomUUID().slice(0, 8));
-      await finish(sum, (performance.now() - t0) / 1000);
-    } catch { setErr("Failed — is the backend running (start.bat)?"); }
-    setBusy(false);
-  }
+  /* single entry: create() validates name + source, then builds the notebook */
 
   return (
+    <>
+    {leaving && <UploadTransition name={leaving} />}
     <div className="fixed inset-0 z-50 grid place-items-center p-4 bg-stone-950/70 backdrop-blur-sm" onClick={onClose}>
       <div className="relative bg-white w-full max-w-lg rounded-none shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <span className="absolute -top-2 -left-2 w-6 h-6 bg-orange-600" />
         <span className="absolute -top-2 -right-2 w-6 h-6 bg-orange-600" />
         <span className="absolute -bottom-2 -left-2 w-6 h-6 bg-orange-600" />
         <span className="absolute -bottom-2 -right-2 w-6 h-6 bg-orange-600" />
-        <div className="flex items-center justify-between px-6 pt-5">
-          <div>
-            <div className="font-display text-2xl tracking-wide">NEW NOTEBOOK</div>
-            <div className="font-mono2 text-[11px] text-stone-500 tracking-widest">SOURCE → CHUNKS → ASK</div>
-          </div>
-          <button onClick={onClose} aria-label="close" className="p-2 hover:bg-stone-100"><X size={18} /></button>
-        </div>
-        <div className="flex gap-2 px-6 mt-4">
-          {(["upload", "paste"] as const).map((t) => (
-            <button key={t} onClick={() => setMTab(t)}
-              className={`flex-1 py-2.5 text-sm font-bold border transition ${mTab === t ? "bg-stone-950 text-white border-stone-950" : "border-stone-200 hover:border-stone-400"}`}>
-              {t === "upload" ? "Upload file" : "Paste text"}
-            </button>
-          ))}
+        <div className="px-6 pt-5">
+          <div className="font-display text-2xl tracking-wide">CREATE NOTEBOOK</div>
+          <div className="text-[13px] text-stone-500 mt-0.5">Add your notes and start learning with Meeko.</div>
+          <button onClick={onClose} aria-label="close" className="absolute top-4 right-4 p-2 hover:bg-stone-100"><X size={18} /></button>
         </div>
         <div className="p-6 pt-4">
-          {mTab === "upload" ? (
-            <div onDragOver={(e) => { e.preventDefault(); setDrag(true); }}
-              onDragLeave={() => setDrag(false)}
-              onDrop={(e) => { e.preventDefault(); setDrag(false); doFile(e.dataTransfer.files?.[0]); }}
-              onClick={() => fileRef.current?.click()}
-              className={`border-2 border-dashed p-8 text-center cursor-pointer transition ${drag ? "border-orange-600 bg-orange-50" : "border-stone-300 hover:border-orange-500"}`}>
-              <input ref={fileRef} type="file" accept=".txt,.md,.pdf" className="hidden"
-                onChange={(e) => { doFile(e.target.files?.[0]); e.target.value = ""; }} />
-              {busy
-                ? <span className="inline-flex items-center gap-2 text-sm font-bold"><Loader2 size={18} className="animate-spin" /> Indexing your notes…</span>
-                : <>
-                  <UploadCloud size={28} className="mx-auto text-orange-600" />
-                  <div className="font-bold text-sm mt-2">Drop a PDF here, or click to browse</div>
-                  <div className="text-xs text-stone-500 mt-1">.pdf / .txt / .md — text-based files</div>
-                </>}
-            </div>
-          ) : (
-            <div>
-              <textarea value={paste} onChange={(e) => setPaste(e.target.value)} rows={7} placeholder="Paste your notes here…"
-                className="w-full text-sm border border-stone-300 p-3 outline-none focus:border-orange-600 rounded-none" />
-              <button disabled={busy || !paste.trim()} onClick={doPaste}
-                className="mt-2 w-full py-3 bg-stone-950 text-white text-sm font-bold hover:bg-orange-600 transition disabled:opacity-40 flex items-center justify-center gap-2">
-                {busy ? <><Loader2 size={16} className="animate-spin" /> Indexing…</> : "Create from pasted text"}
+          <label className="block text-xs font-bold tracking-widest text-stone-500">NOTEBOOK NAME</label>
+          <input value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Operating Systems"
+            className="mt-1.5 w-full border border-stone-300 px-4 py-3 text-[15px] outline-none focus:border-orange-600 rounded-none placeholder:text-stone-400" />
+
+          <div className="flex gap-2 mt-4">
+            {(["upload", "paste", "link"] as const).map((t) => (
+              <button key={t} onClick={() => setMTab(t)}
+                className={`flex-1 py-2.5 text-[13px] font-bold border transition ${mTab === t ? "bg-stone-950 text-white border-stone-950" : "border-stone-200 hover:border-stone-400"}`}>
+                {t === "upload" ? "Upload" : t === "paste" ? "Paste" : "Link"}
               </button>
+            ))}
+          </div>
+
+          <div className="mt-3">
+            {mTab === "upload" && (
+              <div onDragOver={(e) => { e.preventDefault(); setDrag(true); }}
+                onDragLeave={() => setDrag(false)}
+                onDrop={(e) => { e.preventDefault(); setDrag(false); addFiles(e.dataTransfer.files); }}
+                onClick={() => fileRef.current?.click()}
+                className={`border-2 border-dashed p-6 text-center cursor-pointer transition ${drag ? "border-orange-600 bg-orange-50" : "border-stone-300 hover:border-orange-500"}`}>
+                <input ref={fileRef} type="file" accept=".pdf,.txt,.md" multiple className="hidden"
+                  onChange={(e) => { addFiles(e.target.files ?? undefined); e.target.value = ""; }} />
+                <UploadCloud size={24} className="mx-auto text-orange-600" />
+                <div className="font-bold text-sm mt-1.5">Drop files or browse</div>
+                <div className="text-[11px] text-stone-500 mt-0.5">PDF, TXT, MD</div>
+              </div>
+            )}
+            {mTab === "paste" && (
+              <textarea value={paste} onChange={(e) => setPaste(e.target.value)} rows={6} placeholder="Paste your notes here…"
+                className="w-full text-sm border border-stone-300 p-3 outline-none focus:border-orange-600 rounded-none" />
+            )}
+            {mTab === "link" && (
+              <div className="flex gap-2">
+                <input value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://… article or docs page"
+                  className="flex-1 min-w-0 text-sm border border-stone-300 px-4 py-3 outline-none focus:border-orange-600 rounded-none placeholder:text-stone-400" />
+              </div>
+            )}
+          </div>
+
+          {files.length > 0 && (
+            <div className="mt-2 space-y-1.5">
+              {files.map((f, i) => (
+                <div key={`${f.name}-${i}`} className="flex items-center gap-2 text-[13px] bg-stone-50 border border-stone-200 px-3 py-1.5">
+                  <FileText size={13} className="text-orange-600 shrink-0" />
+                  <span className="truncate flex-1">{f.name}</span>
+                  <span className="text-stone-400 text-[11px]">{(f.size / 1024).toFixed(0)} KB</span>
+                  <button onClick={() => setFiles((p) => p.filter((_, j) => j !== i))} aria-label="remove"
+                    className="p-1 hover:text-red-600"><X size={13} /></button>
+                </div>
+              ))}
             </div>
           )}
+
           {err && <div className="mt-3 text-xs font-bold text-red-700 bg-red-50 border border-red-200 p-2.5">{err}</div>}
-          <button disabled={busy} onClick={doSample}
-            className="mt-3 w-full py-2 text-xs font-bold border border-stone-200 hover:border-orange-500 hover:text-orange-700 transition disabled:opacity-40 flex items-center justify-center gap-1.5">
-            <FileText size={13} /> No file handy? Open sample notebook
+
+          <button disabled={!ready || busy} onClick={create}
+            className="mt-4 w-full py-3.5 bg-orange-600 text-white font-display text-lg tracking-wide hover:bg-stone-950 transition disabled:opacity-40 flex items-center justify-center gap-2 rounded-none">
+            {busy ? <><Loader2 size={18} className="animate-spin" /> {progress || "Working…"} </> : <>Create Notebook <ArrowRight size={18} /></>}
           </button>
+          {!ready && !busy && (
+            <div className="mt-2 text-[11px] text-stone-400 text-center">
+              {!name.trim() ? "Give your notebook a name" : "Add at least one source to start studying"}
+            </div>
+          )}
         </div>
       </div>
     </div>
+    </>
   );
 }
 
@@ -189,12 +258,20 @@ function Notebook({ health }: { health: { chat_model: string | null; embed_model
   const [busy, setBusy] = useState(false);
   const [q, setQ] = useState("");
   const [flashId, setFlashId] = useState<string | null>(null);
+  const [revealed, setRevealed] = useState(0);
   const refs = useRef<Record<string, HTMLDivElement | null>>({});
 
   useEffect(() => {
     if (!id) return;
     api.summary(id).then(setSum).catch(() => setSum(null));
     setConvo(loadConvos().find((c) => c.id === id) ?? null);
+  }, [id]);
+
+  /* pipeline process plays on the notebook page itself */
+  useEffect(() => {
+    setRevealed(0);
+    const timers = [1, 2, 3, 4].map((n) => setTimeout(() => setRevealed(n), n * 350));
+    return () => timers.forEach(clearTimeout);
   }, [id]);
 
   async function send(question: string) {
@@ -218,10 +295,10 @@ function Notebook({ health }: { health: { chat_model: string | null; embed_model
   if (!convo) return <div className="p-10 text-center text-stone-500">Notebook not found. <Link to="/" className="underline font-bold">Home</Link></div>;
   const cited = [...new Set(convo.messages.flatMap((m) => m.r.evidence.map((e) => e.chunk_id)))];
   const steps = [
-    { label: `Uploaded ${convo.file?.name ?? convo.source}`, sub: convo.file ? `${(convo.file.size / 1024).toFixed(0)} KB` : "", done: true },
-    { label: sum ? `Parsed ${sum.pages.length > 0 ? `${sum.pages.length} pages` : "text"}` : "Parsing…", sub: "", done: !!sum },
-    { label: sum ? `Chunked into ${sum.chunks} pieces` : "Chunking…", sub: "", done: !!sum },
-    { label: health?.embed_model ? `Retrieval: ${health.embed_model.slice(0, 26)}` : "Retrieval: TF-IDF fallback", sub: "", done: !!health },
+    { label: `Uploaded ${convo.file?.name ?? convo.source}`, working: "Uploading file…", sub: convo.file ? `${(convo.file.size / 1024).toFixed(0)} KB` : "", done: true },
+    { label: sum ? `Parsed ${sum.pages.length > 0 ? `${sum.pages.length} pages` : "text"}` : "Parsed", working: "Parsing pages…", sub: "", done: !!sum },
+    { label: sum ? `Chunked into ${sum.chunks} pieces` : "Chunked", working: "Chunking notes…", sub: "", done: !!sum },
+    { label: health?.embed_model ? `Retrieval: ${health.embed_model.slice(0, 26)}` : "Retrieval: TF-IDF fallback", working: "Linking evidence…", sub: "", done: !!health },
   ];
 
   return (
@@ -254,15 +331,21 @@ function Notebook({ health }: { health: { chat_model: string | null; embed_model
               </div>
             </div>
             <div className="mt-3 space-y-1.5">
-              {steps.map((s, i) => (
-                <div key={i} className="flex items-center gap-2 text-xs">
-                  {s.done
-                    ? <CheckCircle2 size={14} className="text-emerald-600 shrink-0" />
-                    : <CircleDashed size={14} className="text-stone-300 animate-spin shrink-0" />}
-                  <span className={`min-w-0 truncate ${s.done ? "text-stone-700 font-medium" : "text-stone-400"}`}>{s.label}</span>
-                  {s.sub && <span className="text-stone-400 ml-auto shrink-0">{s.sub}</span>}
-                </div>
-              ))}
+              {steps.map((s, i) => {
+                const shown = i < revealed && s.done;
+                const working = i === revealed && !s.done;
+                return (
+                  <div key={i} className={`rise-in flex items-center gap-2 text-xs ${shown ? "" : "opacity-0"}`}>
+                    {shown
+                      ? <CheckCircle2 size={14} className="text-emerald-600 shrink-0" />
+                      : <CircleDashed size={14} className="text-stone-300 animate-spin shrink-0" />}
+                    <span className={`min-w-0 truncate ${shown ? "text-stone-700 font-medium" : "text-stone-400"}`}>
+                      {working ? s.working : s.label}
+                    </span>
+                    {s.sub && shown && <span className="text-stone-400 ml-auto shrink-0">{s.sub}</span>}
+                  </div>
+                );
+              })}
             </div>
           </div>
           {sum

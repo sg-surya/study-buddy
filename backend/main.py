@@ -23,7 +23,79 @@ NOTEBOOKS: dict = {}
 def nb(nid: str | None) -> dict:
     nid = nid or "default"
     return NOTEBOOKS.setdefault(nid, {"raw": "", "chunks": [], "pages": [], "quiz": [],
-                                      "source": "", "file": "", "size": 0, "created": time.time()})
+                                      "source": "", "files": [], "size": 0, "created": time.time()})
+
+
+def _ingest_text(s, text, label, fname, size):
+    text = (text or "").strip()
+    if not text:
+        return None, "No readable text found."
+    nc = chunk_text(text)
+    if not nc:
+        return None, "No readable text found."
+    first = not s["chunks"]
+    s["raw"] = text if first else s["raw"] + "\n\n" + text
+    s["chunks"] += nc
+    s["pages"] += [None] * len(nc)
+    s["files"].append(fname)
+    s["source"] = label if first else s["source"] + f" + {fname}"
+    s["quiz"] = []
+    s["size"] += size
+    return len(nc), None
+
+
+def _ingest_pdf(s, page_texts, label, fname, size):
+    nc, np = chunk_pdf_pages(page_texts)
+    if not nc:
+        return None, "No readable text found."
+    first = not s["chunks"]
+    off = max([p for p in s["pages"] if p] or [0])
+    full = "\n\n".join(page_texts).strip()
+    s["raw"] = full if first else s["raw"] + "\n\n" + full
+    s["chunks"] += nc
+    s["pages"] += [p + off for p in np]
+    s["files"].append(fname)
+    s["source"] = label if first else s["source"] + f" + {fname}"
+    s["quiz"] = []
+    s["size"] += size
+    return len(nc), None
+
+
+from html.parser import HTMLParser
+
+
+class _TextParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.out, self.skip, self.title = [], False, ""
+
+    def handle_starttag(self, tag, attrs):
+        if tag in ("script", "style", "nav", "footer", "header"):
+            self.skip = True
+
+    def handle_endtag(self, tag):
+        if tag in ("script", "style", "nav", "footer", "header"):
+            self.skip = False
+        if tag in ("p", "br", "h1", "h2", "h3", "h4", "li", "title"):
+            self.out.append("\n")
+
+    def handle_data(self, data):
+        if self.skip:
+            return
+        t = data.strip()
+        if t:
+            self.out.append(t + " ")
+
+
+def html_to_text(html):
+    import re
+    m = re.search(r"<title[^>]*>(.*?)</title>", html, re.S | re.I)
+    title = (m.group(1).strip() if m else "")[:120]
+    p = _TextParser()
+    p.feed(html[:500000])
+    text = re.sub(r"[ \t]+", " ", "".join(p.out))
+    text = re.sub(r"\n\s*\n+", "\n\n", text).strip()[:60000]
+    return title, text
 
 
 class TextIn(BaseModel):
@@ -51,11 +123,21 @@ class QuizEvalIn(BaseModel):
     notebook_id: str = "default"
 
 
+class UrlIn(BaseModel):
+    url: str
+    notebook_id: str = "default"
+
+
+def display_file(s):
+    files = s["files"]
+    return files[0] if len(files) == 1 else f"{len(files)} files" if files else ""
+
+
 def summary(nid: str):
     s = nb(nid)
     return {"notebook_id": nid, "chunks": len(s["chunks"]),
             "pages": sorted(set(p for p in s["pages"] if p)),
-            "source": s["source"], "file": s["file"], "size": s["size"],
+            "source": s["source"], "file": display_file(s), "size": s["size"],
             "index": [{"id": f"c{i}", "page": page_tag(s["pages"], i),
                        "preview": c[:140]} for i, c in enumerate(s["chunks"])]}
 
@@ -85,7 +167,7 @@ def load_sample(body: TextIn):
     s["pages"] = [None] * len(s["chunks"])
     s["quiz"] = []
     s["source"] = "sample: photosynthesis"
-    s["file"] = "photosynthesis.md"
+    s["files"] = ["photosynthesis.md"]
     s["size"] = len(s["raw"])
     return summary(body.notebook_id)
 
@@ -93,13 +175,26 @@ def load_sample(body: TextIn):
 @app.post("/api/notes/text")
 def load_text(body: TextIn):
     s = nb(body.notebook_id)
-    s["raw"] = body.text
-    s["chunks"] = chunk_text(body.text)
-    s["pages"] = [None] * len(s["chunks"])
-    s["quiz"] = []
-    s["source"] = "pasted text"
-    s["file"] = "pasted-notes.txt"
-    s["size"] = len(body.text)
+    n, err = _ingest_text(s, body.text, "pasted text", "pasted-notes.txt", len(body.text))
+    if err:
+        return {"error": err}
+    return summary(body.notebook_id)
+
+
+@app.post("/api/notes/url")
+def load_url(body: UrlIn):
+    import requests
+    s = nb(body.notebook_id)
+    try:
+        r = requests.get(body.url, timeout=15, headers={"User-Agent": "Mozilla/5.0"})
+        r.raise_for_status()
+        title, text = html_to_text(r.text)
+    except Exception as e:
+        return {"error": f"Could not fetch URL ({e})."}
+    label = title or body.url[:60]
+    n, err = _ingest_text(s, f"{label}\n\n{text}", label, body.url[:80], len(text))
+    if err:
+        return {"error": "No readable text found at that URL."}
     return summary(body.notebook_id)
 
 
@@ -113,22 +208,20 @@ async def upload(file: UploadFile = File(...), notebook_id: str = Form("default"
         text, npages, page_texts = extract_pdf_text(data)
         if not text:
             return {"error": f"Could not read PDF ({npages}). Try a text-based PDF."}
-        s["raw"] = text
-        s["chunks"], s["pages"] = chunk_pdf_pages(page_texts)
-        s["source"] = f"{file.filename} ({npages} pages)"
+        n, err = _ingest_pdf(s, page_texts, f"{file.filename} ({npages} pages)", file.filename, len(data))
+        if err:
+            return {"error": err}
     else:
-        s["raw"] = data.decode("utf-8", "ignore")
-        s["chunks"] = chunk_text(s["raw"])
-        s["pages"] = [None] * len(s["chunks"])
-        s["source"] = file.filename
-    s["quiz"] = []
+        n, err = _ingest_text(s, data.decode("utf-8", "ignore"), file.filename, file.filename, len(data))
+        if err:
+            return {"error": err}
     return summary(notebook_id)
 
 
 @app.post("/api/notes/clear")
 def clear(body: TextIn):
     NOTEBOOKS[body.notebook_id] = {"raw": "", "chunks": [], "pages": [], "quiz": [],
-                                   "source": "", "file": "", "size": 0, "created": time.time()}
+                                   "source": "", "files": [], "size": 0, "created": time.time()}
     return {"ok": True}
 
 

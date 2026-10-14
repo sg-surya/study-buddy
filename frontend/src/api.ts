@@ -29,6 +29,8 @@ export const api = {
     req("/api/notes/sample", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: "", notebook_id: nb }) }),
   text: (text: string, nb: string): Promise<NotesSummary> =>
     req("/api/notes/text", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text, notebook_id: nb }) }),
+  url: (url: string, nb: string): Promise<NotesSummary> =>
+    req("/api/notes/url", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ url, notebook_id: nb }) }),
   upload: async (file: File, nb: string): Promise<NotesSummary> => {
     const fd = new FormData();
     fd.append("file", file);

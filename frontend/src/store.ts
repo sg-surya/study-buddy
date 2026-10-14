@@ -16,9 +16,9 @@ function save(cs: Convo[]) {
   try { localStorage.setItem(KEY, JSON.stringify(cs.slice(0, 30))); } catch { /* quota */ }
 }
 
-export function newNotebook(id: string, source: string, file: FileMeta | null): Convo {
+export function newNotebook(id: string, source: string, file: FileMeta | null, title?: string): Convo {
   const c: Convo = {
-    id, title: file?.name.replace(/\.[^.]+$/, "") || source.slice(0, 48) || "Untitled",
+    id, title: title || file?.name.replace(/\.[^.]+$/, "") || source.slice(0, 48) || "Untitled",
     createdAt: Date.now(), source, file, messages: [],
   };
   const cs = [c, ...loadConvos().filter((x) => x.id !== id)];

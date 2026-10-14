@@ -21,6 +21,13 @@ body { background: #faf7f1; color: #1c1917; font-family: "Space Grotesk", ui-san
 .floaty { animation: floaty 6s ease-in-out infinite; }
 .floaty-slow { animation: floaty 9s ease-in-out infinite; }
 
+@keyframes row-in { 0% { transform: scaleX(0); } 100% { transform: scaleX(1); } }
+.strip-row { transform-origin: left; animation: row-in 0.7s cubic-bezier(.7,0,.3,1) both; }
+@keyframes overlay-out { to { transform: translateY(-100%); } }
+.transition-exit { animation: overlay-out 0.55s cubic-bezier(.7,0,.3,1) 1.05s both; }
+@keyframes rise-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.rise-in { animation: rise-in 0.5s ease both; }
+
 .orb { position: absolute; border-radius: 9999px; filter: blur(90px); pointer-events: none; }
 
 .evidence-flash { animation: evflash 2.2s ease; border-radius: 0.75rem; }

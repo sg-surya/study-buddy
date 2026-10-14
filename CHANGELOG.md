@@ -2,7 +2,23 @@
 
 All notable changes tracked here (newest first).
 
-## [0.10.0] - 2026-10-14
+## [0.11.0] - 2026-10-14
+### Changed (minimal Meeko popup + URL sources)
+- Popup exactly per spec: Create Notebook + Meeko subtitle, required name (auto-suggested from filename), Upload (multi-file drag-drop + list) / Paste / Link tabs, orange Create Notebook button with inline validation hints
+- Backend: multi-file append into one notebook (page offsets continue), new `POST /api/notes/url` (article fetch + text extract), notebook titles use the given name
+- Verified: build passes; URL fetch + text append round-trip live (1 chunk → 2 chunks, "2 files")
+
+## [0.10.2] - 2026-10-14
+
+### Changed (one-shot horizontal transition)
+- Upload success → 5 horizontal strips wipe once (staggered, then slide away) with NOTEBOOK READY + filename → notebook opens
+- Pipeline process now plays on the notebook page itself (steps reveal one-by-one with working labels)
+- Verified: `npm run build` passes
+
+### Added (upload transition)
+- Full-screen strip transition on notebook creation: orange vertical bars sweep + progress line + staged labels (Uploading → Parsing → Chunking → Linking → Ready) then route opens
+- Verified: `npm run build` passes
+
 ### Backend (faster + cleaner)
 - Chunk embeddings cached per notebook (`embed_cached`) — repeat questions skip re-embedding 40+ chunks
 - `retrieve()` returns `(results, method)`; responses carry `retrieval: embeddings|tfidf`; evidence deduped per chunk
@@ -10,6 +26,11 @@ All notable changes tracked here (newest first).
 ### Notebook UI (user-friendly)
 - Inline `[c0]` markers render as clickable chips jumping to source; copy-answer button per card; sharp-edge cards
 - Left column = single scroll (source card + cited-first sources); retrieval label truncated; model label shortened
+- Verified: `npm run build` passes (0.10.2)
+
+## [0.10.1] - 2026-10-14
+
+## [0.10.0] - 2026-10-14
 - Verified: build passes; ask → SUPPORTED/embeddings/1 evidence card; 2nd ask served from cache
 
 ## [0.9.3] - 2026-10-14
