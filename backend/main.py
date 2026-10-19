@@ -12,6 +12,8 @@ from rag import (chunk_pdf_pages, chunk_text, embed_lmstudio, extract_pdf_text,
 from tutor import (build_audio_script, build_flashcards, explain_notes, generate_quiz,
                    grade_mcq, grade_short, grounded_ask, suggest_questions)
 
+import db
+
 app = FastAPI(title="Study Companion PS-01")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
@@ -22,9 +24,19 @@ NOTEBOOKS: dict = {}
 
 def nb(nid: str | None) -> dict:
     nid = nid or "default"
+    if nid not in NOTEBOOKS:  # cold instance -> hydrate persisted notebook (Postgres if configured)
+        loaded = db.load(nid)
+        if loaded:
+            NOTEBOOKS[nid] = loaded
     return NOTEBOOKS.setdefault(nid, {"raw": "", "chunks": [], "pages": [], "chunk_meta": [],
                                       "quiz": [], "source": "", "files": [], "fileinfo": [],
                                       "filebytes": {}, "size": 0, "created": time.time()})
+
+
+def persist(nid):
+    """Write-through: memory is the cache, DB the source of truth (no-op without POSTGRES_URL)."""
+    if nid in NOTEBOOKS:
+        db.save(nid, NOTEBOOKS[nid])
 
 
 def _ingest_text(s, text, label, fname, size):
@@ -197,12 +209,13 @@ def health():
     chat = [i for i in ids if "embed" not in i.lower()]
     emb = [i for i in ids if "embed" in i.lower()]
     return {"ok": True, "chat_model": chat[0] if chat else None,
-            "embed_model": emb[0] if emb else None}
+            "embed_model": emb[0] if emb else None, "persist": db.enabled()}
 
 
 @app.get("/api/notebooks/{nid}")
 def get_nb(nid: str):
-    if nid not in NOTEBOOKS or not NOTEBOOKS[nid]["chunks"]:
+    s = nb(nid)  # read-through: hydrates from DB on a cold instance
+    if not s["chunks"]:
         return {"error": "Notebook empty or missing. Upload notes first."}
     return summary(nid)
 
@@ -233,6 +246,7 @@ def load_sample(body: TextIn):
     s["fileinfo"] = [{"name": "photosynthesis.md", "chunks": len(s["chunks"]), "size": len(s["raw"]), "idx": 0, "pages": 0}]
     s["chunk_meta"] = [{"f": 0, "p": None}] * len(s["chunks"])
     s["size"] = len(s["raw"])
+    persist(body.notebook_id)
     return summary(body.notebook_id)
 
 
@@ -242,6 +256,7 @@ def load_text(body: TextIn):
     n, err = _ingest_text(s, body.text, "pasted text", "pasted-notes.txt", len(body.text))
     if err:
         return {"error": err}
+    persist(body.notebook_id)
     return summary(body.notebook_id)
 
 
@@ -259,6 +274,7 @@ def load_url(body: UrlIn):
     n, err = _ingest_text(s, f"{label}\n\n{text}", label, body.url[:80], len(text))
     if err:
         return {"error": "No readable text found at that URL."}
+    persist(body.notebook_id)
     return summary(body.notebook_id)
 
 
@@ -280,6 +296,7 @@ async def upload(file: UploadFile = File(...), notebook_id: str = Form("default"
         n, err = _ingest_text(s, data.decode("utf-8", "ignore"), file.filename, file.filename, len(data))
         if err:
             return {"error": err}
+    persist(notebook_id)
     return summary(notebook_id)
 
 
@@ -288,6 +305,7 @@ def clear(body: TextIn):
     NOTEBOOKS[body.notebook_id] = {"raw": "", "chunks": [], "pages": [], "chunk_meta": [], "quiz": [],
                                    "source": "", "files": [], "fileinfo": [], "filebytes": {},
                                    "size": 0, "created": time.time()}
+    db.delete(body.notebook_id)
     return {"ok": True}
 
 
@@ -374,6 +392,7 @@ def quiz_gen(body: QuizGenIn):
         if isinstance(it.get("chunk"), int) and 0 <= it["chunk"] < len(gidx):
             it["chunk"] = gidx[it["chunk"]]
     s["quiz"] = tag_evidence(s, items)
+    persist(body.notebook_id)
     return {"questions": items, "source": src}
 
 

@@ -1,9 +1,22 @@
 const BASE: string = import.meta.env.VITE_API_URL ?? "";
 export const API_BASE = BASE;
 
+// Vercel functions reject request bodies over 4.5 MB with 413 FUNCTION_PAYLOAD_TOO_LARGE.
+const MAX_BODY = 4_400_000;
+
+function oversized(what: string, bytes: number): Error {
+  return new Error(
+    `${what} is ${(bytes / 1e6).toFixed(1)} MB — server limit is 4.5 MB. Use a smaller file, or paste a shorter text excerpt.`
+  );
+}
+
 async function req(path: string, init?: RequestInit) {
   const r = await fetch(BASE + path, init);
-  if (!r.ok) throw new Error(`API ${r.status}`);
+  if (!r.ok) {
+    if (r.status === 413)
+      throw new Error("Request rejected: over the 4.5 MB server limit (413). Use a smaller file/text.");
+    throw new Error(`API ${r.status}`);
+  }
   return r.json();
 }
 
@@ -29,11 +42,14 @@ export const api = {
   summary: (nb: string): Promise<NotesSummary> => req(`/api/notebooks/${nb}`),
   sample: (nb: string): Promise<NotesSummary> =>
     req("/api/notes/sample", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: "", notebook_id: nb }) }),
-  text: (text: string, nb: string): Promise<NotesSummary> =>
-    req("/api/notes/text", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text, notebook_id: nb }) }),
+  text: (text: string, nb: string): Promise<NotesSummary> => {
+    if (text.length > MAX_BODY) throw oversized("Notes text", text.length);
+    return req("/api/notes/text", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text, notebook_id: nb }) });
+  },
   url: (url: string, nb: string): Promise<NotesSummary> =>
     req("/api/notes/url", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ url, notebook_id: nb }) }),
   upload: async (file: File, nb: string): Promise<NotesSummary> => {
+    if (file.size > MAX_BODY) throw oversized(`"${file.name}"`, file.size);
     const fd = new FormData();
     fd.append("file", file);
     fd.append("notebook_id", nb);
