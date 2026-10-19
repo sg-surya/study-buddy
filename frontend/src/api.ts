@@ -1,4 +1,4 @@
-const BASE = "http://localhost:8000";
+const BASE: string = import.meta.env.VITE_API_URL ?? "";
 export const API_BASE = BASE;
 
 async function req(path: string, init?: RequestInit) {
