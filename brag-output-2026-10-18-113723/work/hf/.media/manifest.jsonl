@@ -1,0 +1,6 @@
+{"id":"voice_001","type":"voice","path":"assets/voice/v1.wav","source":"generated","description":"Every AI answer sounds confident.","duration":2.5,"provenance":{"provider":"kokoro","prompt":"Every AI answer sounds confident."}}
+{"id":"voice_002","type":"voice","path":"assets/voice/v2.wav","source":"generated","description":"So we built Meeko.","duration":1.3,"provenance":{"provider":"kokoro","prompt":"So we built Meeko."}}
+{"id":"voice_003","type":"voice","path":"assets/voice/v3.wav","source":"generated","description":"It reads your own PDFs first.","duration":2.3,"provenance":{"provider":"kokoro","prompt":"It reads your own PDFs first."}}
+{"id":"voice_004","type":"voice","path":"assets/voice/v4.wav","source":"generated","description":"Then answers with verified, page-tagged proof.","duration":2.9,"provenance":{"provider":"kokoro","prompt":"Then answers with verified, page-tagged proof."}}
+{"id":"voice_005","type":"voice","path":"assets/voice/v5.wav","source":"generated","description":"And it never, ever guesses.","duration":1.7,"provenance":{"provider":"kokoro","prompt":"And it never, ever guesses."}}
+{"id":"voice_006","type":"voice","path":"assets/voice/v6.wav","source":"generated","description":"Meeko. Free, open source, on GitHub.","duration":2.5,"provenance":{"provider":"kokoro","prompt":"Meeko. Free, open source, on GitHub."}}

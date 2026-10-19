@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "historyId": "edff0a68-dadf-4f5a-8fc5-f7d633112640",
+  "currentRevision": null,
+  "pendingChanges": false,
+  "files": {
+    "AGENTS.md": {
+      "hash": "1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5",
+      "content": "C:\\Users\\SURYA PRATAP SINGH\\.cache\\hyperframes\\history\\edff0a68-dadf-4f5a-8fc5-f7d633112640\\blobs\\1d\\1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5"
+    },
+    "CLAUDE.md": {
+      "hash": "1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5",
+      "content": "C:\\Users\\SURYA PRATAP SINGH\\.cache\\hyperframes\\history\\edff0a68-dadf-4f5a-8fc5-f7d633112640\\blobs\\1d\\1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5"
+    },
+    "hyperframes.json": {
+      "hash": "c9583da2c45bd76f1130c855612d43b9af68476481351c68e22d75ccadf93562",
+      "content": "C:\\Users\\SURYA PRATAP SINGH\\.cache\\hyperframes\\history\\edff0a68-dadf-4f5a-8fc5-f7d633112640\\blobs\\c9\\c9583da2c45bd76f1130c855612d43b9af68476481351c68e22d75ccadf93562"
+    },
+    "index.html": {
+      "hash": "7e6e8cafe7aa77c894e57843f265a26a5caa6868ef78df00a31a6610d17f6967",
+      "content": "C:\\Users\\SURYA PRATAP SINGH\\.cache\\hyperframes\\history\\edff0a68-dadf-4f5a-8fc5-f7d633112640\\blobs\\7e\\7e6e8cafe7aa77c894e57843f265a26a5caa6868ef78df00a31a6610d17f6967"
+    },
+    "meta.json": {
+      "hash": "c09db1af8fc05ea9678fb77d2524b7a201b53c92333966745b6c0e9bef956b56",
+      "content": "C:\\Users\\SURYA PRATAP SINGH\\.cache\\hyperframes\\history\\edff0a68-dadf-4f5a-8fc5-f7d633112640\\blobs\\c0\\c09db1af8fc05ea9678fb77d2524b7a201b53c92333966745b6c0e9bef956b56"
+    },
+    "package.json": {
+      "hash": "7c31159fa1d17b704fdeb4624267b1ef154634717a6a93605b5e3a21fb97d8b8",
+      "content": "C:\\Users\\SURYA PRATAP SINGH\\.cache\\hyperframes\\history\\edff0a68-dadf-4f5a-8fc5-f7d633112640\\blobs\\7c\\7c31159fa1d17b704fdeb4624267b1ef154634717a6a93605b5e3a21fb97d8b8"
+    }
+  },
+  "revisions": {},
+  "checks": {
+    "latest": {
+      "revision": null,
+      "id": "4f89a47f-166e-46ff-a3c7-1a429ad15d7d"
+    },
+    "revisions": {},
+    "unversioned": [
+      {
+        "id": "4f89a47f-166e-46ff-a3c7-1a429ad15d7d",
+        "scope": "project",
+        "report": "E:\\ps1\\videos\\pitch-deck\\.hyperframes\\artifacts\\checks\\4f89a47f-166e-46ff-a3c7-1a429ad15d7d.json",
+        "metadata": {
+          "ok": true,
+          "browserSkipped": false,
+          "options": {
+            "samples": 9,
+            "atTransitions": false,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 3000,
+            "contrast": true,
+            "strict": false,
+            "snapshots": false,
+            "browserGpuMode": "auto"
+          }
+        },
+        "createdAt": 1791995928617,
+        "contentHash": "915a2ca3f3213b50397b0cb79a35222a0731e6fc14bc7d493fc74f8ef171c717",
+        "revision": null,
+        "inputFingerprint": "d076b96f7c49077bd737d234690b0bf9f955a01add3198d891ad501b6b0f6ba9",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      }
+    ]
+  },
+  "snapshots": {
+    "latest": null,
+    "revisions": {},
+    "unversioned": []
+  }
+}

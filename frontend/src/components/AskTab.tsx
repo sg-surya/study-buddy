@@ -16,7 +16,7 @@ import React, { Fragment } from "react";
 export function CiteChip({ id, onJump }: { id: string; onJump: (chunkId: string) => void }) {
   return (
     <button onClick={() => onJump(id)}
-      className="inline-block mx-0.5 px-1.5 py-px text-[12px] font-bold bg-orange-100 text-orange-800 hover:bg-orange-600 hover:text-white transition align-baseline">
+      className="inline-block mx-0.5 px-1.5 py-px text-[12px] font-bold bg-brandtint text-branddark hover:bg-brand hover:text-white transition align-baseline">
       {id}
     </button>
   );
@@ -61,7 +61,7 @@ export function AnswerCard({ h, onJump }: { h: Msg; onJump: (chunkId: string) =>
         <span className={`text-[11px] font-semibold px-2.5 py-0.5 border ${verdictStyle[h.r.verdict] ?? "border-stone-200 text-stone-500"}`}>
           {h.r.verdict}
         </span>
-        <button onClick={copy} title="Copy answer" className="p-1.5 text-stone-400 hover:text-orange-700 hover:bg-orange-50">
+        <button onClick={copy} title="Copy answer" className="p-1.5 text-stone-400 hover:text-branddark hover:bg-brandsoft">
           {copied ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
         </button>
       </div>
@@ -81,10 +81,10 @@ export function AnswerCard({ h, onJump }: { h: Msg; onJump: (chunkId: string) =>
           <div className="grid gap-2">
             {h.r.evidence.filter((e, j, a) => a.findIndex((x) => x.chunk_id === e.chunk_id) === j).map((e, j) => (
               <button key={j} onClick={() => onJump(e.chunk_id)} title="Jump to source"
-                className="text-left text-[13px] border border-orange-200 bg-orange-50 px-3 sm:px-4 py-2.5 hover:bg-orange-100 transition flex items-start gap-1.5">
-                <FileText size={14} className="text-orange-700 shrink-0 mt-0.5" />
+                className="text-left text-[13px] border border-brandline bg-brandsoft px-3 sm:px-4 py-2.5 hover:bg-brandtint transition flex items-start gap-1.5">
+                <FileText size={14} className="text-branddark shrink-0 mt-0.5" />
                 <span>
-                  <span className="text-orange-700 font-bold">{e.chunk_id}{e.page ? ` · ${e.page}` : ""}</span>
+                  <span className="text-branddark font-bold">{e.chunk_id}{e.page ? ` · ${e.page}` : ""}</span>
                   <span className="text-stone-600"> “{e.quote.slice(0, 220)}…”</span>
                 </span>
               </button>
@@ -141,7 +141,7 @@ export default function AskTab({ onJump, pendingQ, clearPending, messages, onSen
       {hist.length === 0 && !busy && (
         <div className="flex-1 grid place-items-center py-10 text-center">
           <div>
-            <div className="mx-auto w-12 h-12 rounded-2xl bg-orange-100 text-orange-700 grid place-items-center mb-3">
+            <div className="mx-auto w-12 h-12 rounded-2xl bg-brandtint text-branddark grid place-items-center mb-3">
               <MessageCircle size={22} />
             </div>
             <div className="font-bold">Ask anything from your notes</div>
@@ -160,17 +160,17 @@ export default function AskTab({ onJump, pendingQ, clearPending, messages, onSen
               onKeyDown={(e) => e.key === "Enter" && run(q)}
               placeholder="Ask from your notes…" className="flex-1 min-w-0 bg-transparent px-4 py-2.5 outline-none text-[15px]" />
             <button onClick={() => run(q)} disabled={busy} aria-label="send"
-              className="w-11 h-11 shrink-0 rounded-2xl bg-orange-600 text-white disabled:opacity-50 hover:bg-orange-700 grid place-items-center">
+              className="w-11 h-11 shrink-0 rounded-2xl bg-brand text-white disabled:opacity-50 hover:bg-branddark grid place-items-center">
               <ArrowUp size={18} />
             </button>
           </div>
           <div className="flex flex-wrap gap-1.5 px-2 pb-1 pt-1">
             <button onClick={() => run("What is the role of chlorophyll?")}
-              className="text-[11px] px-2.5 py-1 rounded-full bg-stone-100 hover:bg-orange-100 hover:text-orange-700 transition">
+              className="text-[11px] px-2.5 py-1 rounded-full bg-stone-100 hover:bg-brandtint hover:text-branddark transition">
               Supported: chlorophyll?
             </button>
             <button onClick={() => run("What is the Krebs cycle ATP yield in muscle?")}
-              className="text-[11px] px-2.5 py-1 rounded-full bg-stone-100 hover:bg-orange-100 hover:text-orange-700 transition">
+              className="text-[11px] px-2.5 py-1 rounded-full bg-stone-100 hover:bg-brandtint hover:text-branddark transition">
               Unsupported: Krebs ATP?
             </button>
           </div>

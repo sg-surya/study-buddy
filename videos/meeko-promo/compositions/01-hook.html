@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Anton"; font-style: normal; font-weight: 400; src: url("assets/fonts/anton-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 400; src: url("assets/fonts/sg-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 500; src: url("assets/fonts/sg-500.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 700; src: url("assets/fonts/sg-700.woff2") format("woff2"); }
+        #r01 { position: absolute; inset: 0; background: #201c19; overflow: hidden; }
+        #r01 .eb { position: absolute; left: 64px; top: 56px; color: #ff5a1f; font-weight: 700; font-size: 15px; letter-spacing: 5px; }
+        #r01 .l1, #r01 .l2 { position: absolute; left: 60px; font-family: "Anton"; color: #fffcf8; font-size: 118px; line-height: 0.95; letter-spacing: 1px; }
+        #r01 .l1 { top: 372px; }
+        #r01 .l2 { top: 492px; }
+        #r01 .acc { position: absolute; left: 64px; top: 654px; width: 130px; height: 6px; background: #ff5a1f; }
+        #r01 .ft { position: absolute; left: 64px; bottom: 54px; color: rgba(255, 252, 248, 0.45); font-size: 16px; letter-spacing: 3px; font-weight: 500; }
+      </style>
+      <div id="r01" data-composition-id="01-hook" data-width="1920" data-height="1080">
+        <div class="eb" id="s01-eb">PS-01 · TRACK 1 · GEMMA 4</div>
+        <div class="l1" id="s01-l1">EVERY STUDENT</div>
+        <div class="l2" id="s01-l2">HAS FACED THIS.</div>
+        <div class="acc" id="s01-acc"></div>
+        <div class="ft" id="s01-ft">MEEKO · STUDY COMPANION FROM REAL NOTES</div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#s01-eb", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.1);
+        tl.fromTo("#s01-l1", { opacity: 0, y: 46, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)", transformOrigin: "0% 100%" }, 0.3);
+        tl.fromTo("#s01-l2", { opacity: 0, y: 46, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)", transformOrigin: "0% 100%" }, 0.74);
+        tl.fromTo("#s01-acc", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.out", transformOrigin: "0% 50%" }, 1.16);
+        tl.fromTo("#s01-ft", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 1.45);
+        window.__timelines["01-hook"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

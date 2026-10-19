@@ -1,0 +1,120 @@
+﻿<template>
+<style>
+@font-face { font-family: "Bebas Neue"; src: local("Bebas Neue"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Inter"; src: local("Inter"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Inter"; src: local("Inter"); font-weight: 700; font-display: swap; }
+#root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #FFFCF8; }
+#f02-bg { position: absolute; inset: 0; background: #FFFCF8; }
+#f02-band { position: absolute; left: 0; top: 0; width: 1920px; height: 168px; background: #FF5A1F; }
+#f02-hatch { position: absolute; left: 0; top: 0; width: 1920px; height: 168px; background-image: repeating-linear-gradient(45deg, transparent 0 20px, rgba(0,0,0,.06) 20px 40px); }
+#f02-wallnum { position: absolute; right: 70px; top: -38px; font-family: "Bebas Neue", "Arial Narrow", sans-serif; font-size: 210px; letter-spacing: 6px; color: rgba(0,0,0,0.12); line-height: 1; }
+#f02-eyebrow { position: absolute; left: 96px; top: 62px; font-family: "Inter", sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 6px; color: #201C19; }
+#f02-eyebrow-sub { position: absolute; left: 96px; top: 102px; font-family: "Inter", sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 3px; color: rgba(32,28,25,.72); }
+#f02-chat { position: absolute; left: 96px; top: 232px; width: 1150px; background: #FFFFFF; border-top: 10px solid #FF5A1F; }
+#f02-chathead { display: flex; align-items: center; gap: 12px; padding: 22px 30px 0 30px; }
+#f02-dot { width: 16px; height: 16px; border-radius: 50%; background: #FF5A1F; }
+#f02-dot-dim { width: 16px; height: 16px; border-radius: 50%; background: #B0B0B0; }
+#f02-chatname { font-family: "Inter", sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 4px; color: #6B6B6B; margin-left: 8px; }
+#f02-qrow { margin: 24px 30px 0 30px; }
+#f02-qbubble { display: inline-block; background: #201C19; padding: 18px 26px; font-family: "Inter", sans-serif; font-size: 36px; font-weight: 400; color: #FFFCF8; letter-spacing: 1px; }
+#f02-caret { display: inline-block; width: 5px; height: 40px; background: #FF5A1F; vertical-align: -6px; margin-left: 6px; }
+.f02-qch { display: inline-block; }
+#f02-answer { position: relative; margin: 26px 30px 34px 30px; padding-top: 24px; border-top: 3px solid #201C19; }
+.f02-aline { font-family: "Inter", sans-serif; font-size: 33px; line-height: 1.5; color: #201C19; }
+#f02-halfa { margin-bottom: 2px; }
+#f02-halfb { margin-top: 2px; }
+#f02-crackwrap { position: absolute; left: -10px; right: -10px; top: 118px; height: 26px; }
+#f02-crack { width: 100%; height: 26px; transform-origin: left center; }
+#f02-acaret { display: inline-block; width: 22px; height: 30px; background: #FF5A1F; vertical-align: -4px; margin-left: 8px; }
+#f02-rail { position: absolute; left: 1300px; top: 232px; width: 524px; height: 618px; background: #201C19; }
+#f02-railabel { position: absolute; left: 40px; top: 30px; font-family: "Inter", sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 5px; color: #FF5A1F; }
+#f02-stack { position: absolute; left: 60px; top: 110px; width: 404px; height: 420px; opacity: 0.5; }
+.f02-note { position: absolute; width: 404px; height: 150px; background: #FFFCF8; border-left: 8px solid #FF5A1F; }
+#f02-n1 { top: 0; left: 0; }
+#f02-n2 { top: 90px; left: 0; }
+#f02-n3 { top: 180px; left: 0; }
+#f02-ntitle { position: absolute; left: 26px; top: 196px; font-family: "Bebas Neue", "Arial Narrow", sans-serif; font-size: 56px; letter-spacing: 3px; color: #201C19; }
+#f02-nlines { position: absolute; left: 26px; top: 262px; width: 340px; height: 12px; background: #B0B0B0; }
+#f02-nlines2 { position: absolute; left: 26px; top: 286px; width: 250px; height: 12px; background: #B0B0B0; }
+#f02-seal { position: absolute; left: 60px; top: 480px; border: 3px solid #FF5A1F; padding: 10px 22px; font-family: "Inter", sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 5px; color: #FF5A1F; }
+#f02-stamp { position: absolute; left: 250px; top: 470px; width: 760px; padding: 26px 0 20px 0; background: #FFFCF8; border: 8px solid #FF5A1F; text-align: center; }
+#f02-stampword { font-family: "Bebas Neue", "Arial Narrow", sans-serif; font-size: 128px; line-height: 1; letter-spacing: 6px; color: #FF5A1F; }
+#f02-stampsub { font-family: "Inter", sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 6px; color: #201C19; margin-top: 4px; }
+#f02-stampring { position: absolute; left: 230px; top: 450px; width: 800px; height: 300px; border: 6px solid #FF5A1F; }
+@font-face{font-family:'Arial Narrow';src:local('Arial Narrow');font-weight:400 700;font-style:normal;}</style>
+<div data-hf-id="hf-083g" id="root" data-composition-id="f02-fake-answer" data-width="1920" data-height="1080" data-duration="9.432">
+  <div data-hf-id="hf-4idd" id="f02-bg" class="clip" data-start="0" data-duration="9.432" data-track-index="9"></div>
+  <div data-hf-id="hf-akt4" id="f02-band" class="clip" data-start="0" data-duration="9.432" data-track-index="8"></div>
+  <div data-hf-id="hf-frfg" id="f02-hatch" class="clip" data-start="0" data-duration="9.432" data-track-index="7"></div>
+  <div data-hf-id="hf-bxup" id="f02-wallnum" class="clip" data-start="0" data-duration="9.432" data-track-index="0">02</div>
+  <div data-hf-id="hf-wnmm" id="f02-eyebrow" class="clip" data-start="0" data-duration="9.432" data-track-index="6">GENERIC CHATBOT</div>
+  <div data-hf-id="hf-8kc2" id="f02-eyebrow-sub" class="clip" data-start="0" data-duration="9.432" data-track-index="1">INSTANT JAVAB MACHINE</div>
+  <div data-hf-id="hf-xqal" id="f02-chat" class="clip" data-start="0" data-duration="9.432" data-track-index="2">
+    <div data-hf-id="hf-v1tw" id="f02-chathead"><span data-hf-id="hf-72aw" id="f02-dot"></span><span data-hf-id="hf-2rxp" id="f02-dot-dim"></span><span data-hf-id="hf-doyp" id="f02-dot-dim"></span><span data-hf-id="hf-lq32" id="f02-chatname">CHAT</span></div>
+    <div data-hf-id="hf-3sxr" id="f02-qrow"><span data-hf-id="hf-prpa" id="f02-qbubble"><span data-hf-id="hf-wbuf" class="f02-qch">y</span><span data-hf-id="hf-uqmb" class="f02-qch">e</span><span data-hf-id="hf-qd90" class="f02-qch">h</span><span data-hf-id="hf-dlh0" class="f02-qch">&nbsp;</span><span data-hf-id="hf-scs5" class="f02-qch">c</span><span data-hf-id="hf-br8s" class="f02-qch">h</span><span data-hf-id="hf-t5e7" class="f02-qch">a</span><span data-hf-id="hf-zwlo" class="f02-qch">p</span><span data-hf-id="hf-1hts" class="f02-qch">t</span><span data-hf-id="hf-nttv" class="f02-qch">e</span><span data-hf-id="hf-z3zm" class="f02-qch">r</span><span data-hf-id="hf-b4zw" class="f02-qch">&nbsp;</span><span data-hf-id="hf-ypol" class="f02-qch">s</span><span data-hf-id="hf-1van" class="f02-qch">a</span><span data-hf-id="hf-rk63" class="f02-qch">m</span><span data-hf-id="hf-pkmy" class="f02-qch">j</span><span data-hf-id="hf-akbp" class="f02-qch">h</span><span data-hf-id="hf-1gzm" class="f02-qch">a</span><span data-hf-id="hf-qrk1" class="f02-qch">o</span></span><span data-hf-id="hf-qvx4" id="f02-caret"></span></div>
+    <div data-hf-id="hf-fbg2" id="f02-answer">
+      <div data-hf-id="hf-9t7g" id="f02-halfa">
+        <div data-hf-id="hf-4fa6" class="f02-aline" id="f02-a1">Haan, simple hai &mdash; suno:</div>
+        <div data-hf-id="hf-3ow5" class="f02-aline" id="f02-a2" data-layout-allow-overlap>chapter ka hero ye formula hai.</div>
+      </div>
+      <div data-hf-id="hf-atai" id="f02-crackwrap"><svg data-hf-id="hf-scyc" id="f02-crack" viewBox="0 0 1090 26" preserveAspectRatio="none"><polyline data-hf-id="hf-vw6h" points="0,14 120,6 260,18 400,8 540,20 700,7 840,18 980,9 1090,15" fill="none" stroke="#FF5A1F" stroke-width="7"/></svg></div>
+      <div data-hf-id="hf-ih3b" id="f02-halfb">
+        <div data-hf-id="hf-5zmo" class="f02-aline" id="f02-a3">1897 me likha gaya tha,</div>
+        <div data-hf-id="hf-18b2" class="f02-aline" id="f02-a4">100% pakka answer.<span data-hf-id="hf-vjbl" id="f02-acaret"></span></div>
+      </div>
+    </div>
+  </div>
+  <div data-hf-id="hf-xxi2" id="f02-rail" class="clip" data-start="0" data-duration="9.432" data-track-index="3">
+    <div data-hf-id="hf-gvvv" id="f02-railabel">TUMHARE NOTES</div>
+    <div data-hf-id="hf-ceyk" id="f02-stack">
+      <div data-hf-id="hf-hpd5" class="f02-note" id="f02-n1"></div>
+      <div data-hf-id="hf-lnh6" class="f02-note" id="f02-n2"></div>
+      <div data-hf-id="hf-pll7" class="f02-note" id="f02-n3"></div>
+      <div data-hf-id="hf-la7h" id="f02-ntitle">NOTES</div>
+      <div data-hf-id="hf-mohj" id="f02-nlines"></div>
+      <div data-hf-id="hf-faov" id="f02-nlines2"></div>
+    </div>
+    <div data-hf-id="hf-wxi1" id="f02-seal">UNOPENED</div>
+  </div>
+  <div data-hf-id="hf-hao0" id="f02-stampring" class="clip" data-start="6.6" data-duration="2.832" data-track-index="5"></div>
+  <div data-hf-id="hf-zs3b" id="f02-stamp" class="clip" data-layout-allow-occlusion data-start="6.6" data-duration="2.832" data-track-index="4">
+    <div data-hf-id="hf-81pz" id="f02-stampword">CONFIDENT</div>
+    <div data-hf-id="hf-3z3d" id="f02-stampsub">0 SOURCES</div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<script>
+(function () {
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  tl.fromTo("#f02-bg", { opacity: 1 }, { opacity: 1, duration: 8.832, ease: "none" }, 0);
+  tl.fromTo("#f02-chat", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0);
+  tl.fromTo("#f02-rail", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.1);
+  tl.fromTo("#f02-eyebrow", { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 0.15);
+  tl.fromTo("#f02-eyebrow-sub", { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 0.25);
+  tl.fromTo(".f02-qch", { opacity: 0 }, { opacity: 1, duration: 0.02, stagger: 0.09, ease: "none" }, 0.35);
+  tl.to("#f02-caret", { opacity: 0, duration: 0.12, ease: "none" }, 0.6);
+  tl.to("#f02-caret", { opacity: 1, duration: 0.12, ease: "none" }, 0.85);
+  tl.to("#f02-caret", { opacity: 0, duration: 0.12, ease: "none" }, 1.3);
+  tl.to("#f02-caret", { opacity: 1, duration: 0.12, ease: "none" }, 1.55);
+  tl.to("#f02-caret", { opacity: 0, duration: 0.2, ease: "none" }, 2.7);
+  tl.fromTo("#f02-a1", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 3.0);
+  tl.fromTo("#f02-a2", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 3.7);
+  tl.fromTo("#f02-a3", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 4.4);
+  tl.fromTo("#f02-a4", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 5.1);
+  tl.fromTo("#f02-acaret", { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "none" }, 5.7);
+  tl.to("#f02-acaret", { opacity: 0, duration: 0.15, ease: "none" }, 6.1);
+  tl.fromTo("#f02-crack", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.in" }, 6.2);
+  tl.to("#f02-answer", { x: -8, duration: 0.07, ease: "none" }, 6.5);
+  tl.to("#f02-answer", { x: 8, duration: 0.07, ease: "none" }, 6.57);
+  tl.to("#f02-answer", { x: 0, duration: 0.09, ease: "none" }, 6.64);
+  tl.to("#f02-halfb", { y: 90, rotation: 9, opacity: 0, duration: 0.8, ease: "power2.in" }, 6.6);
+  tl.fromTo("#f02-stampring", { opacity: 0.8, scale: 0.6 }, { opacity: 0, scale: 1.3, duration: 0.5, ease: "power2.out" }, 7.0);
+  tl.fromTo("#f02-stamp", { opacity: 0, scale: 2.6, rotation: -8 }, { opacity: 1, scale: 1, rotation: -8, duration: 0.3, ease: "power4.in" }, 7.0);
+  tl.to("#f02-stamp", { scale: 1.1, duration: 0.12, ease: "none" }, 7.3);
+  tl.to("#f02-stamp", { scale: 1, duration: 0.15, ease: "none" }, 7.42);
+  window.__timelines["f02-fake-answer"] = tl;
+  tl.seek(0);
+})();
+</script>
+</template>

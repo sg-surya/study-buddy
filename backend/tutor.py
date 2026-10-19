@@ -138,6 +138,38 @@ def build_extractive_quiz(chunks, pages=None):
     return (quiz, "extractive-rag") if len(quiz) >= 3 else (CANNED_QUIZ, "canned")
 
 
+def build_audio_script(chunks, pages=None, n=10):
+    """Two-host audio overview script, grounded in notes. Returns [{speaker, line}]."""
+    diverse = [t for _, _, t in retrieve("key concepts definitions stages factors examples", chunks, k=6)[0]]
+    ctx = "\n\n".join(diverse or chunks[:6])[:3500]
+    prompt = (f"Write a {n}-line podcast script where two hosts (A: curious student, B: expert tutor) "
+              f"discuss these NOTES conversationally. Short spoken lines, no jargon dumps, strictly from notes.\nNOTES:\n{ctx}\n"
+              'Reply ONLY as JSON list: [{"speaker":"A|B","line":"..."}]')
+    raw, _ = call_gemma(prompt, "You write engaging educational podcast scripts.")
+    if raw:
+        try:
+            m = re.search(r"\[.*\]", raw, re.S)
+            items = json.loads(m.group(0))
+            if len(items) >= 4:
+                return [{"speaker": ("A" if str(x.get("speaker", "A")).upper().startswith("A") else "B"),
+                         "line": str(x.get("line", ""))[:300]} for x in items[:14]]
+        except Exception:
+            pass
+    out = []  # extractive fallback: keyword-driven Q&A as dialogue
+    all_terms, caps = content_terms(chunks)
+    used = set()
+    for _, s in key_sentences(chunks, per_chunk=2)[:n]:
+        if is_header(s):
+            continue
+        key = pick_keyword(s, all_terms, caps, used, min_freq=1) or "this topic"
+        used.add(key)
+        out.append({"speaker": "A", "line": f"Alright — break down '{key}' for me."})
+        out.append({"speaker": "B", "line": s[:260]})
+        if len(out) >= n:
+            break
+    return out[:n] or [{"speaker": "B", "line": "Your notes are loaded — ask me anything about them."}]
+
+
 def build_flashcards(chunks, pages=None, n=12):
     """Term-definition flip cards mined from real notes. Returns [{front, back, chunk, page}]."""
     sents = [s for _, s in key_sentences(chunks, per_chunk=3) if not is_header(s)]
@@ -180,13 +212,50 @@ def generate_quiz(chunks, difficulty="Easy", pages=None, nb_id=None):
 
 def explain_notes(chunks, level="Simple"):
     ctx = "\n\n".join(chunks[:6])[:4000]
-    prompt = (f"Explain ONLY using these study notes (do not add facts from outside them) "
-              f"at {level} level in under 200 words with 3 key takeaways.\nNOTES:\n{ctx}")
-    raw, mid = call_gemma(prompt, "You explain study material simply and never invent facts beyond the notes.")
+    if level == "Briefing":
+        prompt = (f"Write a 130-word overview briefing of these notes for a student who just uploaded them. "
+                  f"Use 2 short paragraphs. **Bold** the 5-7 most important terms, names, or numbers. "
+                  f"Only use facts from the notes.\nNOTES:\n{ctx}")
+        system = "You write crisp document briefings and never invent facts beyond the notes."
+    else:
+        prompt = (f"Explain ONLY using these study notes (do not add facts from outside them) "
+                  f"at {level} level in under 200 words with 3 key takeaways.\nNOTES:\n{ctx}")
+        system = "You explain study material simply and never invent facts beyond the notes."
+    raw, mid = call_gemma(prompt, system)
     if raw:
         return raw, mid
     top = " ".join(chunks[:2])[:800]
     return f"**Key points from your notes:**\n\n{top}...\n\n(Load a Gemma model in LM Studio for a full explanation — {mid}.)", "extractive-fallback"
+
+
+def suggest_questions(chunks, pages=None, n=3):
+    """Starter question cards for a fresh notebook. LLM first, extractive fallback."""
+    diverse = [t for _, _, t in retrieve("key concepts definitions stages factors examples", chunks, k=6)[0]]
+    ctx = "\n\n".join(diverse or chunks[:6])[:3000]
+    prompt = (f"Suggest {n} short study questions a student should ask about these NOTES. "
+              f"Each under 15 words, answerable from the notes, spread across topics.\nNOTES:\n{ctx}\n"
+              'Reply ONLY as JSON list: ["q1", "q2", "q3"]')
+    raw, _ = call_gemma(prompt, "You suggest study questions.")
+    if raw:
+        try:
+            m = re.search(r"\[.*\]", raw, re.S)
+            items = [str(x)[:140] for x in json.loads(m.group(0))]
+            if len(items) >= 2:
+                return items[:n]
+        except Exception:
+            pass
+    out = []
+    for ci, s in key_sentences(chunks):
+        if is_header(s):
+            continue
+        toks = [t for t in _tokens(s) if len(t) >= 6][:3]
+        if toks:
+            out.append(f"What do my notes say about '{max(toks, key=len)}'?")
+        if len(out) >= n:
+            break
+    return out or ["What are the key points in my notes?",
+                   "Summarize the most important section?",
+                   "What should I revise first?"]
 
 
 def grade_short(expected, given, chunk_hint=""):

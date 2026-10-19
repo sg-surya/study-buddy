@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Anton"; font-style: normal; font-weight: 400; src: url("assets/fonts/anton-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 400; src: url("assets/fonts/sg-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 500; src: url("assets/fonts/sg-500.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 700; src: url("assets/fonts/sg-700.woff2") format("woff2"); }
+        #r06 { position: absolute; inset: 0; background: #ff5a1f; overflow: hidden; }
+        #r06 .hx { position: absolute; inset: 0; }
+        #r06 .wrap { position: absolute; inset: 0; }
+        #r06 .eb { position: absolute; left: 64px; top: 56px; color: #201c19; font-weight: 700; font-size: 15px; letter-spacing: 5px; }
+        #r06 .word { position: absolute; left: 150px; top: 300px; font-family: "Anton"; font-size: 300px; line-height: 1; color: #201c19; letter-spacing: 2px; white-space: nowrap; }
+        #r06 .word span { display: inline-block; }
+        #r06 .word .dot { color: #fffcf8; }
+        #r06 .band { position: absolute; left: 156px; top: 680px; background: #201c19; padding: 20px 34px; }
+        #r06 .band .t { color: #fffcf8; font-size: 29px; font-weight: 500; letter-spacing: 4px; }
+        #r06 .acc { position: absolute; left: 158px; top: 800px; width: 130px; height: 6px; background: #201c19; }
+      </style>
+      <div id="r06" data-composition-id="06-reveal" data-width="1920" data-height="1080">
+        <div class="hx hatch"></div>
+        <div class="wrap" id="s06-wrap" data-layout-allow-overflow>
+          <div class="eb" id="s06-eb">THAT'S WHERE MEEKO COMES IN</div>
+          <div class="word" id="s06-word">
+            <span id="s06-L1">M</span><span id="s06-L2">E</span><span id="s06-L3">E</span><span id="s06-L4">K</span><span id="s06-L5">O</span><span class="dot" id="s06-L6">.</span>
+          </div>
+          <div class="band" id="s06-band"><div class="t">STUDY COMPANION FROM REAL NOTES</div></div>
+          <div class="acc" id="s06-acc"></div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#s06-eb", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.1);
+        tl.fromTo("#s06-L1", { opacity: 0, scale: 1.5, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.32, ease: "power4.out", transformOrigin: "50% 100%" }, 0.3);
+        tl.fromTo("#s06-L2", { opacity: 0, scale: 1.5, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.32, ease: "power4.out", transformOrigin: "50% 100%" }, 0.38);
+        tl.fromTo("#s06-L3", { opacity: 0, scale: 1.5, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.32, ease: "power4.out", transformOrigin: "50% 100%" }, 0.46);
+        tl.fromTo("#s06-L4", { opacity: 0, scale: 1.5, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.32, ease: "power4.out", transformOrigin: "50% 100%" }, 0.54);
+        tl.fromTo("#s06-L5", { opacity: 0, scale: 1.5, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.32, ease: "power4.out", transformOrigin: "50% 100%" }, 0.62);
+        tl.fromTo("#s06-L6", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2.4)", transformOrigin: "50% 100%" }, 0.82);
+        tl.fromTo("#s06-band", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out", transformOrigin: "0% 50%" }, 1.25);
+        tl.fromTo("#s06-acc", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power3.out", transformOrigin: "0% 50%" }, 1.7);
+        tl.fromTo("#s06-wrap", { scale: 1 }, { scale: 1.035, duration: 11.0, ease: "none", transformOrigin: "48% 46%" }, 1.5);
+        window.__timelines["06-reveal"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

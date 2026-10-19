@@ -1,0 +1,51 @@
+# X (Twitter) captions — Meeko promo videos
+# Target: brag.mp4 (23s, native video upload) + meeko-promo mp4 (2:50 follow-up)
+
+## Tweet 1 — main launch (238 chars) + brag.mp4 attached
+
+Your AI study bot never opened your notes.
+
+Meeko answers ONLY from your PDFs — with page-tagged proof for every line.
+No evidence? It says NOT_FOUND instead of guessing.
+
+Built with Gemma 4 · Hacktoberfest HackDay 2026 · free & open source
+
+## Tweet 1 alt — demo-first (218 chars)
+
+Uploaded my physics PDFs, asked Meeko a question. Every line came back with the exact page it was pulled from.
+
+Ask something NOT in the notes? It says NOT_FOUND — no made-up answers.
+
+That's the whole point. 23s demo ⬇
+
+## Tweet 1 alt — launch/checklist (~270 chars)
+
+Shipped for Hacktoberfest HackDay 2026 (PS-01): Meeko — an AI study companion grounded in YOUR notes.
+
+✓ Answers only from your PDFs
+✓ Verified, page-tagged citations
+✓ Honest NOT_FOUND when evidence is missing
+✓ Gemma 4
+
+Open source — repo in reply. 23s demo ⬇
+
+## Reply tweet (repo link)
+
+The whole thing is free & open source:
+[github link]
+
+Gemma 4 · retrieval · citation verification. Hacktoberfest HackDay 2026 · PS-01 🧡
+
+## Tweet 3 — follow-up, 2:50 promo (a few hours later, native upload)
+
+3-minute version: how Meeko actually works —
+upload PDFs → ask anything → every answer page-tagged & verified, or an honest NOT_FOUND.
+
+Full walkthrough ⬇
+
+## Posting strategy
+
+- Video native upload karo (mp4 attach), link kabhi tweet body me mat — algo reach dabata hai. GitHub link pehle reply me.
+- Launch tweet pin karo; 2:50 promo ko usi tweet ka quote-post bana sakte ho.
+- Timing: 9-11 PM IST (US subah ke saath overlap) best rahta hai.
+- Hashtag sirf zaroori: #Hacktoberfest (post me 1-2 se zyada mat).

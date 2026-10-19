@@ -1,0 +1,30 @@
+Meeko — STUDY COMPANION (PS-01)
+Hacktoberfest HackDay 2026 · Track: Gemma 4
+
+20s launch video: brag.mp4 (poster: brag.jpg)
+
+What it shows (all real, from the running app):
+1. Hook — "YOUR CHATBOT NEVER OPENED YOUR NOTES."
+2. meeko. reveal — Learn from your notes. Verify every answer.
+3. Entry flow — hero, create-notebook popup, orange strip transition, auto briefing + 3 suggested questions.
+4. The proof — a SUPPORTED answer with inline source chips; click c2 and the PDF viewer jumps to page 3 / 44.
+5. Honesty — a France question answered NOT_FOUND: "I couldn't find solid evidence in your notes for this."
+6. Outro — meeko. / LEARN FROM YOUR NOTES. / VERIFY EVERY ANSWER.
+
+Post copy (no emojis, links in first comment):
+
+Built Meeko, a NotebookLM-style study workspace for Hacktoberfest HackDay 2026 (PS-01, Gemma 4).
+
+Drop in notes -> get answers that carry an evidence verdict (SUPPORTED / NOT_FOUND), inline source
+chips that jump the built-in PDF viewer to the exact page, an auto briefing with suggested questions,
+plus quiz, flashcards and an audio overview.
+
+If the answer is not in your notes, Meeko says NOT_FOUND instead of guessing.
+
+Stack: Gemma 4 (google/gemma-4-e2b) + nomic-embed via OpenAI-compatible router, FastAPI, React,
+in-notebook retrieval with chunk/page tracking. Page tags come from the parser, not the model, so
+citations stay honest.
+
+Video: 20s, 1920x1080, 30fps, custom score synced to the UI moments.
+
+Suggested first comment: [repo link] [demo link if deployed]

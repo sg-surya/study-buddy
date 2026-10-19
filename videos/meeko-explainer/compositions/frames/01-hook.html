@@ -1,0 +1,231 @@
+﻿<template>
+<style>
+#root {
+  container-type: size;
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+#root .bg {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+  background-color: #FFFCF8;
+}
+#root .bg-hatch {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+  background-image: repeating-linear-gradient(45deg, transparent 0 20px, rgba(32,28,25,.055) 20px 40px);
+}
+#root .bg-numeral {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  font-family: sans-serif;
+  font-weight: 900;
+  font-size: 300px;
+  line-height: 1;
+  letter-spacing: 4px;
+  color: rgba(32,28,25,.07);
+}
+#root .stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 896px;
+  overflow: hidden;
+}
+#root .eyebrow {
+  position: absolute;
+  top: 72px;
+  left: 0;
+  width: 1920px;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 8px;
+  color: #D9480F;
+}
+#root .hero {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  width: 1920px;
+  text-align: center;
+}
+#root .hero-word {
+  display: inline-block;
+  font-family: sans-serif;
+  font-weight: 900;
+  font-size: 215px;
+  line-height: 0.95;
+  letter-spacing: 10px;
+  color: #201C19;
+  margin: 0 26px;
+}
+#root .hero-wordAccent {
+  color: #FF5A1F;
+}
+#root .rule {
+  display: block;
+  width: 340px;
+  height: 10px;
+  background-color: #FF5A1F;
+  margin: 26px auto 0 auto;
+}
+#root .sub {
+  position: absolute;
+  top: 560px;
+  left: 0;
+  width: 1920px;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 54px;
+  letter-spacing: 6px;
+  color: #201C19;
+}
+#root .sub-word {
+  display: inline-block;
+  margin: 0 12px;
+  opacity: 0;
+}
+#root .cards {
+  position: absolute;
+  top: 330px;
+  left: 0;
+  width: 1920px;
+  height: 320px;
+}
+#root .card {
+  position: absolute;
+  top: 0;
+  width: 330px;
+  height: 220px;
+  background-color: #FFFFFF;
+  border-top: 10px solid #FF5A1F;
+  opacity: 0;
+}
+#root .card .card-kicker {
+  display: block;
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: #FF5A1F;
+  padding: 18px 24px 0 24px;
+}
+#root .card .card-title {
+  display: block;
+  font-family: sans-serif;
+  font-weight: 900;
+  font-size: 44px;
+  letter-spacing: 2px;
+  color: #201C19;
+  padding: 6px 24px 0 24px;
+}
+#root .card .card-lines {
+  display: block;
+  padding: 12px 24px 0 24px;
+}
+#root .card .card-lines i {
+  display: block;
+  height: 10px;
+  background-color: rgba(32,28,25,.14);
+  margin-bottom: 10px;
+}
+#root .cardA { left: 240px; }
+#root .cardB { left: 795px; }
+#root .cardC { left: 1350px; }
+#root .qline {
+  position: absolute;
+  top: 668px;
+  left: 0;
+  width: 1920px;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: 900;
+  font-size: 64px;
+  letter-spacing: 4px;
+  color: #FF5A1F;
+  opacity: 0;
+}
+#root .qbar {
+  display: block;
+  width: 220px;
+  height: 8px;
+  background-color: #201C19;
+  margin: 16px auto 0 auto;
+}
+</style>
+<div data-hf-id="hf-luia" id="root" data-composition-id="f01-hook" data-width="1920" data-height="1080" data-duration="6.431">
+  <div data-hf-id="hf-rrsn" class="clip bg" data-start="0" data-duration="6.431" data-track-index="0"></div>
+  <div data-hf-id="hf-g5xl" class="clip bg-hatch" data-start="0" data-duration="6.431" data-track-index="3"></div>
+  <div data-hf-id="hf-iz8r" class="clip bg-numeral" aria-hidden="true" data-start="0" data-duration="6.431" data-track-index="1">01</div>
+  <div data-hf-id="hf-f0za" class="clip stage" data-start="0" data-duration="6.431" data-track-index="2">
+    <div data-hf-id="hf-be0p" class="eyebrow" id="f01-hook-eyebrow">EXAM NIGHT</div>
+    <div data-hf-id="hf-s0xd" id="f01-hook-heroDim">
+      <div data-hf-id="hf-hie8" class="hero">
+        <span data-hf-id="hf-jy6m" class="hero-word" id="f01-hook-w1">KAL</span><span data-hf-id="hf-gaae" class="hero-word" id="f01-hook-w2">EXAM</span><span data-hf-id="hf-93nx" class="hero-word hero-wordAccent" id="f01-hook-w3">HAI</span>
+        <span data-hf-id="hf-yxsr" class="rule" id="f01-hook-rule"></span>
+      </div>
+    </div>
+    <div data-hf-id="hf-4yqi" class="cards" id="f01-hook-cardsDim">
+      <div data-hf-id="hf-4bo6" class="card cardA" id="f01-hook-cardA">
+        <span data-hf-id="hf-p0bo" class="card-kicker">CHAPTER 4</span>
+        <span data-hf-id="hf-brex" class="card-title">FORMULAS</span>
+        <span data-hf-id="hf-4r5x" class="card-lines"><i data-hf-id="hf-1rpm" style="width:82%"></i><i data-hf-id="hf-amuq" style="width:64%"></i><i data-hf-id="hf-eklv" style="width:74%"></i></span>
+      </div>
+      <div data-hf-id="hf-3nqu" class="card cardB" id="f01-hook-cardB">
+        <span data-hf-id="hf-ntel" class="card-kicker">CHAPTER 7</span>
+        <span data-hf-id="hf-omu8" class="card-title">DERIVATIONS</span>
+        <span data-hf-id="hf-jk61" class="card-lines"><i data-hf-id="hf-j5vr" style="width:70%"></i><i data-hf-id="hf-6f8m" style="width:86%"></i><i data-hf-id="hf-fbml" style="width:58%"></i></span>
+      </div>
+      <div data-hf-id="hf-9hvm" class="card cardC" id="f01-hook-cardC">
+        <span data-hf-id="hf-tdoz" class="card-kicker">CHAPTER 9</span>
+        <span data-hf-id="hf-0ur8" class="card-title">DIAGRAMS</span>
+        <span data-hf-id="hf-kr34" class="card-lines"><i data-hf-id="hf-kq1r" style="width:78%"></i><i data-hf-id="hf-n6dq" style="width:60%"></i><i data-hf-id="hf-seaw" style="width:80%"></i></span>
+      </div>
+    </div>
+    <div data-hf-id="hf-4hwa" class="sub" id="f01-hook-subDim">
+      <span data-hf-id="hf-b5cb" class="sub-word" id="f01-hook-s1">NOTES</span><span data-hf-id="hf-uy4c" class="sub-word" id="f01-hook-s2">READY</span><span data-hf-id="hf-95d0" class="sub-word" id="f01-hook-s3">HAIN</span>
+    </div>
+    <div data-hf-id="hf-7jcx" class="qline" id="f01-hook-qline">JAWAB — NOTES MEIN HAI KYA?<span data-hf-id="hf-06ez" class="qbar" id="f01-hook-qbar"></span></div>
+  </div>
+</div>
+<script>
+(function () {
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  window.__timelines["f01-hook"] = tl;
+  // Scene 1 (0.0-2.0s): hero slams in word by word
+  tl.fromTo("#f01-hook-eyebrow", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.15);
+  tl.fromTo("#f01-hook-w1", { opacity: 0, scale: 2.4 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 0.0);
+  tl.fromTo("#f01-hook-w2", { opacity: 0, scale: 2.4 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 0.55);
+  tl.fromTo("#f01-hook-w3", { opacity: 0, scale: 2.4 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 1.1);
+  tl.fromTo("#f01-hook-rule", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.4, ease: "power3.out" }, 1.5);
+  // Scene 2 (2.0-4.2s): sub line builds, note cards fan in behind at low opacity
+  tl.fromTo("#f01-hook-s1", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 2.0);
+  tl.fromTo("#f01-hook-s2", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 2.25);
+  tl.fromTo("#f01-hook-s3", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 2.5);
+  tl.fromTo("#f01-hook-cardA", { opacity: 0, y: 60, rotation: -12 }, { opacity: 0.5, y: 0, rotation: -8, duration: 0.6, ease: "power3.out" }, 2.2);
+  tl.fromTo("#f01-hook-cardB", { opacity: 0, y: 60, rotation: 10 }, { opacity: 0.5, y: 0, rotation: 6, duration: 0.6, ease: "power3.out" }, 2.45);
+  tl.fromTo("#f01-hook-cardC", { opacity: 0, y: 60, rotation: -10 }, { opacity: 0.5, y: 0, rotation: -5, duration: 0.6, ease: "power3.out" }, 2.7);
+  // Scene 3 (4.2-5.931s): dim everything, question pops orange and holds
+  tl.to("#f01-hook-heroDim", { opacity: 0.22, duration: 0.35, ease: "power2.out" }, 4.2);
+  tl.to("#f01-hook-cardsDim", { opacity: 0.25, duration: 0.35, ease: "power2.out" }, 4.2);
+  tl.to("#f01-hook-subDim", { opacity: 0.25, duration: 0.35, ease: "power2.out" }, 4.2);
+  tl.fromTo("#f01-hook-qline", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, 4.25);
+  tl.fromTo("#f01-hook-qbar", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.35, ease: "power3.out" }, 4.6);
+  tl.seek(0);
+})();
+</script>
+</template>

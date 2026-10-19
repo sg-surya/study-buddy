@@ -9,8 +9,8 @@ from pydantic import BaseModel
 from llm import call_gemma
 from rag import (chunk_pdf_pages, chunk_text, embed_lmstudio, extract_pdf_text,
                  lmstudio_models, page_tag)
-from tutor import (build_flashcards, explain_notes, generate_quiz, grade_mcq,
-                   grade_short, grounded_ask)
+from tutor import (build_audio_script, build_flashcards, explain_notes, generate_quiz,
+                   grade_mcq, grade_short, grounded_ask, suggest_questions)
 
 app = FastAPI(title="Study Companion PS-01")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
@@ -22,8 +22,9 @@ NOTEBOOKS: dict = {}
 
 def nb(nid: str | None) -> dict:
     nid = nid or "default"
-    return NOTEBOOKS.setdefault(nid, {"raw": "", "chunks": [], "pages": [], "quiz": [],
-                                      "source": "", "files": [], "fileinfo": [], "size": 0, "created": time.time()})
+    return NOTEBOOKS.setdefault(nid, {"raw": "", "chunks": [], "pages": [], "chunk_meta": [],
+                                      "quiz": [], "source": "", "files": [], "fileinfo": [],
+                                      "filebytes": {}, "size": 0, "created": time.time()})
 
 
 def _ingest_text(s, text, label, fname, size):
@@ -37,8 +38,9 @@ def _ingest_text(s, text, label, fname, size):
     s["raw"] = text if first else s["raw"] + "\n\n" + text
     s["chunks"] += nc
     s["pages"] += [None] * len(nc)
+    s["chunk_meta"] += [{"f": len(s["files"]), "p": None}] * len(nc)
     s["files"].append(fname)
-    s["fileinfo"].append({"name": fname, "chunks": len(nc), "size": size})
+    s["fileinfo"].append({"name": fname, "chunks": len(nc), "size": size, "idx": len(s["fileinfo"]), "pages": 0})
     s["source"] = label if first else s["source"] + f" + {fname}"
     s["quiz"] = []
     s["size"] += size
@@ -55,8 +57,9 @@ def _ingest_pdf(s, page_texts, label, fname, size):
     s["raw"] = full if first else s["raw"] + "\n\n" + full
     s["chunks"] += nc
     s["pages"] += [p + off for p in np]
+    s["chunk_meta"] += [{"f": len(s["files"]), "p": p} for p in np]
     s["files"].append(fname)
-    s["fileinfo"].append({"name": fname, "chunks": len(nc), "size": size})
+    s["fileinfo"].append({"name": fname, "chunks": len(nc), "size": size, "idx": len(s["fileinfo"]), "pages": len(page_texts)})
     s["source"] = label if first else s["source"] + f" + {fname}"
     s["quiz"] = []
     s["size"] += size
@@ -108,6 +111,7 @@ class TextIn(BaseModel):
 class AskIn(BaseModel):
     question: str
     notebook_id: str = "default"
+    files: list | None = None
 
 
 class ExplainIn(BaseModel):
@@ -118,6 +122,7 @@ class ExplainIn(BaseModel):
 class QuizGenIn(BaseModel):
     difficulty: str = "Easy"
     notebook_id: str = "default"
+    files: list | None = None
 
 
 class QuizEvalIn(BaseModel):
@@ -127,6 +132,22 @@ class QuizEvalIn(BaseModel):
 
 class NbIn(BaseModel):
     notebook_id: str = "default"
+    files: list | None = None
+
+
+def scoped(s, file_ids):
+    """Restrict retrieval/generation to checked source files (NotebookLM-style toggles).
+    Returns (chunks, pages, global_idx)."""
+    if not file_ids:
+        n = len(s["chunks"])
+        return s["chunks"], display_pages(s), list(range(n))
+    ids = set(file_ids)
+    keep = [i for i, m in enumerate(s.get("chunk_meta", [])) if m and m.get("f") in ids]
+    if not keep:
+        n = len(s["chunks"])
+        return s["chunks"], display_pages(s), list(range(n))
+    disp = display_pages(s)
+    return [s["chunks"][i] for i in keep], [disp[i] for i in keep], keep
 
 
 class UrlIn(BaseModel):
@@ -139,13 +160,34 @@ def display_file(s):
     return files[0] if len(files) == 1 else f"{len(files)} files" if files else ""
 
 
+def chunk_display(s, i):
+    """Per-file page label, e.g. p.42 (None for pasted text)."""
+    try:
+        m = s["chunk_meta"][i]
+        return f"p.{m['p']}" if m and m.get("p") else None
+    except IndexError:
+        return page_tag(s["pages"], i)
+
+
+def chunk_file(s, i):
+    try:
+        m = s["chunk_meta"][i]
+        return m["f"] if m else None
+    except IndexError:
+        return None
+
+
+def display_pages(s):
+    return [chunk_display(s, i) for i in range(len(s["chunks"]))]
+
+
 def summary(nid: str):
     s = nb(nid)
     return {"notebook_id": nid, "chunks": len(s["chunks"]),
             "pages": sorted(set(p for p in s["pages"] if p)),
             "source": s["source"], "file": display_file(s), "size": s["size"],
             "files": s.get("fileinfo", []),
-            "index": [{"id": f"c{i}", "page": page_tag(s["pages"], i),
+            "index": [{"id": f"c{i}", "page": chunk_display(s, i), "file": chunk_file(s, i),
                        "preview": c[:140]} for i, c in enumerate(s["chunks"])]}
 
 
@@ -165,6 +207,19 @@ def get_nb(nid: str):
     return summary(nid)
 
 
+@app.get("/api/files/{nid}/{idx}")
+def serve_file(nid: str, idx: int):
+    from fastapi.responses import Response
+    s = nb(nid)
+    try:
+        name, data = s["filebytes"][int(idx)]
+    except (IndexError, KeyError, ValueError):
+        return {"error": "File not found."}
+    ctype = "application/pdf" if name.lower().endswith(".pdf") else "text/plain"
+    return Response(content=data, media_type=ctype,
+                    headers={"Content-Disposition": f'inline; filename="{name}"'})
+
+
 @app.post("/api/notes/sample")
 def load_sample(body: TextIn):
     s = nb(body.notebook_id)
@@ -175,7 +230,8 @@ def load_sample(body: TextIn):
     s["quiz"] = []
     s["source"] = "sample: photosynthesis"
     s["files"] = ["photosynthesis.md"]
-    s["fileinfo"] = [{"name": "photosynthesis.md", "chunks": len(s["chunks"]), "size": len(s["raw"])}]
+    s["fileinfo"] = [{"name": "photosynthesis.md", "chunks": len(s["chunks"]), "size": len(s["raw"]), "idx": 0, "pages": 0}]
+    s["chunk_meta"] = [{"f": 0, "p": None}] * len(s["chunks"])
     s["size"] = len(s["raw"])
     return summary(body.notebook_id)
 
@@ -210,6 +266,7 @@ def load_url(body: UrlIn):
 async def upload(file: UploadFile = File(...), notebook_id: str = Form("default")):
     s = nb(notebook_id)
     data = await file.read()
+    s["filebytes"][len(s["files"])] = (file.filename, data)
     s["size"] = len(data)
     s["file"] = file.filename
     if file.filename.lower().endswith(".pdf"):
@@ -228,8 +285,9 @@ async def upload(file: UploadFile = File(...), notebook_id: str = Form("default"
 
 @app.post("/api/notes/clear")
 def clear(body: TextIn):
-    NOTEBOOKS[body.notebook_id] = {"raw": "", "chunks": [], "pages": [], "quiz": [],
-                                   "source": "", "files": [], "fileinfo": [], "size": 0, "created": time.time()}
+    NOTEBOOKS[body.notebook_id] = {"raw": "", "chunks": [], "pages": [], "chunk_meta": [], "quiz": [],
+                                   "source": "", "files": [], "fileinfo": [], "filebytes": {},
+                                   "size": 0, "created": time.time()}
     return {"ok": True}
 
 
@@ -238,7 +296,7 @@ def chunk_text_full(nid: str, cid: str):
     s = nb(nid)
     try:
         i = int(cid[1:])
-        return {"id": cid, "page": page_tag(s["pages"], i), "text": s["chunks"][i]}
+        return {"id": cid, "page": chunk_display(s, i), "file": chunk_file(s, i), "text": s["chunks"][i]}
     except (IndexError, ValueError):
         return {"error": "Chunk not found."}
 
@@ -248,7 +306,26 @@ def flashcards(body: NbIn):
     s = nb(body.notebook_id)
     if not s["chunks"]:
         return {"error": "Load notes first."}
-    return {"cards": build_flashcards(s["chunks"], s["pages"])}
+    cards = build_flashcards(s["chunks"], display_pages(s))
+    for c in cards:
+        ci = c.get("chunk")
+        c["file"] = chunk_file(s, ci) if isinstance(ci, int) else None
+    return {"cards": cards}
+
+
+def tag_evidence(s, items, key="chunk"):
+    """Attach per-file page + file idx to evidence/quiz items carrying a chunk index."""
+    for it in items:
+        ci = it.get(key)
+        if isinstance(ci, str) and ci.startswith("c"):
+            try:
+                ci = int(ci[1:])
+            except ValueError:
+                continue
+        if isinstance(ci, int) and 0 <= ci < len(s["chunks"]):
+            it["page"] = chunk_display(s, ci)
+            it["file"] = chunk_file(s, ci)
+    return items
 
 
 @app.post("/api/tutor/ask")
@@ -256,7 +333,16 @@ def ask(body: AskIn):
     s = nb(body.notebook_id)
     if not s["chunks"]:
         return {"error": "Load notes first."}
-    return grounded_ask(body.question, s["chunks"], s["pages"], body.notebook_id)
+    chunks, pages, gidx = scoped(s, body.files)
+    r = grounded_ask(body.question, chunks, pages, body.notebook_id)
+    if isinstance(r, dict) and "evidence" in r:
+        for e in r["evidence"]:  # local -> global chunk ids
+            try:
+                e["chunk_id"] = f"c{gidx[int(e['chunk_id'][1:])]}"
+            except (ValueError, IndexError, KeyError):
+                pass
+        tag_evidence(s, r["evidence"], key="chunk_id")
+    return r
 
 
 @app.post("/api/tutor/explain")
@@ -268,14 +354,36 @@ def explain(body: ExplainIn):
     return {"text": text, "model": model}
 
 
+@app.post("/api/suggest")
+def suggest(body: NbIn):
+    s = nb(body.notebook_id)
+    if not s["chunks"]:
+        return {"error": "Load notes first."}
+    chunks, pages, _ = scoped(s, body.files)
+    return {"questions": suggest_questions(chunks, pages)}
+
+
 @app.post("/api/quiz/generate")
 def quiz_gen(body: QuizGenIn):
     s = nb(body.notebook_id)
     if not s["chunks"]:
         return {"error": "Load notes first."}
-    items, src = generate_quiz(s["chunks"], body.difficulty, s["pages"], body.notebook_id)
-    s["quiz"] = items
+    chunks, pages, gidx = scoped(s, body.files)
+    items, src = generate_quiz(chunks, body.difficulty, pages, body.notebook_id)
+    for it in items:  # local -> global chunk indices
+        if isinstance(it.get("chunk"), int) and 0 <= it["chunk"] < len(gidx):
+            it["chunk"] = gidx[it["chunk"]]
+    s["quiz"] = tag_evidence(s, items)
     return {"questions": items, "source": src}
+
+
+@app.post("/api/audio")
+def audio(body: NbIn):
+    s = nb(body.notebook_id)
+    if not s["chunks"]:
+        return {"error": "Load notes first."}
+    chunks, pages, _ = scoped(s, body.files)
+    return {"script": build_audio_script(chunks, pages)}
 
 
 @app.post("/api/quiz/evaluate")

@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: relative;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          background: #ff5a1f;
+        }
+        #root .s2bg {
+          position: absolute;
+          inset: 0;
+          background-color: #ff5a1f;
+        }
+        #root .card-o {
+          position: absolute;
+          width: 380px;
+          height: 480px;
+        }
+        #root .card-o.a {
+          left: 130px;
+          top: 180px;
+          transform: rotate(-8deg);
+        }
+        #root .card-o.b {
+          right: 130px;
+          bottom: 150px;
+          transform: rotate(7deg);
+        }
+        #root .card-i {
+          width: 100%;
+          height: 100%;
+          background: #fffcf8;
+          border: 1px solid rgba(32, 28, 25, 0.18);
+          box-shadow: 0 30px 60px rgba(32, 28, 25, 0.28);
+          padding: 34px 30px;
+          display: flex;
+          flex-direction: column;
+          gap: 26px;
+        }
+        #root .card-i .hd {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+        #root .card-i .sq {
+          width: 26px;
+          height: 26px;
+          background: #ff5a1f;
+        }
+        #root .card-i .ln {
+          height: 10px;
+          background: #e7e5e4;
+          border-radius: 5px;
+        }
+        #root .card-i .ln.hl {
+          background: #ffe3d3;
+        }
+        #root .s2col {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 44px;
+        }
+        #root .wordmark {
+          font-weight: 700;
+          font-size: 232px;
+          letter-spacing: -0.045em;
+          color: #ffffff;
+          line-height: 1;
+        }
+        #root .ltr {
+          display: inline-block;
+        }
+        #root .tag {
+          text-align: center;
+          font-weight: 500;
+          font-size: 42px;
+          color: rgba(255, 255, 255, 0.96);
+          line-height: 1.4;
+        }
+        #root .tw {
+          display: inline-block;
+        }
+        #root .rule {
+          width: 340px;
+          height: 6px;
+          background: #201c19;
+        }
+      </style>
+      <div id="root" data-composition-id="02-reveal" data-width="1920" data-height="1080">
+        <div class="s2bg hatch-w"></div>
+        <div class="card-o a">
+          <div class="card-i card-a-in">
+            <div class="hd"><div class="sq"></div><div class="ln" style="flex: 1"></div></div>
+            <div class="ln" style="width: 88%"></div>
+            <div class="ln hl" style="width: 72%"></div>
+            <div class="ln" style="width: 94%"></div>
+            <div class="ln" style="width: 60%"></div>
+            <div class="ln hl" style="width: 80%"></div>
+          </div>
+        </div>
+        <div class="card-o b">
+          <div class="card-i card-b-in">
+            <div class="hd"><div class="sq"></div><div class="ln" style="flex: 1"></div></div>
+            <div class="ln" style="width: 92%"></div>
+            <div class="ln" style="width: 66%"></div>
+            <div class="ln hl" style="width: 84%"></div>
+            <div class="ln" style="width: 74%"></div>
+          </div>
+        </div>
+        <div class="s2col">
+          <div class="wordmark">
+            <span class="ltr">m</span><span class="ltr">e</span><span class="ltr">e</span><span class="ltr">k</span><span class="ltr">o</span><span class="ltr">.</span>
+          </div>
+          <div class="tag">
+            <div><span class="tw">Learn</span> <span class="tw">from</span> <span class="tw">your</span> <span class="tw">notes.</span></div>
+            <div><span class="tw">Verify</span> <span class="tw">every</span> <span class="tw">answer.</span></div>
+          </div>
+          <div class="rule"></div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#root .card-a-in", { x: -140, y: 70, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 0.15);
+        tl.fromTo("#root .card-b-in", { x: 140, y: 70, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 0.25);
+        tl.fromTo(
+          "#root .ltr",
+          { y: 72, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.5)", stagger: 0.085 },
+          0.45
+        );
+        tl.fromTo(
+          "#root .tw",
+          { y: 26, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.4, ease: "power2.out", stagger: 0.07 },
+          1.05
+        );
+        tl.fromTo("#root .rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.inOut", transformOrigin: "center" }, 1.7);
+        window.__timelines["02-reveal"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Anton"; font-style: normal; font-weight: 400; src: url("assets/fonts/anton-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 400; src: url("assets/fonts/sg-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 500; src: url("assets/fonts/sg-500.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 700; src: url("assets/fonts/sg-700.woff2") format("woff2"); }
+        #r14 { position: absolute; inset: 0; background: #201c19; overflow: hidden; }
+        #r14 .left { position: absolute; left: 0; top: 0; width: 768px; height: 1080px; background: #ff5a1f; overflow: hidden; }
+        #r14 .hx { position: absolute; inset: 0; }
+        #r14 .mark { position: absolute; left: 50%; top: 50%; width: 480px; margin-left: -240px; text-align: center; font-family: "Anton"; font-size: 420px; line-height: 1; color: rgba(32, 28, 25, 0.32); }
+        #r14 .eb { position: absolute; right: 64px; top: 56px; color: #ff5a1f; font-weight: 700; font-size: 15px; letter-spacing: 5px; }
+        #r14 .lead { position: absolute; left: 858px; top: 250px; width: 950px; font-size: 27px; font-weight: 500; color: rgba(255, 252, 248, 0.65); }
+        #r14 .q1, #r14 .q2, #r14 .q3 { position: absolute; left: 858px; width: 980px; font-size: 52px; line-height: 1.3; font-weight: 400; color: #fffcf8; }
+        #r14 .q1 { top: 360px; }
+        #r14 .q2 { top: 448px; }
+        #r14 .q3 { top: 536px; color: #ff5a1f; }
+        #r14 .acc { position: absolute; left: 858px; top: 660px; width: 110px; height: 7px; background: #ff5a1f; }
+        #r14 .foot { position: absolute; left: 858px; top: 720px; font-size: 21px; font-weight: 700; letter-spacing: 4px; color: rgba(255, 252, 248, 0.5); }
+      </style>
+      <div id="r14" data-composition-id="14-goal" data-width="1920" data-height="1080">
+        <div class="left"><div class="hx hatch"></div><div class="mark" id="s14-mark">?</div></div>
+        <div class="eb" id="s14-eb">THE GOAL</div>
+        <div class="lead" id="s14-lead">It isn't simply about faster answers.</div>
+        <div class="q1" id="s14-q1">learn from reliable evidence.</div>
+        <div class="q2" id="s14-q2">understand what they're studying.</div>
+        <div class="q3" id="s14-q3">know when it cannot be verified.</div>
+        <div class="acc" id="s14-acc"></div>
+        <div class="foot" id="s14-foot">EVIDENCE-FIRST, EVERY TIME</div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#s14-mark", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out", transformOrigin: "50% 50%" }, 0.3);
+        tl.fromTo("#s14-eb", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.3);
+        tl.fromTo("#s14-lead", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 0.7);
+        tl.fromTo("#s14-q1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.4);
+        tl.fromTo("#s14-q2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 2.1);
+        tl.fromTo("#s14-q3", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 2.8);
+        tl.fromTo("#s14-acc", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.out", transformOrigin: "0% 50%" }, 4.2);
+        tl.fromTo("#s14-foot", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 4.7);
+        window.__timelines["14-goal"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

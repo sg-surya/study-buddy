@@ -1,7 +1,29 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand: #FF5A1F;
+  --color-branddark: #D9480F;
+  --color-brandtint: #FFE3D3;
+  --color-brandsoft: #FFF1E8;
+  --color-brandline: #F3C39E;
+  --color-cream: #FFFCF8;
+  --color-ink: #201C19;
+}
+
 html, body, #root { height: 100%; }
-body { background: #faf7f1; color: #1c1917; font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif; }
+body { background: #FFFCF8; color: #201C19; font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif; }
+
+/* pragmatic dark mode: remap common light surfaces */
+.dark body { background: #161110; color: #f2e9e1; }
+.dark .bg-white { background-color: #221a16 !important; }
+.dark .bg-stone-50, .dark .bg-stone-100 { background-color: #2b221c !important; }
+.dark .bg-brandsoft, .dark .bg-brandtint, .dark .bg-brandsoft, .dark .bg-brandtint { background-color: #3a2417 !important; }
+.dark .border-stone-100, .dark .border-stone-200, .dark .border-stone-300 { border-color: #453830 !important; }
+.dark .text-stone-900, .dark .text-stone-800, .dark .text-stone-700 { color: #f2e9e1 !important; }
+.dark .text-stone-600, .dark .text-stone-500 { color: #c9bbad !important; }
+.dark .text-stone-400 { color: #8d7d70 !important; }
+.dark input, .dark textarea, .dark select { color-scheme: dark; }
+.dark .bg-stone-950 { background-color: #f2e9e1 !important; color: #201C19 !important; }
 
 .font-display { font-family: "Anton", "Arial Narrow", Impact, sans-serif; }
 .font-mono2 { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; }
@@ -37,7 +59,7 @@ body { background: #faf7f1; color: #1c1917; font-family: "Space Grotesk", ui-san
 
 .evidence-flash { animation: evflash 2.2s ease; border-radius: 0.75rem; }
 @keyframes evflash {
-  0%, 60% { background: rgba(234, 88, 12, 0.14); border-color: #ea580c; }
+  0%, 60% { background: rgba(255, 90, 31, 0.14); border-color: #ea580c; }
   100% { background: transparent; }
 }
 

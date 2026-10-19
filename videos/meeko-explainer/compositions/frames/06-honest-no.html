@@ -1,0 +1,246 @@
+﻿<template>
+<style>
+#root {
+  container-type: size;
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+.hn-bg {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+  background: #FFFCF8;
+  overflow: hidden;
+}
+.hn-bg-band {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 250px;
+  background: #FF5A1F;
+}
+.hn-bg-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(45deg, transparent 0 20px, rgba(0,0,0,.06) 20px 40px);
+}
+.hn-bg-numeral {
+  position: absolute;
+  top: -30px;
+  right: 60px;
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+  font-size: 260px;
+  line-height: 1;
+  letter-spacing: 4px;
+  color: rgba(0,0,0,0.12);
+}
+.hn-bg-edge {
+  position: absolute;
+  top: 250px;
+  left: 0;
+  width: 1920px;
+  height: 6px;
+  background: #201C19;
+}
+.hn-bg-brand {
+  position: absolute;
+  top: 40px;
+  left: 96px;
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+  font-size: 44px;
+  letter-spacing: 4px;
+  color: #201C19;
+}
+.hn-bg-meta {
+  position: absolute;
+  top: 52px;
+  right: 96px;
+  font-family: Inter, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #201C19;
+}
+.hn-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 896px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hn-qchip {
+  margin-top: 300px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #FFFFFF;
+  border-top: 5px solid #FF5A1F;
+  padding: 20px 36px;
+}
+.hn-qmark {
+  width: 72px;
+  height: 72px;
+  background: #FF5A1F;
+  color: #FFFFFF;
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+  font-size: 52px;
+  line-height: 72px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+.hn-qtext {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hn-qlabel {
+  font-family: Inter, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #FF5A1F;
+}
+.hn-qdots {
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+  font-size: 44px;
+  letter-spacing: 12px;
+  color: #201C19;
+  line-height: 1;
+}
+.hn-dials {
+  margin-top: 36px;
+  display: flex;
+  gap: 48px;
+  align-items: center;
+}
+.hn-dial {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 6px solid #201C19;
+  background: #FFFFFF;
+  position: relative;
+}
+.hn-dial::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 8px;
+  background: #FF5A1F;
+  transform-origin: 0 50%;
+}
+.hn-dial-a::after { transform: rotate(20deg); }
+.hn-dial-b::after { transform: rotate(140deg); }
+.hn-dial-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  background: #201C19;
+}
+.hn-card {
+  position: absolute;
+  top: 330px;
+  left: 50%;
+  width: 860px;
+  margin-left: -430px;
+  background: #FFFFFF;
+  border-top: 10px solid #FF5A1F;
+  padding: 64px 60px 56px 60px;
+  text-align: center;
+}
+.hn-eyebrow {
+  font-family: Inter, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: #FF5A1F;
+  margin-bottom: 18px;
+}
+.hn-title {
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+  font-size: 170px;
+  line-height: 0.95;
+  letter-spacing: 6px;
+  color: #201C19;
+}
+.hn-rule {
+  width: 120px;
+  height: 8px;
+  background: #FF5A1F;
+  margin: 26px auto 22px auto;
+}
+.hn-sub {
+  font-family: Inter, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #6B6B6B;
+}
+@font-face{font-family:'Arial Narrow';src:local('Arial Narrow');font-weight:400 700;font-style:normal;}</style>
+<div data-hf-id="hf-amgd" id="root" data-composition-id="f06-honest-no" data-start="0" data-duration="6.815" data-width="1920" data-height="1080">
+  <div data-hf-id="hf-xice" class="clip hn-bg" data-start="0" data-duration="6.815" data-track-index="0">
+    <div data-hf-id="hf-jwge" class="hn-bg-band"></div>
+    <div data-hf-id="hf-9bb1" class="hn-bg-numeral">06</div>
+    <div data-hf-id="hf-p7cw" class="hn-bg-edge"></div>
+    <div data-hf-id="hf-e36t" class="hn-bg-brand">MEEKO</div>
+    <div data-hf-id="hf-id36" class="hn-bg-meta">HONEST BY DESIGN</div>
+  </div>
+  <div data-hf-id="hf-ob1e" class="clip hn-stage" data-start="0" data-duration="6.815" data-track-index="1">
+    <div data-hf-id="hf-krdw" class="hn-qchip" id="f06-honest-no-qchip">
+      <div data-hf-id="hf-nrfs" class="hn-qmark">?</div>
+      <div data-hf-id="hf-pt0x" class="hn-qtext">
+        <div data-hf-id="hf-e7mt" class="hn-qlabel">HARD QUESTION</div>
+        <div data-hf-id="hf-rzsr" class="hn-qdots">???</div>
+      </div>
+    </div>
+    <div data-hf-id="hf-5dt0" class="hn-dials" id="f06-honest-no-dials">
+      <div data-hf-id="hf-s5tg" class="hn-dial hn-dial-a" id="f06-honest-no-dialA"><div data-hf-id="hf-i5gz" class="hn-dial-dot"></div></div>
+      <div data-hf-id="hf-pvsi" class="hn-dial hn-dial-b" id="f06-honest-no-dialB"><div data-hf-id="hf-16dv" class="hn-dial-dot"></div></div>
+    </div>
+  </div>
+  <div data-hf-id="hf-xqie" class="clip hn-card" id="f06-honest-no-card" data-start="0" data-duration="6.815" data-track-index="2">
+    <div data-hf-id="hf-j5zb" class="hn-eyebrow">HONEST ANSWER</div>
+    <div data-hf-id="hf-0udc" class="hn-title">NOT FOUND</div>
+    <div data-hf-id="hf-2tdt" class="hn-rule"></div>
+    <div data-hf-id="hf-dpmg" class="hn-sub">NO INVENTED TEXT</div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var D = 6.315;
+  var tl = gsap.timeline({ paused: true });
+  // Scene 1 (0.0-2.8s): hard question chip drops in, dials spin then stop
+  tl.fromTo("#f06-honest-no-qchip", { y: -260, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 0);
+  tl.fromTo("#f06-honest-no-dials", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.45);
+  tl.fromTo("#f06-honest-no-dialA", { rotation: 0 }, { rotation: 300, duration: 1.8, ease: "power2.inOut" }, 0.5);
+  tl.fromTo("#f06-honest-no-dialB", { rotation: 0 }, { rotation: -260, duration: 1.8, ease: "power2.inOut" }, 0.5);
+  // Scene 2 (2.8-4.1s): everything clears outward; NOT_FOUND card lands with one restrained move
+  tl.to("#f06-honest-no-qchip", { y: -120, opacity: 0, scale: 0.92, duration: 0.5, ease: "power2.in" }, 2.8);
+  tl.to("#f06-honest-no-dials", { opacity: 0, scale: 1.15, duration: 0.5, ease: "power2.in" }, 2.85);
+  tl.fromTo("#f06-honest-no-card", { y: 60, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 0.7, ease: "power3.out" }, 3.3);
+  // Scene 3 (4.1-end): hold — one barely-perceptible settle across the stillness, no exit
+  tl.to("#f06-honest-no-card", { scale: 1.015, duration: D - 4.1, ease: "none" }, 4.1);
+  tl.seek(0);
+  window.__timelines["f06-honest-no"] = tl;
+})();
+</script>
+</template>

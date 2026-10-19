@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Anton";
+          font-style: normal;
+          font-weight: 400;
+          src: url("assets/fonts/anton-400.woff2") format("woff2");
+        }
+        #root {
+          position: relative;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          background: #ff5a1f;
+        }
+        #root .s6bg {
+          position: absolute;
+          inset: 0;
+          background-color: #ff5a1f;
+        }
+        #root .s6col {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 34px;
+        }
+        #root .s6mark {
+          font-weight: 700;
+          font-size: 204px;
+          letter-spacing: -0.045em;
+          color: #ffffff;
+          line-height: 1;
+        }
+        #root .ltr {
+          display: inline-block;
+        }
+        #root .s6l {
+          font-family: "Anton", sans-serif;
+          font-size: 90px;
+          color: #ffffff;
+          line-height: 1;
+          letter-spacing: 0.004em;
+        }
+        #root .s6l.dark {
+          color: #201c19;
+        }
+        #root .s6badge {
+          margin-top: 14px;
+          background: #fffcf8;
+          padding: 15px 30px;
+          font-weight: 500;
+          font-size: 22px;
+          letter-spacing: 0.13em;
+          color: #201c19;
+        }
+      </style>
+      <div id="root" data-composition-id="06-outro" data-width="1920" data-height="1080">
+        <div class="s6bg hatch-w"></div>
+        <div class="s6col">
+          <div class="s6mark">
+            <span class="ltr">m</span><span class="ltr">e</span><span class="ltr">e</span><span class="ltr">k</span><span class="ltr">o</span><span class="ltr">.</span>
+          </div>
+          <div class="s6l" id="s6l1">LEARN FROM YOUR NOTES.</div>
+          <div class="s6l dark" id="s6l2">VERIFY EVERY ANSWER.</div>
+          <div class="s6badge" id="s6badge">HACKTOBERFEST HACKDAY 2026 &middot; PS-01 &middot; GEMMA 4</div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo(
+          "#root .ltr",
+          { y: 60, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.5)", stagger: 0.06 },
+          0.12
+        );
+        tl.fromTo("#s6l1", { y: 44, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 0.95);
+        tl.fromTo("#s6l2", { y: 44, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 1.2);
+        tl.fromTo("#s6badge", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.7)" }, 1.55);
+        window.__timelines["06-outro"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

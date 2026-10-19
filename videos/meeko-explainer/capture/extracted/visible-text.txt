@@ -1,0 +1,9 @@
+Meeko — Study Companion from Real Notes (PS-01, Hacktoberfest Hackday 2026, Track 1 Best Use of Gemma 4).
+
+The problem: students revise from short PDFs and messy notes. A generic chatbot answers from its own parametric memory even when the notes don't contain the answer — learners can't tell what is supported versus invented. Wrong confidence before exams, no traceability, no feedback on misunderstandings.
+
+The solution: an evidence-first AI tutor. Upload a PDF or paste text → each page becomes page-tagged chunks → the question retrieves top chunks via LM Studio embeddings (TF-IDF fallback) → Gemma 4 answers ONLY from those chunks with citation IDs → code verifies every quote is a real substring of the notes, else forces NOT_FOUND. Quiz generation (MCQ + short answer) from the actual notes, grading by embedding similarity with partial credit and hints. Explain mode at three levels. Flashcards and a two-host Audio Overview. One notebook per document, multi-file notebooks, source checkboxes to scope answers, PDF viewer with page deep-links, highlights, personal notes.
+
+The honest core: unsupported questions get NOT_FOUND, never invented facts. Blank quiz answers auto-fail instead of hallucinated passes. Limitations documented.
+
+Tagline: Learn from your notes. Verify every answer.

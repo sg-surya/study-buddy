@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Anton"; font-style: normal; font-weight: 400; src: url("assets/fonts/anton-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 400; src: url("assets/fonts/sg-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 500; src: url("assets/fonts/sg-500.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 700; src: url("assets/fonts/sg-700.woff2") format("woff2"); }
+        #r10 { position: absolute; inset: 0; background: #201c19; overflow: hidden; }
+        #r10 .shot { position: absolute; inset: 0; overflow: hidden; }
+        #r10 .tall { position: absolute; left: 0; top: -60px; width: 1920px; height: auto; display: block; }
+        #r10 #s10-pg3 { position: absolute; background: #ffffff; overflow: hidden; }
+        #r10 #s10-pg3 img { display: block; width: 100%; height: 100%; }
+        #r10 #s10-flash { position: absolute; background: #ffffff; }
+        #r10 .rip { position: absolute; left: 452px; top: 575px; width: 100px; height: 100px; border-radius: 50%; border: 5px solid #ff5a1f; }
+        #r10 .cap { position: absolute; left: 60px; bottom: 54px; background: #fffcf8; border: 1px solid rgba(32, 28, 25, 0.2); padding: 14px 26px; font-size: 26px; font-weight: 500; letter-spacing: 1px; color: #201c19; }
+      </style>
+      <div id="r10" data-composition-id="10-evidence" data-width="1920" data-height="1080">
+        <div class="shot" id="s10-a" data-layout-allow-overflow><img class="tall" src="assets/shots/04-answer.png" alt="" /></div>
+
+        <div class="shot" id="s10-b" data-layout-allow-overflow>
+          <img class="tall" src="assets/shots/05-evidence-jump.png" alt="" />
+          <div id="s10-pg3" style="left: 1205px; top: 124px; width: 393px; height: 540px">
+            <img src="assets/img/pdfpage3-crop.png" alt="" />
+          </div>
+          <div id="s10-flash" style="left: 1144px; top: 124px; width: 515px; height: 540px"></div>
+        </div>
+
+        <div class="rip" id="s10-rip"></div>
+        <div class="cap" id="s10-capA">chip c2 · page-tagged evidence</div>
+        <div class="cap" id="s10-capB">jump straight to page 3 · viewer shows 3 / 44</div>
+      </div>
+      <script>
+        gsap.set("#s10-b", { opacity: 0 });
+        gsap.set("#s10-pg3", { opacity: 0 });
+        gsap.set("#s10-flash", { opacity: 0 });
+        gsap.set("#s10-rip", { opacity: 0 });
+        gsap.set("#s10-capA", { opacity: 0 });
+        gsap.set("#s10-capB", { opacity: 0 });
+
+        const tl = gsap.timeline({ paused: true });
+
+        /* part A: SUPPORTED answer with verified chips (0 - 8.6) */
+        tl.fromTo("#s10-a", { scale: 1 }, { scale: 1.07, duration: 8.6, ease: "none", transformOrigin: "30% 42%" }, 0);
+        tl.fromTo("#s10-capA", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 2.4);
+
+        /* chip click (8.1) */
+        tl.fromTo("#s10-rip", { scale: 0, opacity: 0.9 }, { scale: 1.5, opacity: 0, duration: 0.55, ease: "power2.out", transformOrigin: "50% 50%" }, 8.1);
+        tl.to("#s10-capA", { opacity: 0, duration: 0.3 }, 8.3);
+
+        /* part B: viewer jumped, page 3 lands (8.6+) */
+        tl.set("#s10-a", { opacity: 0 }, 8.6);
+        tl.set("#s10-b", { opacity: 1 }, 8.6);
+        tl.fromTo("#s10-b", { scale: 1 }, { scale: 1.04, duration: 9.0, ease: "none", transformOrigin: "73% 36%" }, 8.6);
+        tl.fromTo("#s10-pg3", { opacity: 0, scale: 0.985 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power2.out", transformOrigin: "50% 50%" }, 8.9);
+        tl.fromTo("#s10-flash", { opacity: 0.55 }, { opacity: 0, duration: 0.4, ease: "power2.in" }, 8.9);
+        tl.fromTo("#s10-capB", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 9.7);
+        window.__timelines["10-evidence"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

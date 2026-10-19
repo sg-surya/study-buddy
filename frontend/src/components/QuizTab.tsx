@@ -2,7 +2,7 @@ import { CheckCircle2, FileText, XCircle } from "lucide-react";
 import { useState } from "react";
 import { api, type QuizQ } from "../api";
 
-export default function QuizTab({ nb }: { nb: string }) {
+export default function QuizTab({ nb, files }: { nb: string; files?: number[] | null }) {
   const [diff, setDiff] = useState("Easy");
   const [quiz, setQuiz] = useState<QuizQ[]>([]);
   const [src, setSrc] = useState("");
@@ -13,7 +13,7 @@ export default function QuizTab({ nb }: { nb: string }) {
   async function gen() {
     setBusy(true); setGraded(null);
     try {
-      const r = await api.quizGen(diff, nb);
+      const r = await api.quizGen(diff, nb, files ?? undefined);
       setQuiz(r.questions); setSrc(r.source); setAns({});
     } catch { setSrc("backend unreachable"); }
     setBusy(false);
@@ -36,7 +36,7 @@ export default function QuizTab({ nb }: { nb: string }) {
           {["Easy", "Medium", "Hard"].map((d) => <option key={d}>{d}</option>)}
         </select>
         <button onClick={gen} disabled={busy}
-          className="px-4 py-2 rounded-xl bg-orange-600 text-white font-semibold text-sm disabled:opacity-50 hover:bg-orange-700 shadow-sm">
+          className="px-4 py-2 rounded-xl bg-brand text-white font-semibold text-sm disabled:opacity-50 hover:bg-branddark shadow-sm">
           {busy ? "Generating…" : "Generate quiz (5 Qs)"}
         </button>
         {src && <code className="text-xs text-stone-400">source: {src}</code>}
@@ -52,16 +52,16 @@ export default function QuizTab({ nb }: { nb: string }) {
             {item.type === "mcq" ? (
               <div className="mt-3 grid gap-2">
                 {item.options?.map((o) => (
-                  <label key={o} className={`flex items-center gap-2.5 text-sm px-4 py-2 rounded-xl border cursor-pointer transition ${ans[i] === o ? "border-orange-500 bg-orange-50" : "border-stone-200 hover:border-stone-400 bg-stone-50/50"}`}>
+                  <label key={o} className={`flex items-center gap-2.5 text-sm px-4 py-2 rounded-xl border cursor-pointer transition ${ans[i] === o ? "border-brand bg-brandsoft" : "border-stone-200 hover:border-stone-400 bg-stone-50/50"}`}>
                     <input type="radio" name={`q${i}`} checked={ans[i] === o}
-                      onChange={() => setAns((a) => ({ ...a, [i]: o }))} className="accent-orange-600" />
+                      onChange={() => setAns((a) => ({ ...a, [i]: o }))} className="accent-brand" />
                     {o}
                   </label>
                 ))}
               </div>
             ) : (
               <input value={(ans[i] as string) ?? ""} onChange={(e) => setAns((a) => ({ ...a, [i]: e.target.value }))}
-                placeholder="Your answer…" className="mt-3 w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-100" />
+                placeholder="Your answer…" className="mt-3 w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brandtint" />
             )}
             {graded && (
               <div className="mt-3 text-sm">
@@ -82,7 +82,7 @@ export default function QuizTab({ nb }: { nb: string }) {
       {quiz.length > 0 && (
         <div className="mt-5 flex items-center gap-4 flex-wrap">
           <button onClick={submit} disabled={busy}
-            className="px-6 py-3 rounded-2xl bg-orange-600 text-white font-semibold disabled:opacity-50 hover:bg-orange-700 shadow-sm">
+            className="px-6 py-3 rounded-2xl bg-brand text-white font-semibold disabled:opacity-50 hover:bg-branddark shadow-sm">
             Submit & grade
           </button>
           {graded && <span className="text-xl font-extrabold">Score: {graded.score}/{graded.total}</span>}

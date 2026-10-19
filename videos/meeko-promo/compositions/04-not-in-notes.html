@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Anton"; font-style: normal; font-weight: 400; src: url("assets/fonts/anton-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 400; src: url("assets/fonts/sg-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 500; src: url("assets/fonts/sg-500.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 700; src: url("assets/fonts/sg-700.woff2") format("woff2"); }
+        #r04 { position: absolute; inset: 0; background: #ff5a1f; overflow: hidden; }
+        #r04 .hx { position: absolute; inset: 0; }
+        #r04 .qm { position: absolute; right: 60px; top: 60px; font-family: "Anton"; font-size: 640px; line-height: 1; color: rgba(32, 28, 25, 0.1); }
+        #r04 .eb { position: absolute; left: 64px; top: 56px; color: #201c19; font-weight: 700; font-size: 15px; letter-spacing: 5px; }
+        #r04 .j1, #r04 .j2, #r04 .j3 { position: absolute; left: 60px; font-family: "Anton"; font-size: 128px; line-height: 0.98; color: #201c19; letter-spacing: 1px; }
+        #r04 .j1 { top: 300px; }
+        #r04 .j2 { top: 428px; }
+        #r04 .j3 { top: 556px; }
+        #r04 .acc { position: absolute; left: 64px; top: 730px; width: 130px; height: 6px; background: #201c19; }
+      </style>
+      <div id="r04" data-composition-id="04-notinnotes" data-width="1920" data-height="1080">
+        <div class="hx hatch"></div>
+        <div class="qm" id="s04-qm" data-layout-allow-overflow>?</div>
+        <div class="eb" id="s04-eb">THE HIDDEN PROBLEM</div>
+        <div class="j1" id="s04-j1">WHAT IF IT'S</div>
+        <div class="j2" id="s04-j2">NOT IN YOUR</div>
+        <div class="j3" id="s04-j3">NOTES?</div>
+        <div class="acc" id="s04-acc"></div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#s04-eb", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.1);
+        tl.fromTo("#s04-qm", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.7, ease: "power2.out", transformOrigin: "80% 20%" }, 0.2);
+        tl.fromTo("#s04-j1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.7)" }, 0.3);
+        tl.fromTo("#s04-j2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.7)" }, 0.66);
+        tl.fromTo("#s04-j3", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.7)" }, 1.02);
+        tl.fromTo("#s04-acc", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power3.out", transformOrigin: "0% 50%" }, 1.4);
+        window.__timelines["04-notinnotes"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

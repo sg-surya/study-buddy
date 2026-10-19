@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Anton"; font-style: normal; font-weight: 400; src: url("assets/fonts/anton-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 400; src: url("assets/fonts/sg-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 500; src: url("assets/fonts/sg-500.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 700; src: url("assets/fonts/sg-700.woff2") format("woff2"); }
+        #r11 { position: absolute; inset: 0; background: #fffcf8; overflow: hidden; }
+        #r11 .eb { position: absolute; left: 64px; top: 56px; color: #ff5a1f; font-weight: 700; font-size: 15px; letter-spacing: 5px; }
+        #r11 .crop { position: absolute; left: 130px; top: 300px; width: 920px; height: 300px; overflow: hidden; background: #ffffff; border: 2px solid rgba(32, 28, 25, 0.18); }
+        #r11 .crop img { position: absolute; left: -270px; top: -940px; width: 1920px; height: auto; display: block; }
+        #r11 .ring { position: absolute; left: 204px; top: 105px; width: 118px; height: 50px; border: 3px solid #b3341e; }
+        #r11 .callout { position: absolute; right: 120px; top: 300px; width: 640px; background: #201c19; border-top: 6px solid #ff5a1f; padding: 40px 44px; }
+        #r11 .callout .t1 { font-family: "Anton"; font-size: 62px; line-height: 1.02; color: #fffcf8; letter-spacing: 1px; }
+        #r11 .callout .t2 { font-family: "Anton"; font-size: 62px; line-height: 1.02; color: #ff5a1f; letter-spacing: 1px; }
+        #r11 .callout .body { margin-top: 22px; font-size: 21px; line-height: 1.55; color: rgba(255, 252, 248, 0.72); }
+        #r11 .foot { position: absolute; left: 133px; bottom: 240px; font-size: 21px; font-weight: 500; letter-spacing: 2px; color: #716a65; }
+      </style>
+      <div id="r11" data-composition-id="11-honestno" data-width="1920" data-height="1080">
+        <div class="eb" id="s11-eb">WHEN THE NOTES DON'T HAVE THE ANSWER</div>
+
+        <div class="crop" id="s11-crop" data-layout-allow-overflow>
+          <img src="assets/shots/06-notfound.png" alt="" />
+          <div class="ring" id="s11-ring"></div>
+        </div>
+        <div class="foot" id="s11-foot">the question is outside the notebook — so Meeko says so.</div>
+
+        <div class="callout" id="s11-callout">
+          <div class="t1">NOT FOUND</div>
+          <div class="t2">IS AN ANSWER.</div>
+          <div class="body">instead of presenting an unsupported claim as fact, Meeko tells you the evidence isn't there. no invented facts.</div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#s11-eb", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.15);
+        tl.fromTo("#s11-crop", { opacity: 0, x: -70 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.5);
+        tl.fromTo("#s11-ring", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out", transformOrigin: "50% 50%" }, 1.3);
+        tl.fromTo("#s11-callout", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 3.2);
+        tl.fromTo("#s11-foot", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 4.4);
+        tl.to("#s11-ring", { opacity: 0.4, duration: 0.35, ease: "sine.inOut" }, 6.75);
+        tl.to("#s11-ring", { opacity: 1, duration: 0.35, ease: "sine.inOut" }, 7.1);
+        window.__timelines["11-honestno"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

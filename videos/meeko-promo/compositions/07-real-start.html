@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Anton"; font-style: normal; font-weight: 400; src: url("assets/fonts/anton-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 400; src: url("assets/fonts/sg-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 500; src: url("assets/fonts/sg-500.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 700; src: url("assets/fonts/sg-700.woff2") format("woff2"); }
+        #r07 { position: absolute; inset: 0; background: #201c19; overflow: hidden; }
+        #r07 .shot { position: absolute; inset: 0; overflow: hidden; }
+        #r07 .shot img { display: block; }
+        #r07 .fill { width: 1920px; height: 1080px; }
+        #r07 .tall { position: absolute; left: 0; top: -60px; width: 1920px; height: auto; display: block; }
+        #r07 .tick { position: absolute; width: 20px; height: 20px; background: #ff5a1f; }
+        #r07 .cap { position: absolute; left: 50%; bottom: 54px; transform: none; background: #fffcf8; border: 1px solid rgba(32, 28, 25, 0.2); padding: 14px 28px; font-size: 25px; font-weight: 500; letter-spacing: 1px; color: #201c19; margin-left: -330px; width: 660px; text-align: center; }
+      </style>
+      <div id="r07" data-composition-id="07-realstart" data-width="1920" data-height="1080">
+        <div class="shot" id="s07a"><img class="fill" src="assets/shots/01-hero.png" alt="" /></div>
+
+        <div class="shot" id="s07b" data-layout-allow-overflow>
+          <img class="fill" src="assets/shots/02-popup.png" alt="" />
+          <div class="tick" id="s07-t1" style="left: 690px; top: 292px;"></div>
+          <div class="tick" id="s07-t2" style="left: 1194px; top: 292px;"></div>
+          <div class="tick" id="s07-t3" style="left: 690px; top: 764px;"></div>
+          <div class="tick" id="s07-t4" style="left: 1194px; top: 764px;"></div>
+        </div>
+
+        <div class="shot" id="s07c" data-layout-allow-overflow><img class="tall" src="assets/shots/03-notebook-briefing.png" alt="" /></div>
+
+        <div class="cap" id="s07-cap">upload pdfs · notebooks · ask</div>
+      </div>
+      <script>
+        gsap.set("#s07b", { opacity: 0 });
+        gsap.set("#s07c", { opacity: 0 });
+        gsap.set("#s07-t1", { scale: 0 });
+        gsap.set("#s07-t2", { scale: 0 });
+        gsap.set("#s07-t3", { scale: 0 });
+        gsap.set("#s07-t4", { scale: 0 });
+        gsap.set("#s07-cap", { opacity: 0 });
+
+        const tl = gsap.timeline({ paused: true });
+
+        /* beat 1: hero, slow push (0 - 3.3) */
+        tl.fromTo("#s07a", { scale: 1 }, { scale: 1.045, duration: 3.3, ease: "none", transformOrigin: "50% 45%" }, 0);
+
+        /* beat 2: creation modal (3.3 - 6.6) */
+        tl.set("#s07a", { opacity: 0 }, 3.3);
+        tl.set("#s07b", { opacity: 1 }, 3.3);
+        tl.fromTo("#s07b", { scale: 1.04 }, { scale: 1.14, duration: 3.3, ease: "power1.inOut", transformOrigin: "50% 48%" }, 3.3);
+        tl.to("#s07-t1", { scale: 1, duration: 0.22, ease: "back.out(2.2)" }, 3.62);
+        tl.to("#s07-t2", { scale: 1, duration: 0.22, ease: "back.out(2.2)" }, 3.7);
+        tl.to("#s07-t3", { scale: 1, duration: 0.22, ease: "back.out(2.2)" }, 3.78);
+        tl.to("#s07-t4", { scale: 1, duration: 0.22, ease: "back.out(2.2)" }, 3.86);
+
+        /* beat 3: notebook + briefing (6.6 - 9.3) */
+        tl.set("#s07b", { opacity: 0 }, 6.6);
+        tl.set("#s07c", { opacity: 1 }, 6.6);
+        tl.fromTo("#s07c", { scale: 1 }, { scale: 1.06, duration: 2.7, ease: "none", transformOrigin: "34% 24%" }, 6.6);
+
+        /* caption */
+        tl.fromTo("#s07-cap", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 7.1);
+        window.__timelines["07-realstart"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

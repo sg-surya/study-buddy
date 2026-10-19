@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Meeko — brag</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"
+      integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      @font-face {
+        font-family: "Anton";
+        font-style: normal;
+        font-weight: 400;
+        src: url("assets/fonts/anton-400.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Space Grotesk";
+        font-style: normal;
+        font-weight: 400;
+        src: url("assets/fonts/sg-400.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Space Grotesk";
+        font-style: normal;
+        font-weight: 500;
+        src: url("assets/fonts/sg-500.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Space Grotesk";
+        font-style: normal;
+        font-weight: 700;
+        src: url("assets/fonts/sg-700.woff2") format("woff2");
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #fffcf8; }
+      body { font-family: "Space Grotesk", system-ui, sans-serif; color: #201c19; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #fffcf8; }
+      .scene { position: absolute; inset: 0; overflow: hidden; }
+      .hatch {
+        background-image: repeating-linear-gradient(45deg, rgba(32, 28, 25, 0.05) 0 3px, transparent 3px 16px);
+      }
+      .hatch-w {
+        background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.06) 0 3px, transparent 3px 16px);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="brag" data-start="0" data-duration="23.3" data-width="1920" data-height="1080">
+      <div class="scene" id="h-hook" data-composition-id="01-hook" data-composition-src="compositions/01-hook.html" data-start="0" data-duration="3.2" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div class="scene" id="h-reveal" data-composition-id="02-reveal" data-composition-src="compositions/02-reveal.html" data-start="3.2" data-duration="3" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div class="scene" id="h-entry" data-composition-id="03-entry" data-composition-src="compositions/03-entry.html" data-start="6.2" data-duration="5.5" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div class="scene" id="h-proof" data-composition-id="04-proof" data-composition-src="compositions/04-proof.html" data-start="11.7" data-duration="4.8" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div class="scene" id="h-honesty" data-composition-id="05-honesty" data-composition-src="compositions/05-honesty.html" data-start="16.5" data-duration="3" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div class="scene" id="h-outro" data-composition-id="06-outro" data-composition-src="compositions/06-outro.html" data-start="19.5" data-duration="3.8" data-track-index="0" data-width="1920" data-height="1080"></div>
+
+      <audio id="bgm" src="assets/music.wav" data-start="0" data-duration="23.3" data-track-index="11" data-volume="0.65"></audio>
+      <audio id="vo-v1" src="assets/voice/v1.wav" data-start="0.4" data-duration="2.496" data-track-index="12"></audio>
+      <audio id="vo-v2" src="assets/voice/v2.wav" data-start="3.2" data-duration="1.323" data-track-index="12"></audio>
+      <audio id="vo-v3" src="assets/voice/v3.wav" data-start="6.7" data-duration="2.261" data-track-index="12"></audio>
+      <audio id="vo-v4" src="assets/voice/v4.wav" data-start="12" data-duration="2.923" data-track-index="12"></audio>
+      <audio id="vo-v5" src="assets/voice/v5.wav" data-start="16.85" data-duration="1.707" data-track-index="12"></audio>
+      <audio id="vo-v6" src="assets/voice/v6.wav" data-start="19.8" data-duration="2.539" data-track-index="12"></audio>
+    </div>
+    <script>
+      window.__timelines["brag"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

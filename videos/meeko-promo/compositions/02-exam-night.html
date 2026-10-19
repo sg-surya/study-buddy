@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Anton"; font-style: normal; font-weight: 400; src: url("assets/fonts/anton-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 400; src: url("assets/fonts/sg-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 500; src: url("assets/fonts/sg-500.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 700; src: url("assets/fonts/sg-700.woff2") format("woff2"); }
+        #r02 { position: absolute; inset: 0; background: #fffcf8; overflow: hidden; }
+        #r02 .eb { position: absolute; left: 64px; top: 56px; color: #201c19; font-weight: 700; font-size: 15px; letter-spacing: 5px; }
+        #r02 .num { position: absolute; right: 70px; top: 110px; font-family: "Anton"; font-size: 240px; color: rgba(32, 28, 25, 0.09); letter-spacing: 2px; }
+        #r02 .card { position: absolute; width: 400px; height: 280px; background: #ffffff; border-top: 6px solid #ff5a1f; padding: 26px 28px; }
+        #r02 .c1 { left: 190px; top: 300px; }
+        #r02 .c2 { left: 660px; top: 430px; }
+        #r02 .c3 { left: 1130px; top: 320px; }
+        #r02 .fname { font-weight: 700; font-size: 21px; letter-spacing: 0.5px; }
+        #r02 .meta { margin-top: 6px; font-size: 15px; color: #716a65; letter-spacing: 1px; }
+        #r02 .bar { height: 12px; background: #efe5dc; margin-top: 16px; }
+        #r02 .b-a { width: 92%; } #r02 .b-b { width: 78%; } #r02 .b-c { width: 85%; }
+        #r02 .lbl { position: absolute; left: 64px; bottom: 60px; font-family: "Anton"; font-size: 54px; color: #ff5a1f; letter-spacing: 1px; }
+        #r02 .sub { position: absolute; left: 66px; bottom: 34px; font-size: 16px; font-weight: 500; letter-spacing: 3px; color: #201c19; }
+      </style>
+      <div id="r02" data-composition-id="02-examnight" data-width="1920" data-height="1080">
+        <div class="eb" id="s02-eb">IT'S THE NIGHT BEFORE THE EXAM</div>
+        <div class="num" id="s02-num" data-layout-allow-occlusion>11:58</div>
+
+        <div class="card c1" id="s02-c1">
+          <div class="fname">LECTURE_04.PDF</div>
+          <div class="meta">SCATTERED · 12 PAGES</div>
+          <div class="bar b-a"></div><div class="bar b-b"></div><div class="bar b-c"></div>
+        </div>
+        <div class="card c2" id="s02-c2">
+          <div class="fname">CHAPTER_NOTES.PDF</div>
+          <div class="meta">UNORGANISED · 28 PAGES</div>
+          <div class="bar b-b"></div><div class="bar b-a"></div><div class="bar b-c"></div>
+        </div>
+        <div class="card c3" id="s02-c3">
+          <div class="fname">PRACTICE_SET.PDF</div>
+          <div class="meta">UNREAD · 44 PAGES</div>
+          <div class="bar b-c"></div><div class="bar b-a"></div><div class="bar b-b"></div>
+        </div>
+
+        <div class="lbl" id="s02-lbl">TIME IS RUNNING OUT.</div>
+        <div class="sub" id="s02-sub">REVISION · CONCEPTS · DEADLINES</div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#s02-eb", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.15);
+        tl.fromTo("#s02-num", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 0.5);
+        tl.fromTo("#s02-c1", { opacity: 0, y: -170, rotation: -8 }, { opacity: 1, y: 0, rotation: -4, duration: 0.75, ease: "power3.out" }, 0.55);
+        tl.fromTo("#s02-c2", { opacity: 0, y: -190, rotation: 7 }, { opacity: 1, y: 0, rotation: 2.5, duration: 0.75, ease: "power3.out" }, 0.95);
+        tl.fromTo("#s02-c3", { opacity: 0, y: -160, rotation: -6 }, { opacity: 1, y: 0, rotation: -2, duration: 0.75, ease: "power3.out" }, 1.35);
+        tl.fromTo("#s02-lbl", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 3.1);
+        tl.fromTo("#s02-sub", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 3.5);
+        tl.to("#s02-num", { opacity: 0.55, duration: 2.4, ease: "sine.inOut" }, 6.0);
+        window.__timelines["02-examnight"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

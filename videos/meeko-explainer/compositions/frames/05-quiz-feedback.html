@@ -1,0 +1,154 @@
+﻿<template>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+@font-face {
+  font-family: "Bebas Neue"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/bebas-neue@latest/latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter"; font-style: normal; font-weight: 300; font-display: swap;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-300-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-700-normal.woff2") format("woff2");
+}
+#root {
+  width: 1920px; height: 1080px; position: relative; overflow: hidden;
+  container-type: size; background: #FFFCF8;
+  font-family: "Inter", system-ui, sans-serif; color: #201C19;
+}
+.clip { position: absolute; }
+#qfb-bg { inset: 0; width: 1920px; height: 1080px; background: #FFFCF8; }
+#qfb-glowA {
+  left: 120px; top: 180px; width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,90,31,0.14) 0%, rgba(255,90,31,0) 65%);
+}
+#qfb-glowB {
+  left: 1100px; top: 180px; width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,90,31,0.18) 0%, rgba(255,90,31,0) 65%);
+}
+#qfb-axis {
+  left: 959px; top: 250px; width: 2px; height: 560px; background: rgba(32,28,25,0.12);
+}
+#qfb-head { left: 0; top: 56px; width: 1920px; text-align: center; }
+#qfb-eyebrow {
+  font-size: 22px; font-weight: 700; letter-spacing: 6px; color: #FF5A1F;
+}
+#qfb-rule { width: 76px; height: 5px; background: #FF5A1F; margin: 14px auto 0 auto; }
+#qfb-title {
+  font-family: "Bebas Neue", sans-serif; font-size: 84px; letter-spacing: 3px;
+  line-height: 1; color: #201C19; margin-top: 10px;
+}
+#qfb-title .accent { color: #FF5A1F; }
+#qfb-stage {
+  left: 0; top: 0; width: 1920px; height: 1080px; perspective: 1400px;
+}
+.qfb-card {
+  position: absolute; top: 300px; width: 700px; height: 500px; background: #FFFFFF;
+}
+#qfb-left { left: 160px; border-top: 10px solid #C0392B; }
+#qfb-right { left: 1060px; border-top: 10px solid #FF5A1F; }
+.qfb-icon {
+  position: absolute; left: 44px; top: 44px; width: 72px; height: 72px;
+  font-family: "Bebas Neue", sans-serif; font-size: 44px; line-height: 72px; text-align: center;
+  color: #FFFFFF;
+}
+#qfb-left .qfb-icon { background: #C0392B; }
+#qfb-right .qfb-icon { background: #FF5A1F; }
+.qfb-label {
+  position: absolute; left: 140px; top: 48px;
+  font-size: 20px; font-weight: 700; letter-spacing: 4px; color: #6B6B6B;
+}
+.qfb-q {
+  position: absolute; left: 44px; top: 150px; right: 44px;
+  font-family: "Bebas Neue", sans-serif; font-size: 46px; letter-spacing: 2px; line-height: 1.05;
+}
+.qfb-ans {
+  position: absolute; left: 44px; top: 268px;
+  font-size: 34px; font-weight: 600;
+}
+.qfb-sub {
+  position: absolute; left: 44px; right: 44px;
+  font-size: 29px; font-weight: 400; line-height: 1.5; color: #201C19;
+}
+#qfb-stamp {
+  position: absolute; left: 400px; top: 330px; padding: 10px 28px;
+  border: 6px solid #C0392B; color: #C0392B;
+  font-family: "Bebas Neue", sans-serif; font-size: 56px; letter-spacing: 3px;
+}
+#qfb-right .qfb-q { top: 138px; font-size: 42px; }
+#qfb-evidence { top: 238px; font-size: 26px; background: #FFFCF8; border-left: 8px solid #FF5A1F; padding: 10px 18px; }
+#qfb-evidence .tag { font-size: 19px; font-weight: 700; letter-spacing: 3px; color: #FF5A1F; display: block; }
+#qfb-hint { top: 388px; font-size: 26px; background: #201C19; color: #FFFCF8; padding: 10px 18px; }
+#qfb-hint .tag { font-size: 19px; font-weight: 700; letter-spacing: 3px; color: #FF5A1F; display: block; }
+#qfb-pill {
+  left: 735px; top: 505px; width: 450px; height: 96px; background: #FF5A1F;
+  text-align: center; transform-origin: 50% 50%;
+}
+#qfb-pill span {
+  font-family: "Bebas Neue", sans-serif; font-size: 52px; letter-spacing: 2px;
+  color: #201C19; line-height: 96px;
+}
+</style>
+<div data-hf-id="hf-yyt3" id="root" data-composition-id="f05-quiz-feedback" data-width="1920" data-height="1080" data-duration="7.817">
+  <div data-hf-id="hf-jkna" id="qfb-bg" class="clip" data-start="0" data-duration="7.817" data-track-index="0"></div>
+  <div data-hf-id="hf-sizv" id="qfb-glowA" class="clip" data-start="0" data-duration="7.817" data-track-index="6"></div>
+  <div data-hf-id="hf-mckx" id="qfb-glowB" class="clip" data-start="0" data-duration="7.817" data-track-index="5"></div>
+  <div data-hf-id="hf-3got" id="qfb-axis" class="clip" data-start="0" data-duration="7.817" data-track-index="1"></div>
+  <div data-hf-id="hf-ihbn" id="qfb-head" class="clip" data-start="0" data-duration="7.817" data-track-index="2">
+    <div data-hf-id="hf-udge" id="qfb-eyebrow">QUIZ &middot; MEEKO FEEDBACK</div>
+    <div data-hf-id="hf-y6dt" id="qfb-rule"></div>
+    <div data-hf-id="hf-aok7" id="qfb-title">GALAT JAWAB, <span data-hf-id="hf-p16s" class="accent">SAHI SAMAJH</span></div>
+  </div>
+  <div data-hf-id="hf-et0e" id="qfb-stage" class="clip" data-start="0" data-duration="7.817" data-track-index="3">
+    <div data-hf-id="hf-hk5b" id="qfb-left" class="qfb-card">
+      <div data-hf-id="hf-p68s" class="qfb-icon">&#10005;</div>
+      <div data-hf-id="hf-42id" class="qfb-label">TUMHARA JAWAB</div>
+      <div data-hf-id="hf-zz1y" class="qfb-q">Q3 &middot; PANI KAB UBALTA HAI?</div>
+      <div data-hf-id="hf-t0k3" class="qfb-ans">B &middot; 90&deg;C</div>
+      <div data-hf-id="hf-k9vu" id="qfb-stamp">&#10005; GALAT</div>
+    </div>
+    <div data-hf-id="hf-8gfm" id="qfb-right" class="qfb-card">
+      <div data-hf-id="hf-pyuu" class="qfb-icon">&#10003;</div>
+      <div data-hf-id="hf-v1i0" class="qfb-label">MEEKO KA FEEDBACK</div>
+      <div data-hf-id="hf-6et6" class="qfb-q">SAHI &middot; C &mdash; 100&deg;C</div>
+      <div data-hf-id="hf-vkjw" id="qfb-evidence" class="qfb-sub"><span data-hf-id="hf-fz0z" class="tag">SABOOT</span>NCERT Ch.6 &mdash; samudra-tal par pani 100&deg;C par ubalta hai.</div>
+      <div data-hf-id="hf-if77" id="qfb-hint" class="qfb-sub"><span data-hf-id="hf-ele6" class="tag">HINT</span>Unchai par dabav ghatta hai &mdash; socho kyun?</div>
+    </div>
+  </div>
+  <div data-hf-id="hf-gx2h" id="qfb-pill" class="clip" data-start="4.75" data-duration="3.067" data-track-index="4"><span data-hf-id="hf-14kq">2/5 &rarr; SAMAJH 5/5</span></div>
+</div>
+<script>
+(function () {
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  window.__timelines["f05-quiz-feedback"] = tl;
+  tl.fromTo("#qfb-bg", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 0);
+  tl.fromTo("#qfb-glowA", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power1.out" }, 0.1);
+  tl.fromTo("#qfb-glowB", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power1.out" }, 0.2);
+  tl.fromTo("#qfb-axis", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0.2);
+  tl.fromTo("#qfb-eyebrow", { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+  tl.fromTo("#qfb-rule", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.4, ease: "power3.out" }, 0.25);
+  tl.fromTo("#qfb-title", { opacity: 0, y: -46 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.15);
+  tl.fromTo("#qfb-left", { opacity: 0, x: -620, rotationY: 16, scale: 0.85 }, { opacity: 1, x: 0, rotationY: 0, scale: 1, duration: 0.9, ease: "power3.out" }, 0.35);
+  tl.fromTo("#qfb-stamp", { opacity: 0, scale: 0, rotation: -12 }, { opacity: 1, scale: 1, rotation: -12, duration: 0.45, ease: "back.out(2)" }, 1.15);
+  tl.fromTo("#qfb-right", { opacity: 0, x: 620, rotationY: -16, scale: 0.85 }, { opacity: 1, x: 0, rotationY: 0, scale: 1, duration: 0.9, ease: "power3.out" }, 1.95);
+  tl.fromTo("#qfb-right .qfb-q", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 2.8);
+  tl.fromTo("#qfb-evidence", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 3.4);
+  tl.fromTo("#qfb-hint", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 4.0);
+  tl.fromTo("#qfb-pill", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.7)" }, 4.75);
+  tl.to("#qfb-left", { y: -10, duration: 1.1, ease: "sine.inOut" }, 5.4);
+  tl.to("#qfb-right", { y: 10, duration: 1.1, ease: "sine.inOut" }, 5.4);
+  tl.set("#qfb-bg", { opacity: 1 }, 7.317);
+})();
+</script>
+</template>

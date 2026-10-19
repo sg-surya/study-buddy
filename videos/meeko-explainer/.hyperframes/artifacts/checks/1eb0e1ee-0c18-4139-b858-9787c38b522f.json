@@ -1,0 +1,3099 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 22,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"bg\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"bg-hatch\" data-start=\"0\" data-track-index=\"3\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"bg-numeral\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"stage\" data-start=\"0\" data-track-index=\"2\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"me-bg\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\03-meeko-entry.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"me-notes\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\03-meeko-entry.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"me-mark\" data-start=\"1.57\" data-track-index=\"2\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\03-meeko-entry.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"me-word\" data-start=\"1.8\" data-track-index=\"3\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\03-meeko-entry.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"clipbg\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"stage\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"capband\" data-start=\"0\" data-track-index=\"2\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "composition_file_too_large",
+        "severity": "warning",
+        "message": "This HTML composition file has 326 lines. Smaller sub-compositions are easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split this sub-composition further into smaller .html files, then mount them from the parent with data-composition-src so each file stays small enough to inspect, revise, and validate independently."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"hn-bg\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\06-honest-no.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"hn-stage\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\06-honest-no.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"bg-field\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\07-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"topband\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\07-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"tagline\" data-start=\"4.3\" data-track-index=\"7\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\07-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "gsap_timeline_set_initial_hide",
+        "severity": "warning",
+        "message": "Initial hidden state for \".topband\" is set via tl.set(...) at position 0 inside the paused timeline. A zero-duration set at 0 does not render while the playhead sits exactly at 0, so frame 0 shows the un-hidden state.",
+        "selector": ".topband",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\07-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use gsap.set(...) (immediate, outside the timeline) for initial states, or author the hidden state directly in CSS/attributes."
+      },
+      {
+        "code": "gsap_timeline_set_initial_hide",
+        "severity": "warning",
+        "message": "Initial hidden state for \"#close-eyebrow\" is set via tl.set(...) at position 0 inside the paused timeline. A zero-duration set at 0 does not render while the playhead sits exactly at 0, so frame 0 shows the un-hidden state.",
+        "selector": "#close-eyebrow",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\07-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use gsap.set(...) (immediate, outside the timeline) for initial states, or author the hidden state directly in CSS/attributes."
+      },
+      {
+        "code": "gsap_timeline_set_initial_hide",
+        "severity": "warning",
+        "message": "Initial hidden state for \"#close-card-1, #close-card-2, #close-card-3, #close-card-4\" is set via tl.set(...) at position 0 inside the paused timeline. A zero-duration set at 0 does not render while the playhead sits exactly at 0, so frame 0 shows the un-hidden state.",
+        "selector": "#close-card-1, #close-card-2, #close-card-3, #close-card-4",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\07-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use gsap.set(...) (immediate, outside the timeline) for initial states, or author the hidden state directly in CSS/attributes."
+      },
+      {
+        "code": "gsap_timeline_set_initial_hide",
+        "severity": "warning",
+        "message": "Initial hidden state for \"#close-tag1, #close-tag2\" is set via tl.set(...) at position 0 inside the paused timeline. A zero-duration set at 0 does not render while the playhead sits exactly at 0, so frame 0 shows the un-hidden state.",
+        "selector": "#close-tag1, #close-tag2",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\07-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use gsap.set(...) (immediate, outside the timeline) for initial states, or author the hidden state directly in CSS/attributes."
+      },
+      {
+        "code": "gsap_timeline_set_initial_hide",
+        "severity": "warning",
+        "message": "Initial hidden state for \"#close-event\" is set via tl.set(...) at position 0 inside the paused timeline. A zero-duration set at 0 does not render while the playhead sits exactly at 0, so frame 0 shows the un-hidden state.",
+        "selector": "#close-event",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\07-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use gsap.set(...) (immediate, outside the timeline) for initial states, or author the hidden state directly in CSS/attributes."
+      }
+    ],
+    "filesScanned": 8
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 1,
+    "infoCount": 43,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 15.147,
+        "selector": "#f02-a2",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 106.57,
+          "top": 494.46,
+          "right": 602.16,
+          "bottom": 535.4,
+          "width": 495.59,
+          "height": 40.94
+        },
+        "containerSelector": "#f02-stampword",
+        "text": "chapter ka hero ye formula hai.",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 106.57,
+          "y": 494.46,
+          "width": 495.59,
+          "height": 40.94
+        },
+        "firstSeen": 13.227,
+        "lastSeen": 15.147,
+        "occurrences": 17,
+        "heldMs": 1920,
+        "times": [
+          13.227,
+          13.351,
+          13.476,
+          13.601,
+          13.726,
+          13.851,
+          13.975,
+          14.1,
+          14.225,
+          14.35,
+          14.475,
+          14.599,
+          14.724,
+          14.849,
+          14.974,
+          15.098,
+          15.147
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 15.147,
+        "selector": "#f02-eyebrow-sub",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 75.87,
+          "top": 91.79,
+          "right": 339.9,
+          "bottom": 111.24,
+          "width": 264.03,
+          "height": 19.45
+        },
+        "containerSelector": "div.me-eyebrow",
+        "text": "INSTANT JAVAB MACHINE",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-start": "0",
+          "data-duration": "9.432",
+          "data-track-index": "1"
+        },
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 75.87,
+          "y": 91.79,
+          "width": 264.03,
+          "height": 19.45
+        },
+        "firstSeen": 15.098,
+        "lastSeen": 15.147,
+        "occurrences": 2,
+        "heldMs": 48.99999999999949,
+        "times": [
+          15.098,
+          15.147
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 0.624,
+        "selector": "#f01-hook-w1",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 51.8,
+          "top": 100,
+          "right": 571.53,
+          "bottom": 404,
+          "width": 519.73,
+          "height": 304
+        },
+        "containerSelector": "#f01-hook-w2",
+        "text": "KAL",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/01-hook.html",
+        "bbox": {
+          "x": 51.8,
+          "y": 100,
+          "width": 519.73,
+          "height": 304
+        },
+        "firstSeen": 0.624,
+        "lastSeen": 0.624,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          0.624
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 3.029,
+        "selector": "#el-01-hook > div:nth-of-type(1) > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1451.8,
+          "top": -22,
+          "right": 1860,
+          "bottom": 401,
+          "width": 408.2,
+          "height": 423
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "01",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 22
+        },
+        "dataAttributes": {
+          "data-start": "0",
+          "data-duration": "6.431",
+          "data-track-index": "1"
+        },
+        "sourceFile": "compositions/frames/01-hook.html",
+        "bbox": {
+          "x": 1451.8,
+          "y": -22,
+          "width": 408.2,
+          "height": 423
+        },
+        "firstSeen": 3.029,
+        "lastSeen": 3.029,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          3.029
+        ]
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 3.029,
+        "selector": "#f01-hook-cardB > span:nth-of-type(2)",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 818.83,
+          "top": 372.55,
+          "right": 1179.6,
+          "bottom": 471.45,
+          "width": 360.77,
+          "height": 98.9
+        },
+        "containerSelector": "#f01-hook-cardB",
+        "text": "DERIVATIONS",
+        "fixHint": "Text is 361px x 99px inside 351px x 253px and overflows by up to 44px; widen the container to at least ~395px or shrink font-size from 44px to ~43px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 784.41,
+          "top": 313.36,
+          "right": 1135.59,
+          "bottom": 566.65,
+          "width": 351.19,
+          "height": 253.29
+        },
+        "overflow": {
+          "right": 44.01
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/01-hook.html",
+        "bbox": {
+          "x": 818.83,
+          "y": 372.55,
+          "width": 360.77,
+          "height": 98.9
+        },
+        "firstSeen": 3.029,
+        "lastSeen": 3.029,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          3.029
+        ]
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 9.088,
+        "selector": "#f02-wallnum",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 1670,
+          "top": -38,
+          "right": 1850,
+          "bottom": 172,
+          "width": 180,
+          "height": 210
+        },
+        "containerSelector": "#el-02-fake-answer > div:nth-of-type(1)",
+        "text": "02",
+        "fixHint": "Text is 180px x 210px inside 1920px x 1080px and overflows by up to 38px; increase the container height to at least ~1118px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 38
+        },
+        "dataAttributes": {
+          "data-start": "0",
+          "data-duration": "9.432",
+          "data-track-index": "0"
+        },
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 1670,
+          "y": -38,
+          "width": 180,
+          "height": 210
+        },
+        "firstSeen": 9.088,
+        "lastSeen": 15.147,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          9.088,
+          15.147
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 9.088,
+        "selector": "#f02-wallnum",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1670,
+          "top": -70,
+          "right": 1850,
+          "bottom": 204,
+          "width": 180,
+          "height": 274
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "02",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 70
+        },
+        "dataAttributes": {
+          "data-start": "0",
+          "data-duration": "9.432",
+          "data-track-index": "0"
+        },
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 1670,
+          "y": -70,
+          "width": 180,
+          "height": 274
+        },
+        "firstSeen": 9.088,
+        "lastSeen": 15.147,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          9.088,
+          15.147
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 9.088,
+        "selector": "#f02-wallnum",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1670,
+          "top": -38,
+          "right": 1850,
+          "bottom": 172,
+          "width": 180,
+          "height": 210
+        },
+        "containerSelector": "#el-02-fake-answer > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 38
+        },
+        "dataAttributes": {
+          "data-start": "0",
+          "data-duration": "9.432",
+          "data-track-index": "0"
+        },
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 1670,
+          "y": -38,
+          "width": 180,
+          "height": 210
+        },
+        "firstSeen": 9.088,
+        "lastSeen": 15.147,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          9.088,
+          15.147
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 13.227,
+        "selector": "#f02-a1",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 126,
+          "top": 446,
+          "right": 520.23,
+          "bottom": 486,
+          "width": 394.23,
+          "height": 40
+        },
+        "containerSelector": "#f02-stampword",
+        "text": "Haan, simple hai — suno:",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 126,
+          "y": 446,
+          "width": 394.23,
+          "height": 40
+        },
+        "firstSeen": 13.227,
+        "lastSeen": 13.227,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.227
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 13.227,
+        "selector": "#f02-a3",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 128.8,
+          "top": 549.83,
+          "right": 494.24,
+          "bottom": 622.99,
+          "width": 365.44,
+          "height": 73.16
+        },
+        "containerSelector": "#f02-a4",
+        "text": "1897 me likha gaya tha,",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 128.8,
+          "y": 549.83,
+          "width": 365.44,
+          "height": 73.16
+        },
+        "firstSeen": 13.227,
+        "lastSeen": 13.227,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.227
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 13.227,
+        "selector": "#f02-a4",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 124.26,
+          "top": 599.12,
+          "right": 447.39,
+          "bottom": 668.38,
+          "width": 323.13,
+          "height": 69.26
+        },
+        "containerSelector": "#f02-stampword",
+        "text": "100% pakka answer.",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 124.26,
+          "y": 599.12,
+          "width": 323.13,
+          "height": 69.26
+        },
+        "firstSeen": 13.227,
+        "lastSeen": 13.227,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.227
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 15.147,
+        "selector": "div.me-numeral",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1416.92,
+          "top": -18.23,
+          "right": 1822.39,
+          "bottom": 401.93,
+          "width": 405.47,
+          "height": 420.16
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "03",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 18.23
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/03-meeko-entry.html",
+        "bbox": {
+          "x": 1416.92,
+          "y": -18.23,
+          "width": 405.47,
+          "height": 420.16
+        },
+        "firstSeen": 15.147,
+        "lastSeen": 15.147,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 21.206,
+        "selector": "div.station.st3 > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 2803.88,
+          "top": 535,
+          "right": 2956.12,
+          "bottom": 563,
+          "width": 152.24,
+          "height": 28
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "RETRIEVE",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 1036.12
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": 2803.88,
+          "y": 535,
+          "width": 152.24,
+          "height": 28
+        },
+        "firstSeen": 21.206,
+        "lastSeen": 21.206,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          21.206
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 21.206,
+        "selector": "div.station.st3 > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 2858.64,
+          "top": 714,
+          "right": 2901.36,
+          "bottom": 734,
+          "width": 42.72,
+          "height": 20
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "P.31",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 981.36
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": 2858.64,
+          "y": 714,
+          "width": 42.72,
+          "height": 20
+        },
+        "firstSeen": 21.206,
+        "lastSeen": 21.206,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          21.206
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 21.206,
+        "selector": "div.station.st4 > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 3690.13,
+          "top": 615,
+          "right": 3809.88,
+          "bottom": 652,
+          "width": 119.75,
+          "height": 37
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "GEMMA",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 1889.88
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": 3690.13,
+          "y": 615,
+          "width": 119.75,
+          "height": 37
+        },
+        "firstSeen": 21.206,
+        "lastSeen": 21.206,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          21.206
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 21.206,
+        "selector": "#f04-rag-machine-anscard > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 3938.35,
+          "top": 710,
+          "right": 4011.65,
+          "bottom": 734,
+          "width": 73.3,
+          "height": 24
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "DRAFT",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 2091.65
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": 3938.35,
+          "y": 710,
+          "width": 73.3,
+          "height": 24
+        },
+        "firstSeen": 21.206,
+        "lastSeen": 21.206,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          21.206
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 21.206,
+        "selector": "div.station.st5 > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 4720.32,
+          "top": 444,
+          "right": 4879.68,
+          "bottom": 486,
+          "width": 159.36,
+          "height": 42
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "VERIFY",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 2959.68
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": 4720.32,
+          "y": 444,
+          "width": 159.36,
+          "height": 42
+        },
+        "firstSeen": 21.206,
+        "lastSeen": 27.265,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.206,
+          27.265
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 21.206,
+        "selector": "div.station.st5 > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 4636.26,
+          "top": 533,
+          "right": 4655.74,
+          "bottom": 570,
+          "width": 19.48,
+          "height": 37
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "✓",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 2735.74
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": 4636.26,
+          "y": 533,
+          "width": 19.48,
+          "height": 37
+        },
+        "firstSeen": 21.206,
+        "lastSeen": 27.265,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.206,
+          27.265
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 21.206,
+        "selector": "div.machine > svg:nth-of-type(1) > text:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 4636.26,
+          "top": 585,
+          "right": 4655.74,
+          "bottom": 622,
+          "width": 19.48,
+          "height": 37
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "✓",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 2735.74
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": 4636.26,
+          "y": 585,
+          "width": 19.48,
+          "height": 37
+        },
+        "firstSeen": 21.206,
+        "lastSeen": 27.265,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.206,
+          27.265
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 21.206,
+        "selector": "div.machine > svg:nth-of-type(1) > text:nth-of-type(4)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 4636.26,
+          "top": 637,
+          "right": 4655.74,
+          "bottom": 674,
+          "width": 19.48,
+          "height": 37
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "✓",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 2735.74
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": 4636.26,
+          "y": 637,
+          "width": 19.48,
+          "height": 37
+        },
+        "firstSeen": 21.206,
+        "lastSeen": 27.265,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.206,
+          27.265
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 21.206,
+        "selector": "#f04-rag-machine-world",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 480,
+          "top": 96,
+          "right": 5280,
+          "bottom": 896,
+          "width": 4800,
+          "height": 800
+        },
+        "containerSelector": "#el-04-rag-machine > div:nth-of-type(1) > div:nth-of-type(2)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 896,
+          "width": 1920,
+          "height": 896
+        },
+        "overflow": {
+          "right": 3360
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": 480,
+          "y": 96,
+          "width": 4800,
+          "height": 800
+        },
+        "firstSeen": 21.206,
+        "lastSeen": 27.265,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.206,
+          27.265
+        ]
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 21.206,
+        "selector": "div.belt",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": 480,
+          "top": 796,
+          "right": 5280,
+          "bottom": 806,
+          "width": 4800,
+          "height": 10
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "right": 3360
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": 480,
+          "y": 796,
+          "width": 4800,
+          "height": 10
+        },
+        "firstSeen": 21.206,
+        "lastSeen": 27.265,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.206,
+          27.265
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 25.206,
+        "selector": "#f04-rag-machine-co3 > div:nth-of-type(2) > em:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 796.88,
+          "top": 204.76,
+          "right": 1123.11,
+          "bottom": 312.76,
+          "width": 326.23,
+          "height": 108
+        },
+        "containerSelector": "#f04-rag-machine-chip > text:nth-of-type(1)",
+        "text": "PIECES",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": 796.88,
+          "y": 204.76,
+          "width": 326.23,
+          "height": 108
+        },
+        "firstSeen": 25.206,
+        "lastSeen": 25.206,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          25.206
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 25.33,
+        "selector": "#f04-rag-machine-co3 > div:nth-of-type(3)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 800.08,
+          "top": 301.45,
+          "right": 1119.92,
+          "bottom": 324.45,
+          "width": 319.84,
+          "height": 23
+        },
+        "containerSelector": "#f04-rag-machine-chip > text:nth-of-type(1)",
+        "text": "QUESTION FINDS THEM",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": 800.08,
+          "y": 301.45,
+          "width": 319.84,
+          "height": 23
+        },
+        "firstSeen": 25.33,
+        "lastSeen": 25.33,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          25.33
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 27.265,
+        "selector": "#f04-rag-machine-co1 > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1286.64,
+          "top": 104,
+          "right": -1106.03,
+          "bottom": 132,
+          "width": 180.61,
+          "height": 28
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Station 01",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 1286.64
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": -1286.64,
+          "y": 104,
+          "width": 180.61,
+          "height": 28
+        },
+        "firstSeen": 27.265,
+        "lastSeen": 27.265,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          27.265
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 27.265,
+        "selector": "#f04-rag-machine-co1 > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1412.11,
+          "top": 131,
+          "right": -1079.45,
+          "bottom": 239,
+          "width": 332.66,
+          "height": 108
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "NOTES",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 1412.11
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": -1412.11,
+          "y": 131,
+          "width": 332.66,
+          "height": 108
+        },
+        "firstSeen": 27.265,
+        "lastSeen": 27.265,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          27.265
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 27.265,
+        "selector": "#f04-rag-machine-co1 > div:nth-of-type(2) > em:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1079.45,
+          "top": 131,
+          "right": -980.56,
+          "bottom": 239,
+          "width": 98.89,
+          "height": 108
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "IN",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 1079.45
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": -1079.45,
+          "y": 131,
+          "width": 98.89,
+          "height": 108
+        },
+        "firstSeen": 27.265,
+        "lastSeen": 27.265,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          27.265
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 27.265,
+        "selector": "#f04-rag-machine-co1 > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1295.01,
+          "top": 229.19,
+          "right": -1097.65,
+          "bottom": 252.19,
+          "width": 197.36,
+          "height": 23
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "pdf drops in",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 1295.01
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": -1295.01,
+          "y": 229.19,
+          "width": 197.36,
+          "height": 23
+        },
+        "firstSeen": 27.265,
+        "lastSeen": 27.265,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          27.265
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 27.265,
+        "selector": "div.station.st1 > div:nth-of-type(2) > svg:nth-of-type(1) > text:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1226.83,
+          "top": 613,
+          "right": -1165.82,
+          "bottom": 646,
+          "width": 61.01,
+          "height": 33
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "PDF",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 1226.83
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": -1226.83,
+          "y": 613,
+          "width": 61.01,
+          "height": 33
+        },
+        "firstSeen": 27.265,
+        "lastSeen": 27.265,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          27.265
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 27.265,
+        "selector": "#f04-rag-machine-co2 > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -326.64,
+          "top": 104,
+          "right": -146.03,
+          "bottom": 132,
+          "width": 180.61,
+          "height": 28
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Station 02",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 326.64
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": -326.64,
+          "y": 104,
+          "width": 180.61,
+          "height": 28
+        },
+        "firstSeen": 27.265,
+        "lastSeen": 27.265,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          27.265
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 27.265,
+        "selector": "#f04-rag-machine-co2 > div:nth-of-type(2)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -368.67,
+          "top": 131,
+          "right": -104,
+          "bottom": 239,
+          "width": 264.67,
+          "height": 108
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "PAGE-",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 368.67
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": -368.67,
+          "y": 131,
+          "width": 264.67,
+          "height": 108
+        },
+        "firstSeen": 27.265,
+        "lastSeen": 27.265,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          27.265
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 27.265,
+        "selector": "#f04-rag-machine-co2 > div:nth-of-type(2) > em:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -419.37,
+          "top": 203.19,
+          "right": -53.28,
+          "bottom": 311.19,
+          "width": 366.09,
+          "height": 108
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "TAGGED",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 419.37
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": -419.37,
+          "y": 203.19,
+          "width": 366.09,
+          "height": 108
+        },
+        "firstSeen": 27.265,
+        "lastSeen": 27.265,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          27.265
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 27.265,
+        "selector": "#f04-rag-machine-co2 > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -403.65,
+          "top": 301.38,
+          "right": -69,
+          "bottom": 324.38,
+          "width": 334.65,
+          "height": 23
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "every chunk stamped",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 403.65
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": -403.65,
+          "y": 301.38,
+          "width": 334.65,
+          "height": 23
+        },
+        "firstSeen": 27.265,
+        "lastSeen": 27.265,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          27.265
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 27.265,
+        "selector": "#f04-rag-machine-tag1",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -254.54,
+          "top": 537,
+          "right": -198.11,
+          "bottom": 568,
+          "width": 56.43,
+          "height": 31
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "P.04",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 254.54
+        },
+        "dataAttributes": {
+          "data-svg-origin": "390 238.5"
+        },
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": -254.54,
+          "y": 537,
+          "width": 56.43,
+          "height": 31
+        },
+        "firstSeen": 27.265,
+        "lastSeen": 27.265,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          27.265
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 27.265,
+        "selector": "#f04-rag-machine-tag2",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -254.54,
+          "top": 633,
+          "right": -198.11,
+          "bottom": 664,
+          "width": 56.43,
+          "height": 31
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "P.12",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 254.54
+        },
+        "dataAttributes": {
+          "data-svg-origin": "390 334.5"
+        },
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": -254.54,
+          "y": 633,
+          "width": 56.43,
+          "height": 31
+        },
+        "firstSeen": 27.265,
+        "lastSeen": 27.265,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          27.265
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 27.265,
+        "selector": "#f04-rag-machine-tag3",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -235.84,
+          "top": 716,
+          "right": -194.81,
+          "bottom": 738,
+          "width": 41.03,
+          "height": 22
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "P.27",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 235.84
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": -235.84,
+          "y": 716,
+          "width": 41.03,
+          "height": 22
+        },
+        "firstSeen": 27.265,
+        "lastSeen": 27.265,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          27.265
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 33.323,
+        "selector": "#qfb-left > div:nth-of-type(1)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -64.4,
+          "top": 369.82,
+          "right": -27.27,
+          "bottom": 424.59,
+          "width": 37.13,
+          "height": 54.77
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "✕",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 64.4
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/05-quiz-feedback.html",
+        "bbox": {
+          "x": -64.4,
+          "y": 369.82,
+          "width": 37.13,
+          "height": 54.77
+        },
+        "firstSeen": 33.323,
+        "lastSeen": 33.323,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          33.323
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 33.323,
+        "selector": "#qfb-left > div:nth-of-type(3)",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -83.09,
+          "top": 458.47,
+          "right": 333.63,
+          "bottom": 516.69,
+          "width": 416.72,
+          "height": 58.22
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "Q3 · PANI KAB UBALTA HAI?",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 83.09
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/05-quiz-feedback.html",
+        "bbox": {
+          "x": -83.09,
+          "y": 458.47,
+          "width": 416.72,
+          "height": 58.22
+        },
+        "firstSeen": 33.323,
+        "lastSeen": 33.323,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          33.323
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 33.323,
+        "selector": "div.qfb-ans",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -83.09,
+          "top": 576.61,
+          "right": 55.23,
+          "bottom": 616.24,
+          "width": 138.32,
+          "height": 39.63
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "B · 90°C",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 83.09
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/05-quiz-feedback.html",
+        "bbox": {
+          "x": -83.09,
+          "y": 576.61,
+          "width": 138.32,
+          "height": 39.63
+        },
+        "firstSeen": 33.323,
+        "lastSeen": 33.323,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          33.323
+        ]
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 33.323,
+        "selector": "#qfb-left",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": -128.98,
+          "top": 310.34,
+          "right": 561.77,
+          "bottom": 790.27,
+          "width": 690.76,
+          "height": 479.92
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "✕ TUMHARA JAWAB Q3 · PANI KAB UBALTA HAI? B · 90",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 128.98
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/05-quiz-feedback.html",
+        "bbox": {
+          "x": -128.98,
+          "y": 310.34,
+          "width": 690.76,
+          "height": 479.92
+        },
+        "firstSeen": 33.323,
+        "lastSeen": 33.323,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          33.323
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 39.382,
+        "selector": "#qfb-evidence > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1130,
+          "top": 570,
+          "right": 1228.28,
+          "bottom": 593,
+          "width": 98.28,
+          "height": 23
+        },
+        "containerSelector": "#qfb-pill",
+        "text": "SABOOT",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.56,
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/05-quiz-feedback.html",
+        "bbox": {
+          "x": 1130,
+          "y": 570,
+          "width": 98.28,
+          "height": 23
+        },
+        "firstSeen": 39.382,
+        "lastSeen": 39.382,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          39.382
+        ]
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 45.441,
+        "selector": "div.hn-bg-numeral",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": 1644,
+          "top": -30,
+          "right": 1860,
+          "bottom": 230,
+          "width": 216,
+          "height": 260
+        },
+        "containerSelector": "#el-06-honest-no > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "06",
+        "fixHint": "Text is 216px x 260px inside 1920px x 1080px and overflows by up to 30px; increase the container height to at least ~1110px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 30
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/06-honest-no.html",
+        "bbox": {
+          "x": 1644,
+          "y": -30,
+          "width": 216,
+          "height": 260
+        },
+        "firstSeen": 45.441,
+        "lastSeen": 45.441,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          45.441
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 45.441,
+        "selector": "div.hn-bg-numeral",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1644,
+          "top": -69,
+          "right": 1860,
+          "bottom": 269,
+          "width": 216,
+          "height": 338
+        },
+        "containerSelector": "html > body:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "06",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 69
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/06-honest-no.html",
+        "bbox": {
+          "x": 1644,
+          "y": -69,
+          "width": 216,
+          "height": 338
+        },
+        "firstSeen": 45.441,
+        "lastSeen": 45.441,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          45.441
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 45.441,
+        "selector": "div.hn-bg-numeral",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1644,
+          "top": -30,
+          "right": 1860,
+          "bottom": 230,
+          "width": 216,
+          "height": 260
+        },
+        "containerSelector": "#el-06-honest-no > div:nth-of-type(1) > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 30
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/06-honest-no.html",
+        "bbox": {
+          "x": 1644,
+          "y": -30,
+          "width": 216,
+          "height": 260
+        },
+        "firstSeen": 45.441,
+        "lastSeen": 45.441,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          45.441
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 51.5,
+        "selector": "#close-cam",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -15.07,
+          "top": -7.12,
+          "right": 1935.07,
+          "bottom": 1089.83,
+          "width": 1950.14,
+          "height": 1096.96
+        },
+        "containerSelector": "#el-07-close > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 15.07,
+          "right": 15.07,
+          "top": 7.12,
+          "bottom": 9.83
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/07-close.html",
+        "bbox": {
+          "x": -15.07,
+          "y": -7.12,
+          "width": 1950.14,
+          "height": 1096.96
+        },
+        "firstSeen": 51.5,
+        "lastSeen": 51.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          51.5
+        ]
+      }
+    ],
+    "duration": 54.529,
+    "samples": [
+      3.029,
+      9.088,
+      15.147,
+      21.206,
+      27.265,
+      33.323,
+      39.382,
+      45.441,
+      51.5
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 45,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 29,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.15:1; WCAG AA requires 3:1.",
+        "text": "01",
+        "fg": "rgb(239,225,221)",
+        "bg": "rgb(255,240,236)",
+        "ratio": 1.15,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(147,139,136)",
+        "large": true,
+        "selector": "div > div:nth-of-type(1) > div > div:nth-of-type(3)",
+        "dataAttributes": {
+          "data-start": "0",
+          "data-duration": "6.431",
+          "data-track-index": "1"
+        },
+        "sourceFile": "compositions/frames/01-hook.html",
+        "bbox": {
+          "x": 1451.796875,
+          "y": 40,
+          "width": 408.203125,
+          "height": 300
+        },
+        "time": 3.029,
+        "times": [
+          3.029
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.94:1; WCAG AA requires 3:1.",
+        "text": "CHAPTER 4",
+        "fg": "rgb(255,90,31)",
+        "bg": "rgb(249,248,246)",
+        "ratio": 2.94,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(252,89,31)",
+        "large": true,
+        "selector": "div > div:nth-of-type(1) > div > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/01-hook.html",
+        "bbox": {
+          "x": 227.68846130371094,
+          "y": 318.0096435546875,
+          "width": 332.49456787109375,
+          "height": 86.52810668945312
+        },
+        "time": 3.029,
+        "times": [
+          3.029
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.95:1; WCAG AA requires 3:1.",
+        "text": "CHAPTER 7",
+        "fg": "rgb(255,90,31)",
+        "bg": "rgb(255,247,245)",
+        "ratio": 2.95,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(252,89,31)",
+        "large": true,
+        "selector": "div > div:nth-of-type(1) > div > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/01-hook.html",
+        "bbox": {
+          "x": 802.0713500976562,
+          "y": 323.302978515625,
+          "width": 332.47784423828125,
+          "height": 75.27093505859375
+        },
+        "time": 3.029,
+        "times": [
+          3.029
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.92:1; WCAG AA requires 3:1.",
+        "text": "CHAPTER 9",
+        "fg": "rgb(255,90,31)",
+        "bg": "rgb(249,247,245)",
+        "ratio": 2.92,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(250,88,30)",
+        "large": true,
+        "selector": "div > div:nth-of-type(1) > div > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(3) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/01-hook.html",
+        "bbox": {
+          "x": 1341.449951171875,
+          "y": 328.9025573730469,
+          "width": 332.378662109375,
+          "height": 71.37786865234375
+        },
+        "time": 3.029,
+        "times": [
+          3.029
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.31:1; WCAG AA requires 3:1.",
+        "text": "02",
+        "fg": "rgb(224,215,209)",
+        "bg": "rgb(255,244,238)",
+        "ratio": 1.31,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(147,141,137)",
+        "large": true,
+        "selector": "#f02-wallnum",
+        "dataAttributes": {
+          "data-start": "0",
+          "data-duration": "9.432",
+          "data-track-index": "0"
+        },
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 1686.5430908203125,
+          "y": -51.46743392944336,
+          "width": 184.1939697265625,
+          "height": 214.8930206298828
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "y",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 133.17356872558594,
+          "y": 322.0370788574219,
+          "width": 21.729141235351562,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "e",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 154.9027099609375,
+          "y": 322.0370788574219,
+          "width": 22.512588500976562,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "h",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 177.41529846191406,
+          "y": 322.0370788574219,
+          "width": 22.81640625,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "c",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(5)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 211.61590576171875,
+          "y": 322.0370788574219,
+          "width": 22.080902099609375,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "h",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(6)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 233.69680786132812,
+          "y": 322.0370788574219,
+          "width": 22.81640625,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "a",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(7)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 256.5132141113281,
+          "y": 322.0370788574219,
+          "width": 21.713134765625,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "p",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(8)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 278.2263488769531,
+          "y": 322.0370788574219,
+          "width": 23.5838623046875,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "t",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(9)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 301.8102111816406,
+          "y": 322.0370788574219,
+          "width": 13.079071044921875,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "e",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(10)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 314.8892822265625,
+          "y": 322.0370788574219,
+          "width": 22.512603759765625,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "r",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(11)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 337.4018859863281,
+          "y": 322.0370788574219,
+          "width": 14.90179443359375,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "s",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(13)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 363.6878967285156,
+          "y": 322.0370788574219,
+          "width": 20.48199462890625,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "a",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(14)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 384.1698913574219,
+          "y": 322.0370788574219,
+          "width": 21.713134765625,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "m",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(15)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 405.8830261230469,
+          "y": 322.0370788574219,
+          "width": 33.30523681640625,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "j",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(16)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 439.1882629394531,
+          "y": 322.0370788574219,
+          "width": 9.9451904296875,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "h",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(17)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 449.1334533691406,
+          "y": 322.0370788574219,
+          "width": 22.816375732421875,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "a",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(18)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 471.9498291015625,
+          "y": 322.0370788574219,
+          "width": 21.713134765625,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.1:1; WCAG AA requires 3:1.",
+        "text": "o",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 1.1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(141,139,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(7) > div:nth-of-type(2) > span:nth-of-type(1) > span:nth-of-type(19)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 493.6629638671875,
+          "y": 322.0370788574219,
+          "width": 23.1202392578125,
+          "height": 45.02520751953125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.77:1; WCAG AA requires 3:1.",
+        "text": "TUMHARE NOTES",
+        "fg": "rgb(255,90,31)",
+        "bg": "rgb(244,241,237)",
+        "ratio": 2.77,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(244,86,30)",
+        "large": true,
+        "selector": "#f02-railabel",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 1348.85400390625,
+          "y": 255.5225830078125,
+          "width": 245.7359619140625,
+          "height": 24.5592041015625
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.79:1; WCAG AA requires 3:1.",
+        "text": "UNOPENED",
+        "fg": "rgb(255,90,31)",
+        "bg": "rgb(245,242,237)",
+        "ratio": 2.79,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(245,86,30)",
+        "large": true,
+        "selector": "#f02-seal",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/02-fake-answer.html",
+        "bbox": {
+          "x": 1369.320068359375,
+          "y": 716.0076293945312,
+          "width": 218.4425048828125,
+          "height": 53.21160888671875
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.17:1; WCAG AA requires 3:1.",
+        "text": "03",
+        "fg": "rgb(237,227,221)",
+        "bg": "rgb(255,244,238)",
+        "ratio": 1.17,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(147,141,137)",
+        "large": true,
+        "selector": "div > div:nth-of-type(3) > div > div:nth-of-type(1) > div:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/03-meeko-entry.html",
+        "bbox": {
+          "x": 1416.9180908203125,
+          "y": 43.34998321533203,
+          "width": 417.1859130859375,
+          "height": 297.9900207519531
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.88:1; WCAG AA requires 3:1.",
+        "text": "PRODUCT  INTRO",
+        "fg": "rgb(255,90,31)",
+        "bg": "rgb(255,244,238)",
+        "ratio": 2.88,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(249,88,30)",
+        "large": true,
+        "selector": "div > div:nth-of-type(3) > div > div:nth-of-type(1) > div:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/03-meeko-entry.html",
+        "bbox": {
+          "x": 125.62800598144531,
+          "y": 87.05518341064453,
+          "width": 305.8277587890625,
+          "height": 30.79229736328125
+        },
+        "time": 15.147,
+        "times": [
+          15.147
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.17:1; WCAG AA requires 4.5:1.",
+        "text": "P.31",
+        "fg": "rgb(176,176,176)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 2.17,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(118,118,118)",
+        "large": false,
+        "selector": "div > div:nth-of-type(4) > div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(2) > svg > text:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": 702.3145751953125,
+          "y": 714,
+          "width": 42.71875,
+          "height": 20
+        },
+        "time": 27.265,
+        "times": [
+          27.265
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.14:1; WCAG AA requires 3:1.",
+        "text": "GEMMA",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(255,233,223)",
+        "ratio": 1.14,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(138,136,134)",
+        "large": true,
+        "selector": "div > div:nth-of-type(4) > div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(5) > div:nth-of-type(2) > svg > text",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": 1533.7989501953125,
+          "y": 615,
+          "width": 119.75,
+          "height": 37
+        },
+        "time": 27.265,
+        "times": [
+          27.265
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.22:1; WCAG AA requires 3:1.",
+        "text": "04",
+        "fg": "rgb(233,230,226)",
+        "bg": "rgb(255,252,248)",
+        "ratio": 1.22,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(148,146,144)",
+        "large": true,
+        "selector": "div > div:nth-of-type(4) > div > div:nth-of-type(3) > div",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-rag-machine.html",
+        "bbox": {
+          "x": 1651.921875,
+          "y": 922,
+          "width": 172.078125,
+          "height": 120
+        },
+        "time": 27.265,
+        "times": [
+          27.265
+        ]
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      3.029,
+      15.147,
+      27.265,
+      39.382,
+      51.5
+    ],
+    "checked": 90,
+    "passed": 61
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

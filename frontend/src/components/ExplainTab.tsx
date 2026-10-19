@@ -26,7 +26,7 @@ export default function ExplainTab({ nb }: { nb: string }) {
           {["Simple", "Detailed", "Exam-cram"].map((l) => <option key={l}>{l}</option>)}
         </select>
         <button onClick={run} disabled={busy}
-          className="px-4 py-2 rounded-xl bg-orange-600 text-white font-semibold text-sm disabled:opacity-50 hover:bg-orange-700 shadow-sm flex items-center gap-1.5">
+          className="px-4 py-2 rounded-xl bg-brand text-white font-semibold text-sm disabled:opacity-50 hover:bg-branddark shadow-sm flex items-center gap-1.5">
           <Sparkles size={15} /> {busy ? "Explaining…" : "Explain my notes"}
         </button>
       </div>

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #000;
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #FFFCF8;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-3eo1"
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="54.529"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div data-hf-id="hf-6b7u"
+        id="el-01-hook"
+        class="scene"
+        data-composition-id="01-hook"
+        data-composition-src="compositions/frames/01-hook.html"
+        data-start="0"
+        data-duration="6.431"
+        data-track-index="0"
+      ></div>
+      <audio data-hf-id="hf-kntj"
+        id="el-01-hook-voice"
+        src="assets/voice/01.wav"
+        data-start="0"
+        data-duration="5.931"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div data-hf-id="hf-gccz"
+        id="el-02-fake-answer"
+        class="scene"
+        data-composition-id="02-fake-answer"
+        data-composition-src="compositions/frames/02-fake-answer.html"
+        data-start="5.931"
+        data-duration="9.432"
+        data-track-index="1"
+      ></div>
+      <audio data-hf-id="hf-fwdl"
+        id="el-02-fake-answer-voice"
+        src="assets/voice/02.wav"
+        data-start="5.931"
+        data-duration="8.832"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div data-hf-id="hf-e2zb"
+        id="el-03-meeko-entry"
+        class="scene"
+        data-composition-id="03-meeko-entry"
+        data-composition-src="compositions/frames/03-meeko-entry.html"
+        data-start="14.763000000000002"
+        data-duration="5.215"
+        data-track-index="0"
+      ></div>
+      <audio data-hf-id="hf-ursw"
+        id="el-03-meeko-entry-voice"
+        src="assets/voice/03.wav"
+        data-start="14.763000000000002"
+        data-duration="4.715"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div data-hf-id="hf-52qu"
+        id="el-04-rag-machine"
+        class="scene"
+        data-composition-id="04-rag-machine"
+        data-composition-src="compositions/frames/04-rag-machine.html"
+        data-start="19.478"
+        data-duration="13.312"
+        data-track-index="1"
+      ></div>
+      <audio data-hf-id="hf-he1h"
+        id="el-04-rag-machine-voice"
+        src="assets/voice/04.wav"
+        data-start="19.478"
+        data-duration="13.312"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div data-hf-id="hf-901q"
+        id="el-05-quiz-feedback"
+        class="scene"
+        data-composition-id="05-quiz-feedback"
+        data-composition-src="compositions/frames/05-quiz-feedback.html"
+        data-start="32.79"
+        data-duration="7.817"
+        data-track-index="0"
+      ></div>
+      <audio data-hf-id="hf-odh2"
+        id="el-05-quiz-feedback-voice"
+        src="assets/voice/05.wav"
+        data-start="32.79"
+        data-duration="7.317"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div data-hf-id="hf-37fw"
+        id="el-06-honest-no"
+        class="scene"
+        data-composition-id="06-honest-no"
+        data-composition-src="compositions/frames/06-honest-no.html"
+        data-start="40.107"
+        data-duration="6.815"
+        data-track-index="1"
+      ></div>
+      <audio data-hf-id="hf-93n0"
+        id="el-06-honest-no-voice"
+        src="assets/voice/06.wav"
+        data-start="40.107"
+        data-duration="6.315"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div data-hf-id="hf-ka6v"
+        id="el-07-close"
+        class="scene"
+        data-composition-id="07-close"
+        data-composition-src="compositions/frames/07-close.html"
+        data-start="46.422"
+        data-duration="8.107"
+        data-track-index="0"
+      ></div>
+      <audio data-hf-id="hf-b6pw"
+        id="el-07-close-voice"
+        src="assets/voice/07.wav"
+        data-start="46.422"
+        data-duration="8.107"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+      // ── frame transitions (injected by transitions.mjs) ──
+      (function () { var tl = window.__timelines["main"];
+        tl.to("#el-01-hook", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 5.931);
+        tl.fromTo("#el-02-fake-answer", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 5.931);
+        tl.addLabel("hf:transition:01-hook:02-fake-answer:push-slide", 5.931);
+        tl.to("#el-02-fake-answer", { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: 0.6, ease: "power2.inOut" }, 14.763);
+        tl.fromTo("#el-03-meeko-entry", { filter: "blur(10px)", scale: 0.97, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.6, ease: "power2.inOut" }, 14.763);
+        tl.addLabel("hf:transition:02-fake-answer:03-meeko-entry:blur-crossfade", 14.763);
+        tl.to("#el-03-meeko-entry", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 19.478);
+        tl.fromTo("#el-04-rag-machine", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 19.478);
+        tl.addLabel("hf:transition:03-meeko-entry:04-rag-machine:push-slide", 19.478);
+        tl.to("#el-05-quiz-feedback", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 40.107);
+        tl.fromTo("#el-06-honest-no", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 40.107);
+        tl.addLabel("hf:transition:05-quiz-feedback:06-honest-no:crossfade", 40.107);
+        tl.to("#el-06-honest-no", { y: -1080, duration: 0.5, ease: "power3.inOut" }, 46.422);
+        tl.fromTo("#el-07-close", { y: 1080, opacity: 1 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 46.422);
+        tl.addLabel("hf:transition:06-honest-no:07-close:push-slide", 46.422);
+        tl.to({}, { duration: 54.529 }, 0); // full-span anchor — main.duration() == composition total (Studio master duration)
+      })();
+    </script>
+  </body>
+</html>

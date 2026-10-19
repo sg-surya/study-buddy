@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Anton"; font-style: normal; font-weight: 400; src: url("assets/fonts/anton-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 400; src: url("assets/fonts/sg-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 500; src: url("assets/fonts/sg-500.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 700; src: url("assets/fonts/sg-700.woff2") format("woff2"); }
+        #r13 { position: absolute; inset: 0; background: #201c19; overflow: hidden; }
+        #r13 .hxw { position: absolute; right: 0; top: 0; width: 640px; height: 300px; }
+        #r13 .j1, #r13 .j2, #r13 .j3 { position: absolute; left: 60px; font-family: "Anton"; font-size: 128px; line-height: 0.98; color: #fffcf8; letter-spacing: 1px; }
+        #r13 .j1 { top: 210px; }
+        #r13 .j2 { top: 340px; color: #ff5a1f; }
+        #r13 .j3 { top: 470px; }
+        #r13 .sub { position: absolute; left: 64px; top: 660px; font-size: 24px; font-weight: 500; color: rgba(255, 252, 248, 0.6); letter-spacing: 1px; }
+        #r13 .item { position: absolute; left: 1130px; width: 700px; height: 150px; background: #2a2522; border-left: 7px solid #ff5a1f; padding: 28px 34px; }
+        #r13 .i1 { top: 220px; } #r13 .i2 { top: 410px; } #r13 .i3 { top: 600px; }
+        #r13 .item .t { font-family: "Anton"; font-size: 40px; color: #fffcf8; letter-spacing: 1px; }
+        #r13 .item .b { margin-top: 8px; font-size: 19px; color: rgba(255, 252, 248, 0.6); }
+        #r13 .eb { position: absolute; left: 64px; top: 56px; color: #ff5a1f; font-weight: 700; font-size: 15px; letter-spacing: 5px; }
+      </style>
+      <div id="r13" data-composition-id="13-specbar" data-width="1920" data-height="1080">
+        <div class="hxw hatch-w"></div>
+        <div class="eb" id="s13-eb">HOW MEEKO IS BUILT</div>
+        <div class="j1" id="s13-j1">TRANSPARENT.</div>
+        <div class="j2" id="s13-j2">LOCAL.</div>
+        <div class="j3" id="s13-j3">PRIVATE.</div>
+        <div class="sub" id="s13-sub">your notes stay yours — inference runs on your machine.</div>
+
+        <div class="item i1" id="s13-i1">
+          <div class="t">GEMMA 4</div>
+          <div class="b">answer model · track 1 · grounded generation</div>
+        </div>
+        <div class="item i2" id="s13-i2">
+          <div class="t">LM STUDIO</div>
+          <div class="b">local inference · no cloud required</div>
+        </div>
+        <div class="item i3" id="s13-i3">
+          <div class="t">YOUR NOTES</div>
+          <div class="b">uploaded material only · nothing invented</div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#s13-eb", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.15);
+        tl.fromTo("#s13-j1", { opacity: 0, x: -44 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.35);
+        tl.fromTo("#s13-j2", { opacity: 0, x: -44 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.8);
+        tl.fromTo("#s13-j3", { opacity: 0, x: -44 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.25);
+        tl.fromTo("#s13-sub", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 2.6);
+        ["1", "2", "3"].forEach((n, i) => {
+          const t = 3.4 + i * 0.7;
+          tl.fromTo(`#s13-i${n}`, { opacity: 0, x: 70 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, t);
+        });
+        window.__timelines["13-specbar"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

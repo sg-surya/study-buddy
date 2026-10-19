@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Anton"; font-style: normal; font-weight: 400; src: url("assets/fonts/anton-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 400; src: url("assets/fonts/sg-400.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 500; src: url("assets/fonts/sg-500.woff2") format("woff2"); }
+        @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 700; src: url("assets/fonts/sg-700.woff2") format("woff2"); }
+        #r09 { position: absolute; inset: 0; background: #ff5a1f; overflow: hidden; }
+        #r09 .hx { position: absolute; inset: 0; }
+        #r09 .eb { position: absolute; left: 64px; top: 56px; color: #201c19; font-weight: 700; font-size: 15px; letter-spacing: 5px; }
+        #r09 .lead { position: absolute; left: 64px; top: 236px; font-size: 27px; font-weight: 500; color: #201c19; }
+        #r09 .j1, #r09 .j2 { position: absolute; left: 60px; font-family: "Anton"; font-size: 150px; line-height: 0.98; color: #201c19; letter-spacing: 1px; }
+        #r09 .j1 { top: 300px; }
+        #r09 .j2 { top: 448px; }
+        #r09 .strip { position: absolute; left: 64px; top: 690px; width: 980px; background: #fffcf8; border-left: 8px solid #ff5a1f; padding: 26px 32px; overflow: hidden; }
+        #r09 .strip .chip { position: absolute; right: 26px; top: 26px; background: #ff5a1f; color: #201c19; font-size: 17px; font-weight: 700; letter-spacing: 1px; padding: 8px 14px; }
+        #r09 .strip .q { width: 780px; font-size: 23px; line-height: 1.5; color: #201c19; }
+        #r09 .strip .meta { margin-top: 12px; font-size: 14px; font-weight: 700; letter-spacing: 3px; color: #716a65; }
+        #r09 .sweep { position: absolute; left: 0; top: 0; width: 980px; height: 100%; background: rgba(255, 90, 31, 0.12); }
+        #r09 .stamp { position: absolute; right: 150px; top: 300px; width: 330px; height: 330px; border: 6px solid #2e7d5b; border-radius: 50%; background: rgba(255, 252, 248, 0.92); }
+        #r09 .stamp .t { position: absolute; left: 0; top: 108px; width: 100%; text-align: center; font-size: 46px; font-weight: 700; letter-spacing: 6px; color: #276b4e; }
+        #r09 .stamp .s { position: absolute; left: 0; top: 176px; width: 100%; text-align: center; font-size: 16px; font-weight: 500; letter-spacing: 3px; color: #276b4e; }
+        #r09 .stamp-lbl { position: absolute; right: 150px; top: 664px; width: 330px; text-align: center; font-size: 15px; font-weight: 700; letter-spacing: 4px; color: #201c19; }
+      </style>
+      <div id="r09" data-composition-id="09-verifies" data-width="1920" data-height="1080">
+        <div class="hx hatch"></div>
+        <div class="eb" id="s09-eb">THE REAL INNOVATION</div>
+        <div class="lead" id="s09-lead">Meeko doesn't simply generate citations.</div>
+        <div class="j1" id="s09-j1">IT VERIFIES</div>
+        <div class="j2" id="s09-j2">THEM.</div>
+
+        <div class="strip" id="s09-strip">
+          <div class="sweep" id="s09-sweep"></div>
+          <div class="chip">p.3</div>
+          <div class="q">"Those which allow electricity to pass through them easily are called conductors…"</div>
+          <div class="meta">CHECKED AGAINST THE ORIGINAL PAGE</div>
+        </div>
+
+        <div class="stamp" id="s09-stamp">
+          <div class="t">VERIFIED</div>
+          <div class="s">DETERMINISTIC CODE</div>
+        </div>
+        <div class="stamp-lbl" id="s09-stamplbl">EVERY CITED QUOTATION</div>
+      </div>
+      <script>
+        gsap.set("#s09-sweep", { scaleX: 0 });
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#s09-eb", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.15);
+        tl.fromTo("#s09-lead", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 0.5);
+        tl.fromTo("#s09-j1", { opacity: 0, y: 44 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.6)" }, 0.95);
+        tl.fromTo("#s09-j2", { opacity: 0, y: 44 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.6)" }, 1.4);
+        tl.fromTo("#s09-strip", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 3.0);
+        tl.to("#s09-sweep", { scaleX: 1, duration: 0.9, ease: "power2.inOut", transformOrigin: "0% 50%" }, 4.2);
+        tl.to("#s09-sweep", { scaleX: 0, duration: 0.7, ease: "power2.inOut", transformOrigin: "100% 50%" }, 5.2);
+        tl.fromTo("#s09-stamp", { opacity: 0, scale: 2.3, rotation: -20 }, { opacity: 1, scale: 1, rotation: -8, duration: 0.34, ease: "power4.in", transformOrigin: "50% 50%" }, 6.4);
+        tl.fromTo("#s09-stamplbl", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 6.8);
+        tl.fromTo("#s09-strip", { y: 0 }, { y: -6, duration: 0.12, yoyo: true, repeat: 1 }, 6.5);
+        window.__timelines["09-verifies"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

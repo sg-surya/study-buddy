@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+  html, body { margin:0; width:1920px; height:1080px; overflow:hidden; background:#0B1020; }
+  body { font-family: system-ui, sans-serif; color:#F1F5F9; }
+  .slide { position:relative; width:1920px; height:1080px; overflow:hidden; background:#0B1020; box-sizing:border-box; padding:90px 130px; }
+  .kicker { font-size:36px; letter-spacing:6px; color:#34D399; font-weight:700; }
+  h1 { font-size:92px; line-height:1.02; margin:18px 0 16px; letter-spacing:-0.03em; }
+  h2 { font-size:76px; line-height:1.05; margin:14px 0 20px; letter-spacing:-0.02em; }
+  .sub { font-size:46px; color:#CBD5E1; line-height:1.35; max-width:1500px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:36px; margin-top:30px; }
+  .card { background:#111C33; border:2px solid #1E2E55; border-radius:28px; padding:34px 38px; }
+  .card p { font-size:42px; line-height:1.35; color:#E2E8F0; margin:0; }
+  .card b { color:#FBBF24; }
+  .pill { display:inline-block; font-size:38px; font-weight:700; background:#10B981; color:#06281D; border-radius:999px; padding:10px 30px; margin-top:22px; }
+  .foot { position:absolute; left:130px; right:130px; bottom:56px; font-size:34px; color:#7C8DB0; }
+  .hl { color:#34D399; } .amber { color:#FBBF24; }
+  table { width:100%; border-collapse:collapse; margin-top:24px; font-size:40px; }
+  td, th { border:2px solid #22345F; padding:16px 22px; text-align:left; }
+  th { color:#34D399; }
+</style>
+</head>
+<body>
+<script type="application/hyperframes-slideshow+json">
+{"slides":[
+  {"sceneId":"title","notes":"Open: one-liner + Track1 PS-01. 30 sec."},
+  {"sceneId":"problem","notes":"Pain first. End on live SUPPORTED vs NOT_FOUND proof.","fragments":[11.0,14.0]},
+  {"sceneId":"solution","notes":"Flow: upload-Ask-Explain-Quiz. Click-to-jump highlight.","fragments":[27.0]},
+  {"sceneId":"users","notes":"Primary = night-before-exam students."},
+  {"sceneId":"ai","notes":"Gemma 4 local via LM Studio. Code verifies quotes."},
+  {"sceneId":"stack","notes":"Walk the 5 rows fast."},
+  {"sceneId":"links","notes":"Close on demo video + repo + model card."}
+]}
+</script>
+
+<div data-composition-id="title" data-start="0" data-duration="8" data-label="Title" data-width="1920" data-height="1080">
+  <section class="clip slide" data-start="0" data-duration="8" data-track-index="0">
+    <div class="kicker">AI INNOVATION PITCH DECK · TRACK 1 · PS-01</div>
+    <h1 id="title-h">Study Companion<br/>from <span class="hl">Real Notes</span></h1>
+    <p class="sub" id="title-sub">Learn from your notes. Verify every answer. Evidence-first tutor: Ask with page proof, Explain, Quiz with feedback — never invents facts.</p>
+    <div class="pill" id="title-pill">Best Use of Gemma 4 · E-Cell IIMTU · Hacktoberfest HackDay 2026</div>
+    <div class="foot">Team [...] · Organisation: E-Cell IIMTU</div>
+  </section>
+</div>
+
+<div data-composition-id="problem" data-start="8" data-duration="10" data-label="The problem" data-width="1920" data-height="1080">
+  <section class="clip slide" data-start="8" data-duration="10" data-track-index="0">
+    <div class="kicker">01 / 06 · THE PROBLEM</div>
+    <h2 id="prob-h">Chatbots answer confidently even when your notes do not.</h2>
+    <div class="grid2">
+      <div class="card" id="prob-c1"><p><b>What:</b> students revise from 2–5 page PDFs; generic bots answer from memory — learners can't tell supported vs invented.</p></div>
+      <div class="card" id="prob-c2"><p><b>Why it matters:</b> wrong confidence before exams; no trace back to the page; no feedback on mistakes.</p></div>
+    </div>
+    <p class="sub" id="prob-proof" style="margin-top:26px">Proof: <span class="amber">same questions → SUPPORTED-with-page vs NOT_FOUND</span> on leph101.pdf. Today: ChatGPT-style chat + manual self-quiz — neither grounds in your material.</p>
+  </section>
+</div>
+
+<div data-composition-id="solution" data-start="18" data-duration="10" data-label="Solution" data-width="1920" data-height="1080">
+  <section class="clip slide" data-start="18" data-duration="10" data-track-index="0">
+    <div class="kicker">02 / 06 · PROPOSED SOLUTION</div>
+    <h2 id="sol-h">Upload notes → Ask → See proof → Quiz.</h2>
+    <div class="grid2">
+      <div class="card" id="sol-c1"><p><b>Flow:</b> embed + retrieve top chunks → Gemma 4 cites → code verifies every quote is a real substring.</p></div>
+      <div class="card" id="sol-c2"><p><b>Features:</b> page-tagged evidence + jump highlight · NOT_FOUND guard · real-notes quiz · meaning-based grading.</p></div>
+    </div>
+    <p class="sub" id="sol-out">Impact: traceable in seconds · <span class="hl">zero invented citations by construction</span> · runs offline.</p>
+  </section>
+</div>
+
+<div data-composition-id="users" data-start="28" data-duration="8" data-label="Users" data-width="1920" data-height="1080">
+  <section class="clip slide" data-start="28" data-duration="8" data-track-index="0">
+    <div class="kicker">03 / 06 · TARGET USERS</div>
+    <h2 id="usr-h">Built for the night-before-exam student.</h2>
+    <div class="grid2">
+      <div class="card" id="usr-c1"><p><b>Primary:</b> college students revising 2–5 pages. Need: "is this really in my notes?", practice Qs, honest feedback.</p></div>
+      <div class="card" id="usr-c2"><p><b>Secondary:</b> judges verify via evidence + scores; teachers see misconceptions. Start: leph101 / photosynthesis; pilot = judges.</p></div>
+    </div>
+  </section>
+</div>
+
+<div data-composition-id="ai" data-start="36" data-duration="9" data-label="AI component" data-width="1920" data-height="1080">
+  <section class="clip slide" data-start="36" data-duration="9" data-track-index="0">
+    <div class="kicker">04 / 06 · AI COMPONENT</div>
+    <h2 id="ai-h">Gemma 4 reasons. Code verifies.</h2>
+    <p class="sub" id="ai-sub">Model: <span class="amber">google/gemma-4-e2b</span> local via LM Studio :1234 · embeddings nomic-embed · Google AI Studio fallback. Open-weight, offline, private, strong JSON-mode.</p>
+    <p class="sub" id="ai-sub2">AI does: grounded Q&A + quiz gen + grading + simplification. Safeguards: substring citation gate → forced NOT_FOUND · blank-answer fail · 0.72 / 0.55 thresholds.</p>
+  </section>
+</div>
+
+<div data-composition-id="stack" data-start="45" data-duration="9" data-label="Stack" data-width="1920" data-height="1080">
+  <section class="clip slide" data-start="45" data-duration="9" data-track-index="0">
+    <div class="kicker">05 / 06 · TECHNOLOGY STACK</div>
+    <h2 id="st-h" style="font-size:64px">React UI · FastAPI brain · Local Gemma.</h2>
+    <table id="st-t"><tr><th>Layer</th><th>Tech</th><th>Role</th></tr>
+    <tr><td>Frontend</td><td>React + TS + Vite + Tailwind</td><td>upload · chat · evidence · quiz</td></tr>
+    <tr><td>Backend</td><td>FastAPI rag/llm/tutor/main</td><td>chunk · retrieve · verify · grade</td></tr>
+    <tr><td>AI</td><td>Gemma 4 via LM Studio</td><td>answers · quiz · grading</td></tr></table>
+  </section>
+</div>
+
+<div data-composition-id="links" data-start="54" data-duration="8" data-label="Links" data-width="1920" data-height="1080">
+  <section class="clip slide" data-start="54" data-duration="8" data-track-index="0">
+    <div class="kicker">06 / 06 · LINKS &amp; REFERENCES</div>
+    <h2 id="lk-h">Verify everything. Try the demo.</h2>
+    <p class="sub" id="lk-sub">Demo video: videos/study-companion-explainer · Deck: videos/pitch-deck · Repo (MIT): PRD + plan + samples · Model: ai.google.dev/gemma · Sources: PROBLEM STATEMENTS PS-01 p.4, photosynthesis.md, leph101.pdf</p>
+    <div class="pill" id="lk-pill">Contact: team email [...] · E-Cell IIMTU</div>
+  </section>
+</div>
+
+<script>
+  function mk(id){ var t = gsap.timeline({paused:true}); window.__timelines[id]=t; return t; }
+  var a=mk("title"); a.fromTo("#title-h",{opacity:0,y:40},{opacity:1,y:0,duration:0.7},0.2); a.fromTo("#title-sub",{opacity:0,y:30},{opacity:1,y:0,duration:0.6},0.9); a.fromTo("#title-pill",{opacity:0,y:20},{opacity:1,y:0,duration:0.5},1.6);
+  var b=mk("problem"); b.fromTo("#prob-h",{opacity:0,y:30},{opacity:1,y:0,duration:0.6},8.2); b.fromTo("#prob-c1",{opacity:0,y:30},{opacity:1,y:0,duration:0.5},11.0); b.fromTo("#prob-c2",{opacity:0,y:30},{opacity:1,y:0,duration:0.5},14.0); b.fromTo("#prob-proof",{opacity:0},{opacity:1,duration:0.5},15.5);
+  var c=mk("solution"); c.fromTo("#sol-h",{opacity:0,y:30},{opacity:1,y:0,duration:0.6},18.2); c.fromTo("#sol-c1",{opacity:0,y:30},{opacity:1,y:0,duration:0.5},19.2); c.fromTo("#sol-c2",{opacity:0,y:30},{opacity:1,y:0,duration:0.5},27.0); c.fromTo("#sol-out",{opacity:0},{opacity:1,duration:0.5},27.6);
+  var d=mk("users"); d.fromTo("#usr-h",{opacity:0,y:30},{opacity:1,y:0,duration:0.6},28.2); d.fromTo("#usr-c1",{opacity:0,y:30},{opacity:1,y:0,duration:0.5},29.0); d.fromTo("#usr-c2",{opacity:0,y:30},{opacity:1,y:0,duration:0.5},29.8);
+  var e=mk("ai"); e.fromTo("#ai-h",{opacity:0,y:30},{opacity:1,y:0,duration:0.6},36.2); e.fromTo("#ai-sub",{opacity:0,y:24},{opacity:1,y:0,duration:0.5},37.0); e.fromTo("#ai-sub2",{opacity:0,y:24},{opacity:1,y:0,duration:0.5},38.2);
+  var f=mk("stack"); f.fromTo("#st-h",{opacity:0,y:30},{opacity:1,y:0,duration:0.6},45.2); f.fromTo("#st-t",{opacity:0,y:24},{opacity:1,y:0,duration:0.6},46.0);
+  var g=mk("links"); g.fromTo("#lk-h",{opacity:0,y:30},{opacity:1,y:0,duration:0.6},54.2); g.fromTo("#lk-sub",{opacity:0,y:24},{opacity:1,y:0,duration:0.5},55.0); g.fromTo("#lk-pill",{opacity:0,y:20},{opacity:1,y:0,duration:0.5},56.0);
+</script>
+</body>
+</html>

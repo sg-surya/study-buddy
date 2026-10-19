@@ -1,0 +1,256 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 16
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 3,
+    "findings": [
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 9.444,
+        "selector": "#s02-num",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1252.66,
+          "top": 200,
+          "right": 1830,
+          "bottom": 652,
+          "width": 577.34,
+          "height": 452
+        },
+        "containerSelector": "#s02-c3 > div:nth-of-type(3)",
+        "text": "11:58",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.3,
+        "dataAttributes": {},
+        "sourceFile": "compositions/02-exam-night.html",
+        "bbox": {
+          "x": 1252.66,
+          "y": 200,
+          "width": 577.34,
+          "height": 452
+        },
+        "firstSeen": 9.444,
+        "lastSeen": 9.444,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          9.444
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 28.333,
+        "selector": "#s04-qm",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1545,
+          "top": -102,
+          "right": 1860,
+          "bottom": 862,
+          "width": 315,
+          "height": 964
+        },
+        "containerSelector": "#root",
+        "text": "?",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 102
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/04-not-in-notes.html",
+        "bbox": {
+          "x": 1545,
+          "y": -102,
+          "width": 315,
+          "height": 964
+        },
+        "firstSeen": 28.333,
+        "lastSeen": 28.333,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          28.333
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 47.222,
+        "selector": "#s06-wrap",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -15.21,
+          "top": -8.2,
+          "right": 1936.47,
+          "bottom": 1089.62,
+          "width": 1951.68,
+          "height": 1097.82
+        },
+        "containerSelector": "#h-s06 > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 15.21,
+          "right": 16.47,
+          "top": 8.2,
+          "bottom": 9.62
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/06-meeko-reveal.html",
+        "bbox": {
+          "x": -15.21,
+          "y": -8.2,
+          "width": 1951.68,
+          "height": 1097.82
+        },
+        "firstSeen": 47.222,
+        "lastSeen": 47.222,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          47.222
+        ]
+      }
+    ],
+    "duration": 170,
+    "samples": [
+      9.444,
+      28.333,
+      47.222,
+      66.111,
+      85,
+      103.889,
+      122.778,
+      141.667,
+      160.556
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 3,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 2,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.19:1; WCAG AA requires 3:1.",
+        "text": "11:58",
+        "fg": "rgb(235,232,228)",
+        "bg": "rgb(255,252,248)",
+        "ratio": 1.19,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(148,146,144)",
+        "large": true,
+        "selector": "#s02-num",
+        "dataAttributes": {},
+        "sourceFile": "compositions/02-exam-night.html",
+        "bbox": {
+          "x": 1252.65625,
+          "y": 200,
+          "width": 577.34375,
+          "height": 452
+        },
+        "time": 9.444,
+        "times": [
+          9.444
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 4.42:1; WCAG AA requires 4.5:1.",
+        "text": "INTRODUCING",
+        "fg": "rgb(207,74,26)",
+        "bg": "rgb(255,252,248)",
+        "ratio": 4.42,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(204,73,26)",
+        "large": false,
+        "selector": "#s15-eb",
+        "dataAttributes": {},
+        "sourceFile": "compositions/15-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 210,
+          "width": 1920,
+          "height": 19
+        },
+        "time": 160.556,
+        "times": [
+          160.556
+        ]
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      9.444,
+      47.222,
+      85,
+      122.778,
+      160.556
+    ],
+    "checked": 46,
+    "passed": 44
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

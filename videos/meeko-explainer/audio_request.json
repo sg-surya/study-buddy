@@ -1,0 +1,40 @@
+{
+  "provider": "auto",
+  "speed": "1.0",
+  "lines": [
+    {
+      "id": "01",
+      "text": "Kal exam hai. Notes ready hain. Par ek sawaal ka jawab — notes mein hai kya?"
+    },
+    {
+      "id": "02",
+      "text": "Generic chatbot poochho to turant jawab. Confident. Aur aadha jhooth — kyunki usne tumhare notes khole hi nahi."
+    },
+    {
+      "id": "03",
+      "text": "Meeko ulta hai. Pehle tumhare notes padhta hai — tab bolta hai."
+    },
+    {
+      "id": "04",
+      "text": "Andar machine simple hai. Notes ke tukde — har tukda page-tagged. Sawaal aate hi sahi tukde nikalte hain — phir Gemma jawab likhta hai — aur code har quote verify karta hai."
+    },
+    {
+      "id": "05",
+      "text": "Quiz mein galat jawab? Meeko sirf cross nahi lagata — sahi jawab, saboot, aur hint deta hai."
+    },
+    {
+      "id": "06",
+      "text": "Aur jab jawab notes mein nahi — Meeko guess nahi karta. Saaf kehta hai: NOT FOUND."
+    },
+    {
+      "id": "07",
+      "text": "Ask. Quiz. Flashcards. Audio overview. Sab tumhare notes se. Meeko — learn from your notes. Verify every answer."
+    }
+  ],
+  "bgm": {
+    "mode": "retrieve",
+    "query": "warm minimal acoustic underscore",
+    "blob": "Generic chatbots invent answers; Meeko answers only from your notes — with proof.",
+    "arc": "story-explainer"
+  }
+}

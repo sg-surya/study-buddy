@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+  html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#0B1020;}
+  body{font-family:system-ui,sans-serif;color:#F1F5F9;}
+  #root{width:100%;height:100%;position:relative;overflow:hidden;background:#0B1020;}
+  .bg{position:absolute;inset:0;background:radial-gradient(1100px 600px at 20% 15%,#14324A 0%,transparent 60%),radial-gradient(900px 600px at 85% 80%,#0E3B2E 0%,transparent 55%),#0B1020;}
+  .scene{position:absolute;inset:0;padding:100px 130px;box-sizing:border-box;}
+  .kick{font-size:34px;letter-spacing:6px;color:#34D399;font-weight:800;}
+  .big{font-size:88px;line-height:1.03;letter-spacing:-0.03em;margin:16px 0;}
+  .mid{font-size:64px;line-height:1.1;margin:14px 0;}
+  .body{font-size:44px;line-height:1.4;color:#CBD5E1;max-width:1550px;}
+  .hl{color:#34D399;} .amber{color:#FBBF24;}
+  .row{display:flex;gap:32px;margin-top:30px;}
+  .card{flex:1;background:#111C33;border:2px solid #22345F;border-radius:26px;padding:30px 34px;}
+  .card p{font-size:40px;line-height:1.35;margin:0;color:#E2E8F0;}
+  .ev{border-left:10px solid #10B981;background:#0E2A23;border-radius:16px;padding:20px 28px;margin-top:24px;}
+  .ev p{font-size:40px;margin:0;}
+  .stamp{display:inline-block;font-size:44px;font-weight:800;background:#F43F5E;color:#fff;border-radius:16px;padding:8px 28px;margin-top:20px;}
+  .bar{position:absolute;left:0;bottom:0;height:14px;width:100%;background:#16213B;}
+  .barfill{position:absolute;left:0;top:0;bottom:0;width:100%;background:linear-gradient(90deg,#10B981,#FBBF24);transform-origin:left center;}
+  .num{font-size:200px;font-weight:800;color:#FBBF24;line-height:1;}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="66" data-width="1920" data-height="1080">
+  <div class="clip bg" data-start="0" data-duration="66" data-track-index="0"></div>
+
+  <section class="clip scene" data-start="0" data-duration="10" data-track-index="1">
+    <div class="kick">NIGHT BEFORE EXAM</div>
+    <div class="big" id="s1-h">3 pages of notes.<br/>One confident chatbot.<br/><span class="hl">But is it in YOUR notes?</span></div>
+  </section>
+
+  <section class="clip scene" data-start="10" data-duration="12" data-track-index="1">
+    <div class="kick">THE PROBLEM</div>
+    <div class="mid" id="s2-h">Generic bots answer from memory, <span class="amber">not your material.</span></div>
+    <div class="row"><div class="card"><p id="s2-c1">Wrong confidence before exams. No trace back to the page.</p></div><div class="card"><p id="s2-c2">Manual self-quizzing. Zero feedback on what you got wrong.</p></div></div>
+  </section>
+
+  <section class="clip scene" data-start="22" data-duration="14" data-track-index="1">
+    <div class="kick">THE SOLUTION · STUDY COMPANION</div>
+    <div class="mid" id="s3-h">Upload notes. Ask. <span class="hl">See proof.</span></div>
+    <div class="ev" id="s3-ev"><p>Answer + <b>Evidence c2 · p.3</b> — "chlorophyll absorbs light in thylakoids" · click to jump into notes</p></div>
+    <p class="body" id="s3-b">Explain in 3 levels. Quiz from YOUR notes. Not in notes? Honest NOT FOUND + guidance.</p>
+  </section>
+
+  <section class="clip scene" data-start="36" data-duration="14" data-track-index="1">
+    <div class="kick">HOW IT WORKS</div>
+    <div class="mid" id="s4-h"><span class="hl">Gemma 4</span> reasons. <span class="amber">Code verifies.</span></div>
+    <div class="row"><div class="card"><p id="s4-c1">Chunk + page-tag + retrieve top-4 by embeddings.</p></div><div class="card"><p id="s4-c2">Every quote substring-checked. Unverified = forced NOT FOUND.</p></div><div class="card"><p id="s4-c3">Quiz graded by meaning. Hints cite the page.</p></div></div>
+  </section>
+
+  <section class="clip scene" data-start="50" data-duration="10" data-track-index="1">
+    <div class="kick">LIVE PROOF</div>
+    <div class="row"><div class="card"><p id="s5-c1"><b class="hl">Supported Q</b> → answer + evidence p.3 + scores</p></div><div class="card"><p id="s5-c2"><b class="amber">Wrong quiz answer</b> → explanation + hint with page</p></div></div>
+    <div id="s5-stamp"><span class="stamp">Unsupported Q → NOT FOUND · zero invented facts</span></div>
+  </section>
+
+  <section class="clip scene" data-start="60" data-duration="6" data-track-index="1">
+    <div class="kick">PS-01 · TRACK 1 · GEMMA 4</div>
+    <div class="big" id="s6-h">Learn from your notes.<br/><span class="hl">Verify every answer.</span></div>
+  </section>
+
+  <div class="clip bar" data-start="0" data-duration="66" data-track-index="2"><div class="barfill" id="progress"></div></div>
+</div>
+<script>
+  var tl = gsap.timeline({paused:true});
+  window.__timelines["main"] = tl;
+  tl.fromTo("#progress",{scaleX:0},{scaleX:1,duration:66,ease:"none"},0);
+  tl.fromTo("#s1-h",{opacity:0,y:50},{opacity:1,y:0,duration:0.9},0.3);
+  tl.fromTo("#s2-h",{opacity:0,y:40},{opacity:1,y:0,duration:0.7},10.3);
+  tl.fromTo("#s2-c1",{opacity:0,y:30},{opacity:1,y:0,duration:0.5},11.2);
+  tl.fromTo("#s2-c2",{opacity:0,y:30},{opacity:1,y:0,duration:0.5},12.0);
+  tl.fromTo("#s3-h",{opacity:0,y:40},{opacity:1,y:0,duration:0.7},22.3);
+  tl.fromTo("#s3-ev",{opacity:0,y:30},{opacity:1,y:0,duration:0.6},23.4);
+  tl.fromTo("#s3-b",{opacity:0},{opacity:1,duration:0.6},25.0);
+  tl.fromTo("#s4-h",{opacity:0,y:40},{opacity:1,y:0,duration:0.7},36.3);
+  tl.fromTo("#s4-c1",{opacity:0,y:30},{opacity:1,y:0,duration:0.5},37.2);
+  tl.fromTo("#s4-c2",{opacity:0,y:30},{opacity:1,y:0,duration:0.5},38.2);
+  tl.fromTo("#s4-c3",{opacity:0,y:30},{opacity:1,y:0,duration:0.5},39.2);
+  tl.fromTo("#s5-c1",{opacity:0,y:30},{opacity:1,y:0,duration:0.5},50.3);
+  tl.fromTo("#s5-c2",{opacity:0,y:30},{opacity:1,y:0,duration:0.5},51.2);
+  tl.fromTo("#s5-stamp",{opacity:0,scale:0.92},{opacity:1,scale:1,duration:0.5},52.4);
+  tl.fromTo("#s6-h",{opacity:0,y:50},{opacity:1,y:0,duration:0.8},60.3);
+  tl.seek(0);
+</script>
+</body>
+</html>

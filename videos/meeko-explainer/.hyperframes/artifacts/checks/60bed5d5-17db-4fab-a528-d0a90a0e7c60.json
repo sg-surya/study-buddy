@@ -1,0 +1,1409 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": true,
+  "lint": {
+    "ok": false,
+    "errorCount": 55,
+    "warningCount": 29,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"01-hook-eyebrow\" starts with a digit, and the selector `#01-hook-eyebrow` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#01-hook-eyebrow",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"01-hook-heroDim\" starts with a digit, and the selector `#01-hook-heroDim` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#01-hook-heroDim",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"01-hook-w1\" starts with a digit, and the selector `#01-hook-w1` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#01-hook-w1",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"01-hook-w2\" starts with a digit, and the selector `#01-hook-w2` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#01-hook-w2",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"01-hook-w3\" starts with a digit, and the selector `#01-hook-w3` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#01-hook-w3",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"01-hook-rule\" starts with a digit, and the selector `#01-hook-rule` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#01-hook-rule",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"01-hook-cardsDim\" starts with a digit, and the selector `#01-hook-cardsDim` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#01-hook-cardsDim",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"01-hook-cardA\" starts with a digit, and the selector `#01-hook-cardA` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#01-hook-cardA",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"01-hook-cardB\" starts with a digit, and the selector `#01-hook-cardB` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#01-hook-cardB",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"01-hook-cardC\" starts with a digit, and the selector `#01-hook-cardC` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#01-hook-cardC",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"01-hook-subDim\" starts with a digit, and the selector `#01-hook-subDim` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#01-hook-subDim",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"01-hook-s1\" starts with a digit, and the selector `#01-hook-s1` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#01-hook-s1",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"01-hook-s2\" starts with a digit, and the selector `#01-hook-s2` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#01-hook-s2",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"01-hook-s3\" starts with a digit, and the selector `#01-hook-s3` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#01-hook-s3",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"01-hook-qline\" starts with a digit, and the selector `#01-hook-qline` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#01-hook-qline",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"01-hook-qbar\" starts with a digit, and the selector `#01-hook-qbar` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#01-hook-qbar",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"bg\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"bg-hatch\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"bg-numeral\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"stage\" data-start=\"0\" data-track-index=\"2\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "Track 0 has 4 timed elements in this HTML file. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\02-fake-answer.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into smaller .html files and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      },
+      {
+        "code": "font_family_without_font_face",
+        "severity": "error",
+        "message": "Font family used without @font-face declaration: arial narrow. These are not in the auto-resolved font list, so the renderer cannot supply them automatically. Text will fall back to a generic font, producing incorrect typography in the video.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\02-fake-answer.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add @font-face { font-family: '...'; src: url('capture/assets/fonts/...woff2'); } for each font family, pointing to the captured .woff2 files. For an OS-bundled system font (e.g. Hiragino Sans, Microsoft YaHei) that has no downloadable file, use src: local('Exact Font Name') instead. The declaration alone satisfies this check without needing a font file."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"me-bg\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\03-meeko-entry.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"me-notes\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\03-meeko-entry.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"me-mark\" data-start=\"1.57\" data-track-index=\"2\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\03-meeko-entry.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"me-word\" data-start=\"1.8\" data-track-index=\"3\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\03-meeko-entry.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"04-rag-machine-dot1\" starts with a digit, so the common selector `#04-rag-machine-dot1` throws a SyntaxError in querySelector().",
+        "selector": "#04-rag-machine-dot1",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-dot2\" starts with a digit, and the selector `#04-rag-machine-dot2` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-dot2",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-dot3\" starts with a digit, and the selector `#04-rag-machine-dot3` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-dot3",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-dot4\" starts with a digit, and the selector `#04-rag-machine-dot4` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-dot4",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-dot5\" starts with a digit, and the selector `#04-rag-machine-dot5` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-dot5",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"04-rag-machine-world\" starts with a digit, so the common selector `#04-rag-machine-world` throws a SyntaxError in querySelector().",
+        "selector": "#04-rag-machine-world",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-co1\" starts with a digit, and the selector `#04-rag-machine-co1` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-co1",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"04-rag-machine-pages\" starts with a digit, so the common selector `#04-rag-machine-pages` throws a SyntaxError in querySelector().",
+        "selector": "#04-rag-machine-pages",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-pg1\" starts with a digit, and the selector `#04-rag-machine-pg1` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-pg1",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-pg2\" starts with a digit, and the selector `#04-rag-machine-pg2` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-pg2",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-co2\" starts with a digit, and the selector `#04-rag-machine-co2` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-co2",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-dr1\" starts with a digit, and the selector `#04-rag-machine-dr1` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-dr1",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-tag1\" starts with a digit, and the selector `#04-rag-machine-tag1` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-tag1",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-dr2\" starts with a digit, and the selector `#04-rag-machine-dr2` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-dr2",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-tag2\" starts with a digit, and the selector `#04-rag-machine-tag2` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-tag2",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-dr3\" starts with a digit, and the selector `#04-rag-machine-dr3` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-dr3",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"04-rag-machine-tag3\" starts with a digit, so the common selector `#04-rag-machine-tag3` throws a SyntaxError in querySelector().",
+        "selector": "#04-rag-machine-tag3",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-co3\" starts with a digit, and the selector `#04-rag-machine-co3` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-co3",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-chip\" starts with a digit, and the selector `#04-rag-machine-chip` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-chip",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-dial1\" starts with a digit, and the selector `#04-rag-machine-dial1` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-dial1",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-dial2\" starts with a digit, and the selector `#04-rag-machine-dial2` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-dial2",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-hit1\" starts with a digit, and the selector `#04-rag-machine-hit1` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-hit1",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-hit2\" starts with a digit, and the selector `#04-rag-machine-hit2` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-hit2",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-co4\" starts with a digit, and the selector `#04-rag-machine-co4` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-co4",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-glow\" starts with a digit, and the selector `#04-rag-machine-glow` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-glow",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-core\" starts with a digit, and the selector `#04-rag-machine-core` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-core",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"04-rag-machine-anscard\" starts with a digit, so the common selector `#04-rag-machine-anscard` throws a SyntaxError in querySelector().",
+        "selector": "#04-rag-machine-anscard",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "warning",
+        "message": "id=\"04-rag-machine-alines\" starts with a digit, so the common selector `#04-rag-machine-alines` throws a SyntaxError in querySelector().",
+        "selector": "#04-rag-machine-alines",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-al1\" starts with a digit, and the selector `#04-rag-machine-al1` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-al1",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-al2\" starts with a digit, and the selector `#04-rag-machine-al2` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-al2",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-al3\" starts with a digit, and the selector `#04-rag-machine-al3` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-al3",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-al4\" starts with a digit, and the selector `#04-rag-machine-al4` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-al4",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-al5\" starts with a digit, and the selector `#04-rag-machine-al5` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-al5",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-co5\" starts with a digit, and the selector `#04-rag-machine-co5` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-co5",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-stamp1\" starts with a digit, and the selector `#04-rag-machine-stamp1` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-stamp1",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-stamp2\" starts with a digit, and the selector `#04-rag-machine-stamp2` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-stamp2",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-stamp3\" starts with a digit, and the selector `#04-rag-machine-stamp3` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-stamp3",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"04-rag-machine-lamp\" starts with a digit, and the selector `#04-rag-machine-lamp` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#04-rag-machine-lamp",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"clipbg\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"stage\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"capband\" data-start=\"0\" data-track-index=\"2\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "composition_file_too_large",
+        "severity": "warning",
+        "message": "This HTML composition file has 326 lines. Smaller sub-compositions are easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\04-rag-machine.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split this sub-composition further into smaller .html files, then mount them from the parent with data-composition-src so each file stays small enough to inspect, revise, and validate independently."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"06-honest-no-qchip\" starts with a digit, and the selector `#06-honest-no-qchip` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#06-honest-no-qchip",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\06-honest-no.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"06-honest-no-dials\" starts with a digit, and the selector `#06-honest-no-dials` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#06-honest-no-dials",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\06-honest-no.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"06-honest-no-dialA\" starts with a digit, and the selector `#06-honest-no-dialA` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#06-honest-no-dialA",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\06-honest-no.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"06-honest-no-dialB\" starts with a digit, and the selector `#06-honest-no-dialB` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#06-honest-no-dialB",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\06-honest-no.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "id_requires_css_escape",
+        "severity": "error",
+        "message": "id=\"06-honest-no-card\" starts with a digit, and the selector `#06-honest-no-card` used in this composition is invalid: querySelector and GSAP throw a SyntaxError, and CSS drops the rule.",
+        "selector": "#06-honest-no-card",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\06-honest-no.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Rename the id to start with a letter (recommended), or build selectors with `#${CSS.escape(id)}` at runtime."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"hn-bg\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\06-honest-no.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"hn-stage\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\06-honest-no.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "font_family_without_font_face",
+        "severity": "error",
+        "message": "Font family used without @font-face declaration: arial narrow. These are not in the auto-resolved font list, so the renderer cannot supply them automatically. Text will fall back to a generic font, producing incorrect typography in the video.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\06-honest-no.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add @font-face { font-family: '...'; src: url('capture/assets/fonts/...woff2'); } for each font family, pointing to the captured .woff2 files. For an OS-bundled system font (e.g. Hiragino Sans, Microsoft YaHei) that has no downloadable file, use src: local('Exact Font Name') instead. The declaration alone satisfies this check without needing a font file."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"bg-field\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\07-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"topband\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\07-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"tagline\" data-start=\"4.3\" data-track-index=\"7\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\07-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "gsap_timeline_set_initial_hide",
+        "severity": "warning",
+        "message": "Initial hidden state for \".topband\" is set via tl.set(...) at position 0 inside the paused timeline. A zero-duration set at 0 does not render while the playhead sits exactly at 0, so frame 0 shows the un-hidden state.",
+        "selector": ".topband",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\07-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use gsap.set(...) (immediate, outside the timeline) for initial states, or author the hidden state directly in CSS/attributes."
+      },
+      {
+        "code": "gsap_timeline_set_initial_hide",
+        "severity": "warning",
+        "message": "Initial hidden state for \"#close-eyebrow\" is set via tl.set(...) at position 0 inside the paused timeline. A zero-duration set at 0 does not render while the playhead sits exactly at 0, so frame 0 shows the un-hidden state.",
+        "selector": "#close-eyebrow",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\07-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use gsap.set(...) (immediate, outside the timeline) for initial states, or author the hidden state directly in CSS/attributes."
+      },
+      {
+        "code": "gsap_timeline_set_initial_hide",
+        "severity": "warning",
+        "message": "Initial hidden state for \"#close-card-1, #close-card-2, #close-card-3, #close-card-4\" is set via tl.set(...) at position 0 inside the paused timeline. A zero-duration set at 0 does not render while the playhead sits exactly at 0, so frame 0 shows the un-hidden state.",
+        "selector": "#close-card-1, #close-card-2, #close-card-3, #close-card-4",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\07-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use gsap.set(...) (immediate, outside the timeline) for initial states, or author the hidden state directly in CSS/attributes."
+      },
+      {
+        "code": "gsap_timeline_set_initial_hide",
+        "severity": "warning",
+        "message": "Initial hidden state for \"#close-tag1, #close-tag2\" is set via tl.set(...) at position 0 inside the paused timeline. A zero-duration set at 0 does not render while the playhead sits exactly at 0, so frame 0 shows the un-hidden state.",
+        "selector": "#close-tag1, #close-tag2",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\07-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use gsap.set(...) (immediate, outside the timeline) for initial states, or author the hidden state directly in CSS/attributes."
+      },
+      {
+        "code": "gsap_timeline_set_initial_hide",
+        "severity": "warning",
+        "message": "Initial hidden state for \"#close-event\" is set via tl.set(...) at position 0 inside the paused timeline. A zero-duration set at 0 does not render while the playhead sits exactly at 0, so frame 0 shows the un-hidden state.",
+        "selector": "#close-event",
+        "dataAttributes": {},
+        "sourceFile": "E:\\ps1\\videos\\meeko-explainer\\compositions\\frames\\07-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Use gsap.set(...) (immediate, outside the timeline) for initial states, or author the hidden state directly in CSS/attributes."
+      }
+    ],
+    "filesScanned": 8
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "duration": 0,
+    "samples": [],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 0,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [],
+    "checked": 0,
+    "passed": 0
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

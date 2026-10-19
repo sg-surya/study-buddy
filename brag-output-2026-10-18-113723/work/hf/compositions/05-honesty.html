@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Anton";
+          font-style: normal;
+          font-weight: 400;
+          src: url("assets/fonts/anton-400.woff2") format("woff2");
+        }
+        #root {
+          position: relative;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          background: #fffcf8;
+        }
+        #root .s5bg {
+          position: absolute;
+          inset: 0;
+          background-color: #fffcf8;
+        }
+        #root .s5type {
+          position: absolute;
+          left: 148px;
+          top: 96px;
+        }
+        #root .s5l {
+          font-family: "Anton", sans-serif;
+          font-size: 94px;
+          line-height: 1.06;
+          letter-spacing: 0.002em;
+          color: #201c19;
+        }
+        #root .nf {
+          color: #b91c1c;
+          display: inline-block;
+          margin-left: 0.14em;
+        }
+        #root .s5card {
+          position: absolute;
+          left: 328px;
+          top: 500px;
+          width: 1265px;
+          background: #fffcf8;
+          border: 1px solid rgba(32, 28, 25, 0.16);
+          box-shadow: 0 34px 70px rgba(32, 28, 25, 0.22);
+          overflow: hidden;
+        }
+        #root .s5card img {
+          display: block;
+          width: 1265px;
+          height: auto;
+        }
+      </style>
+      <div id="root" data-composition-id="05-honesty" data-width="1920" data-height="1080">
+        <div class="s5bg hatch"></div>
+        <div class="s5type">
+          <div class="s5l" id="s5l1">Not in your notes?</div>
+          <div class="s5l" id="s5l2">Then it&rsquo;s <span class="nf" id="s5nf">NOT_FOUND.</span></div>
+        </div>
+        <div class="s5card" id="s5card"><img src="assets/s5-crop.png" alt="" /></div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#s5l1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 0.15);
+        tl.fromTo("#s5l2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 0.55);
+        tl.fromTo("#s5nf", { scale: 1.14 }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.95);
+        tl.fromTo("#s5card", { y: 64, opacity: 0, scale: 0.97 }, { y: 0, opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, 0.8);
+        window.__timelines["05-honesty"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

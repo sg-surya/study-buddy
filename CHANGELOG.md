@@ -2,7 +2,49 @@
 
 All notable changes tracked here (newest first).
 
+## [0.17.0] - 2026-10-17
+### Launch video (brag-slim) + sources a11y fix
+- `brag-output/brag.mp4` — 20s, 1920x1080, 30fps: hook type-slam -> meeko. reveal -> real UI entry (hero, create popup, orange NOTEBOOK READY strip wipe, briefing) -> cursor clicks the real c2 chip and the PDF viewer lands page 3/44 -> NOT_FOUND honesty card -> outro lockup (baked as poster frame 0)
+- Custom score via `work/music.py` (C-minor lo-fi + whoosh/pop/thud/hit locked to scene beats), self-hosted Anton/Space Grotesk, HyperFrames sub-composition project in `work/hf/` (check: 0 lint errors, 0 warnings); `brag.jpg` + `share-copy.txt` + plan in `brag-plan.md`
+- Fix: nested `<button>` hydration error in evidence source cards — card now a `div` with a stretched overlay "open source" button and the bookmark button layered above (z-10), so bookmark clicks no longer trigger jump
+- Verified: `npm run build` passes
+
+## [0.16.0] - 2026-10-15
+### Explainer video (Meeko problem-first story)
+- `videos/meeko-explainer/renders/video.mp4` — 54.5s, 16:9, Hinglish Kokoro voiceover, Coral preset on brand tokens, anatomy-style isometric RAG machine, captions skipped (no word timings), narration-only (no BGM without HeyGen)
+- Pipeline: faceless-explainer Steps 0-6, lint/check green (fixed digit-ids, lanes, contrast, overlap markers)
+
+## [0.15.0] - 2026-10-14
+
+### NotebookLM parity: Audio Overview + source toggles
+- Audio tab: two-host overview script (`POST /api/audio`, LLM with keyword-Q&A fallback), browser TTS two-voice player with line highlighting, play/pause/stop — zero cost
+- Source checkboxes on Notebook Files: ask/quiz/flashcards/audio/suggest scope to checked files (global chunk-id remap verified); "Answering from X of Y" hint + use-all
+- Fixed: missing `tag_evidence` def (500 on scoped ask); fallback dialogue now keyword-driven
+- Verified: build passes; scoped ask SUPPORTED c5/file 1; audio 10 lines
+
+## [0.14.0] - 2026-10-14
+
+### NotebookLM-style briefing
+- Notebook opens with auto-generated overview briefing (bold key terms, save-to-note, votes, cached per notebook) + 3 LLM-suggested question cards that ask on click
+- Header: Create notebook + Share (copy link); composer "Ask a question or create something" with source count
+- Backend: Briefing prompt mode + `POST /api/suggest` (LLM questions, extractive fallback)
+- Verified: build passes; briefing grounded with bolds; 3 real questions suggested
+
+## [0.13.0] - 2026-10-14
+
+### Meeko workspace (spec build)
+- Exact spec colors via Tailwind tokens (brand #FF5A1F, cream #FFFCF8, ink #201C19); working dark-mode toggle
+- Global navbar: meeko wordmark, Ctrl+K in-notebook search, theme toggle, Surya avatar menu
+- Real PDF viewer: uploaded bytes served by backend, `#page=` deep-links, prev/next, zoom, fullscreen, evidence overlay card
+- Viewer tabs Documents/Notes (local notes)/Highlights (bookmarks); per-file page counts; status Ready/Processing/Failed bound to real state
+- Composer: multiline, Enter-send/Shift+Enter-newline, attach, Gemma 4 pill, stop-while-generating; suggestion chips; likes/votes/copy; Meeko avatar rows
+- Responsive: mobile Chat/Documents switch; rounded spec styling; 62/38 desktop split
+### Backend
+- File bytes store + `GET /api/files/{nb}/{idx}`; per-chunk file mapping + per-file local pages; files list with page counts
+- Verified: build passes; files/chunk/file-meta endpoints live
+
 ## [0.12.0] - 2026-10-14
+
 ### Notebook page (NotebookLM-style)
 - Header: orange book icon, inline rename, files/pages/questions meta, Ready badge, Upload More (appends to same notebook), menu (Rename/Delete)
 - Chat: peach user bubbles, Meeko avatar row with copy + vote buttons, clickable citation chips, 3-up source cards with full-text Preview reader in right rail

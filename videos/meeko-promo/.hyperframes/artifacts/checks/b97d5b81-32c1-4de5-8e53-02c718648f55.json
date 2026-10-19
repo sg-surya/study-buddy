@@ -1,0 +1,581 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 16
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 3,
+    "findings": [
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 9.444,
+        "selector": "#s02-num",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1252.66,
+          "top": 200,
+          "right": 1830,
+          "bottom": 652,
+          "width": 577.34,
+          "height": 452
+        },
+        "containerSelector": "#s02-c3 > div:nth-of-type(3)",
+        "text": "11:58",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.3,
+        "dataAttributes": {},
+        "sourceFile": "compositions/02-exam-night.html",
+        "bbox": {
+          "x": 1252.66,
+          "y": 200,
+          "width": 577.34,
+          "height": 452
+        },
+        "firstSeen": 9.444,
+        "lastSeen": 9.444,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          9.444
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 28.333,
+        "selector": "#s04-qm",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": 1545,
+          "top": -102,
+          "right": 1860,
+          "bottom": 862,
+          "width": 315,
+          "height": 964
+        },
+        "containerSelector": "#root",
+        "text": "?",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "top": 102
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/04-not-in-notes.html",
+        "bbox": {
+          "x": 1545,
+          "y": -102,
+          "width": 315,
+          "height": 964
+        },
+        "firstSeen": 28.333,
+        "lastSeen": 28.333,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          28.333
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 47.222,
+        "selector": "#s06-wrap",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -15.21,
+          "top": -8.2,
+          "right": 1936.47,
+          "bottom": 1089.62,
+          "width": 1951.68,
+          "height": 1097.82
+        },
+        "containerSelector": "#h-s06 > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1920,
+          "bottom": 1080,
+          "width": 1920,
+          "height": 1080
+        },
+        "overflow": {
+          "left": 15.21,
+          "right": 16.47,
+          "top": 8.2,
+          "bottom": 9.62
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/06-meeko-reveal.html",
+        "bbox": {
+          "x": -15.21,
+          "y": -8.2,
+          "width": 1951.68,
+          "height": 1097.82
+        },
+        "firstSeen": 47.222,
+        "lastSeen": 47.222,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          47.222
+        ]
+      }
+    ],
+    "duration": 170,
+    "samples": [
+      9.444,
+      28.333,
+      47.222,
+      66.111,
+      85,
+      103.889,
+      122.778,
+      141.667,
+      160.556
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 3,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 15,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.19:1; WCAG AA requires 3:1.",
+        "text": "11:58",
+        "fg": "rgb(235,232,228)",
+        "bg": "rgb(255,252,248)",
+        "ratio": 1.19,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(148,146,144)",
+        "large": true,
+        "selector": "#s02-num",
+        "dataAttributes": {},
+        "sourceFile": "compositions/02-exam-night.html",
+        "bbox": {
+          "x": 1252.65625,
+          "y": 200,
+          "width": 577.34375,
+          "height": 452
+        },
+        "time": 9.444,
+        "times": [
+          9.444
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 4.4:1; WCAG AA requires 4.5:1.",
+        "text": "SCATTERED · 12 PAGES",
+        "fg": "rgb(126,119,114)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 4.4,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(124,117,112)",
+        "large": false,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(3) > div:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/02-exam-night.html",
+        "bbox": {
+          "x": 213.18724060058594,
+          "y": 353.1845703125,
+          "width": 344.4874267578125,
+          "height": 42.949951171875
+        },
+        "time": 9.444,
+        "times": [
+          9.444
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 4.4:1; WCAG AA requires 4.5:1.",
+        "text": "UNORGANISED · 28 PAGES",
+        "fg": "rgb(126,119,114)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 4.4,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(124,117,112)",
+        "large": false,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(4) > div:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/02-exam-night.html",
+        "bbox": {
+          "x": 690.6063842773438,
+          "y": 487.56884765625,
+          "width": 344.50140380859375,
+          "height": 33.98699951171875
+        },
+        "time": 9.444,
+        "times": [
+          9.444
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 4.4:1; WCAG AA requires 4.5:1.",
+        "text": "UNREAD · 44 PAGES",
+        "fg": "rgb(126,119,114)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 4.4,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(124,117,112)",
+        "large": false,
+        "selector": "div > div:nth-of-type(2) > div > div:nth-of-type(5) > div:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/02-exam-night.html",
+        "bbox": {
+          "x": 1155.4873046875,
+          "y": 379.04296875,
+          "width": 344.4534912109375,
+          "height": 30.993865966796875
+        },
+        "time": 9.444,
+        "times": [
+          9.444
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 3.05:1; WCAG AA requires 4.5:1.",
+        "text": "p.3",
+        "fg": "rgb(255,252,248)",
+        "bg": "rgb(255,90,31)",
+        "ratio": 3.05,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(44,43,43)",
+        "large": false,
+        "selector": "div > div:nth-of-type(9) > div > div:nth-of-type(6) > div:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/09-verifies.html",
+        "bbox": {
+          "x": 960.84375,
+          "y": 716,
+          "width": 57.15625,
+          "height": 38
+        },
+        "time": 85,
+        "times": [
+          85
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 4.31:1; WCAG AA requires 4.5:1.",
+        "text": "CHECKED AGAINST THE ORIGINAL PAGE",
+        "fg": "rgb(126,119,114)",
+        "bg": "rgb(255,252,248)",
+        "ratio": 4.31,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(122,115,110)",
+        "large": false,
+        "selector": "div > div:nth-of-type(9) > div > div:nth-of-type(6) > div:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/09-verifies.html",
+        "bbox": {
+          "x": 104,
+          "y": 797,
+          "width": 908,
+          "height": 18
+        },
+        "time": 85,
+        "times": [
+          85
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 4.46:1; WCAG AA requires 4.5:1.",
+        "text": "DETERMINISTIC CODE",
+        "fg": "rgb(46,125,91)",
+        "bg": "rgb(255,239,231)",
+        "ratio": 4.46,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(46,124,90)",
+        "large": false,
+        "selector": "div > div:nth-of-type(9) > div > div:nth-of-type(7) > div:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/09-verifies.html",
+        "bbox": {
+          "x": 1449.913330078125,
+          "y": 459.7060241699219,
+          "width": 317.827880859375,
+          "height": 65.05270385742188
+        },
+        "time": 85,
+        "times": [
+          85
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 4.31:1; WCAG AA requires 4.5:1.",
+        "text": "…and learning doesn't stop at asking questions.",
+        "fg": "rgb(126,119,114)",
+        "bg": "rgb(255,252,248)",
+        "ratio": 4.31,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(122,115,110)",
+        "large": false,
+        "selector": "#s12-sub",
+        "dataAttributes": {},
+        "sourceFile": "compositions/12-tools.html",
+        "bbox": {
+          "x": 0,
+          "y": 240,
+          "width": 1920,
+          "height": 30
+        },
+        "time": 122.778,
+        "times": [
+          122.778
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 4.4:1; WCAG AA requires 4.5:1.",
+        "text": "AI-generated practice questions, drawn from your o",
+        "fg": "rgb(126,119,114)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 4.4,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(124,117,112)",
+        "large": false,
+        "selector": "div > div:nth-of-type(12) > div > div:nth-of-type(3) > div:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/12-tools.html",
+        "bbox": {
+          "x": 217,
+          "y": 590,
+          "width": 386,
+          "height": 63
+        },
+        "time": 122.778,
+        "times": [
+          122.778
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 3.12:1; WCAG AA requires 4.5:1.",
+        "text": "PRACTICE QUESTIONS",
+        "fg": "rgb(255,90,31)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 3.12,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(208,73,25)",
+        "large": false,
+        "selector": "div > div:nth-of-type(12) > div > div:nth-of-type(3) > div:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/12-tools.html",
+        "bbox": {
+          "x": 217,
+          "y": 766,
+          "width": 213.234375,
+          "height": 18
+        },
+        "time": 122.778,
+        "times": [
+          122.778
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 4.4:1; WCAG AA requires 4.5:1.",
+        "text": "interactive revision cards, with evidence attached",
+        "fg": "rgb(126,119,114)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 4.4,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(124,117,112)",
+        "large": false,
+        "selector": "div > div:nth-of-type(12) > div > div:nth-of-type(4) > div:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/12-tools.html",
+        "bbox": {
+          "x": 767,
+          "y": 590,
+          "width": 386,
+          "height": 63
+        },
+        "time": 122.778,
+        "times": [
+          122.778
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 3.12:1; WCAG AA requires 4.5:1.",
+        "text": "REVISION CARDS",
+        "fg": "rgb(255,90,31)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 3.12,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(208,73,25)",
+        "large": false,
+        "selector": "div > div:nth-of-type(12) > div > div:nth-of-type(4) > div:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/12-tools.html",
+        "bbox": {
+          "x": 767,
+          "y": 766,
+          "width": 163.96875,
+          "height": 18
+        },
+        "time": 122.778,
+        "times": [
+          122.778
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 4.4:1; WCAG AA requires 4.5:1.",
+        "text": "a two-host audio overview of your material — liste",
+        "fg": "rgb(126,119,114)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 4.4,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(124,117,112)",
+        "large": false,
+        "selector": "div > div:nth-of-type(12) > div > div:nth-of-type(5) > div:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/12-tools.html",
+        "bbox": {
+          "x": 1317,
+          "y": 590,
+          "width": 386,
+          "height": 63
+        },
+        "time": 122.778,
+        "times": [
+          122.778
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 3.12:1; WCAG AA requires 4.5:1.",
+        "text": "TWO-HOST OVERVIEW",
+        "fg": "rgb(255,90,31)",
+        "bg": "rgb(255,255,255)",
+        "ratio": 3.12,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(208,73,25)",
+        "large": false,
+        "selector": "div > div:nth-of-type(12) > div > div:nth-of-type(5) > div:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/12-tools.html",
+        "bbox": {
+          "x": 1317,
+          "y": 766,
+          "width": 209.46875,
+          "height": 18
+        },
+        "time": 122.778,
+        "times": [
+          122.778
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 3.05:1; WCAG AA requires 4.5:1.",
+        "text": "INTRODUCING",
+        "fg": "rgb(255,90,31)",
+        "bg": "rgb(255,252,248)",
+        "ratio": 3.05,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(205,72,25)",
+        "large": false,
+        "selector": "#s15-eb",
+        "dataAttributes": {},
+        "sourceFile": "compositions/15-close.html",
+        "bbox": {
+          "x": 0,
+          "y": 210,
+          "width": 1920,
+          "height": 19
+        },
+        "time": 160.556,
+        "times": [
+          160.556
+        ]
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      9.444,
+      47.222,
+      85,
+      122.778,
+      160.556
+    ],
+    "checked": 46,
+    "passed": 31
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

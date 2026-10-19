@@ -1,0 +1,15 @@
+{
+  "provider": "auto",
+  "voice": "am_michael",
+  "lang": "en",
+  "speed": "1.05",
+  "bgm": { "mode": "none" },
+  "lines": [
+    { "id": "v1", "text": "Every AI answer sounds confident." },
+    { "id": "v2", "text": "So we built Meeko." },
+    { "id": "v3", "text": "It reads your own PDFs first." },
+    { "id": "v4", "text": "Then answers with verified, page-tagged proof." },
+    { "id": "v5", "text": "And it never, ever guesses." },
+    { "id": "v6", "text": "Meeko. Free, open source, on GitHub." }
+  ]
+}

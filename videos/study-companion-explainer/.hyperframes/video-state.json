@@ -1,0 +1,249 @@
+{
+  "version": 1,
+  "historyId": "7d21916c-2cce-4c9b-b659-474c9a4d58f3",
+  "currentRevision": null,
+  "pendingChanges": false,
+  "files": {
+    "AGENTS.md": {
+      "hash": "1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5",
+      "content": "C:\\Users\\SURYA PRATAP SINGH\\.cache\\hyperframes\\history\\7d21916c-2cce-4c9b-b659-474c9a4d58f3\\blobs\\1d\\1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5"
+    },
+    "CLAUDE.md": {
+      "hash": "1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5",
+      "content": "C:\\Users\\SURYA PRATAP SINGH\\.cache\\hyperframes\\history\\7d21916c-2cce-4c9b-b659-474c9a4d58f3\\blobs\\1d\\1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5"
+    },
+    "hyperframes.json": {
+      "hash": "9313260261b6e431830877ee35083331270bc6b9a32d50650abe2bd58bdf558d",
+      "content": "C:\\Users\\SURYA PRATAP SINGH\\.cache\\hyperframes\\history\\7d21916c-2cce-4c9b-b659-474c9a4d58f3\\blobs\\93\\9313260261b6e431830877ee35083331270bc6b9a32d50650abe2bd58bdf558d"
+    },
+    "index.html": {
+      "hash": "7d776f67afdba946bf2032f095305dab5bda2e7cac45196e5708db7abec52ef5",
+      "content": "C:\\Users\\SURYA PRATAP SINGH\\.cache\\hyperframes\\history\\7d21916c-2cce-4c9b-b659-474c9a4d58f3\\blobs\\7d\\7d776f67afdba946bf2032f095305dab5bda2e7cac45196e5708db7abec52ef5"
+    },
+    "meta.json": {
+      "hash": "169db699b334911b977ee70c019835534a343c9215272fcdad714379d6cb15c6",
+      "content": "C:\\Users\\SURYA PRATAP SINGH\\.cache\\hyperframes\\history\\7d21916c-2cce-4c9b-b659-474c9a4d58f3\\blobs\\16\\169db699b334911b977ee70c019835534a343c9215272fcdad714379d6cb15c6"
+    },
+    "package.json": {
+      "hash": "b7bbe44fd8a9c83b2273022eb715b2d2e3938d3c8d81b93e5c44a929d107f970",
+      "content": "C:\\Users\\SURYA PRATAP SINGH\\.cache\\hyperframes\\history\\7d21916c-2cce-4c9b-b659-474c9a4d58f3\\blobs\\b7\\b7bbe44fd8a9c83b2273022eb715b2d2e3938d3c8d81b93e5c44a929d107f970"
+    }
+  },
+  "revisions": {},
+  "checks": {
+    "latest": {
+      "revision": null,
+      "id": "b4db34aa-a6b6-4180-aa8d-962f2b31bea9"
+    },
+    "revisions": {},
+    "unversioned": [
+      {
+        "id": "b4db34aa-a6b6-4180-aa8d-962f2b31bea9",
+        "scope": "project",
+        "report": "E:\\ps1\\videos\\study-companion-explainer\\.hyperframes\\artifacts\\checks\\b4db34aa-a6b6-4180-aa8d-962f2b31bea9.json",
+        "metadata": {
+          "ok": true,
+          "browserSkipped": false,
+          "options": {
+            "samples": 9,
+            "atTransitions": false,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 3000,
+            "contrast": true,
+            "strict": false,
+            "snapshots": false,
+            "browserGpuMode": "auto"
+          }
+        },
+        "createdAt": 1791995960552,
+        "contentHash": "1d88dc84d3a3c9ad602405ad8383373423a63a64b8c892ecac263211af126d85",
+        "revision": null,
+        "inputFingerprint": "cfc55c7b39740bb406ba3425ed6e311159b7d502c15866226de842d4c0588743",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      }
+    ]
+  },
+  "snapshots": {
+    "latest": {
+      "revision": null,
+      "id": "e86665dd-432e-4b37-b45c-752c86832298-7"
+    },
+    "revisions": {},
+    "unversioned": [
+      {
+        "scope": "full",
+        "id": "e86665dd-432e-4b37-b45c-752c86832298-0",
+        "image": "E:\\ps1\\videos\\study-companion-explainer\\.hyperframes\\artifacts\\snapshots\\6c634293-cd2d-4e04-a68c-0a592fb5cf61\\frame-00-at-4s.png",
+        "time": 4,
+        "metadata": {
+          "width": 1920,
+          "height": 1080,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791996496303,
+        "contentHash": "19f0e2fcd55371e0b6fb07daff7bb0deb73dc0f357508d85109064a849755abd",
+        "revision": null,
+        "inputFingerprint": "cfc55c7b39740bb406ba3425ed6e311159b7d502c15866226de842d4c0588743",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "e86665dd-432e-4b37-b45c-752c86832298-1",
+        "image": "E:\\ps1\\videos\\study-companion-explainer\\.hyperframes\\artifacts\\snapshots\\6c634293-cd2d-4e04-a68c-0a592fb5cf61\\frame-01-at-13s.png",
+        "time": 13,
+        "metadata": {
+          "width": 1920,
+          "height": 1080,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791996496303,
+        "contentHash": "6be3fe84481b56017143f804da409297f8a14c1d83e2874165d29469157733fb",
+        "revision": null,
+        "inputFingerprint": "cfc55c7b39740bb406ba3425ed6e311159b7d502c15866226de842d4c0588743",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "e86665dd-432e-4b37-b45c-752c86832298-2",
+        "image": "E:\\ps1\\videos\\study-companion-explainer\\.hyperframes\\artifacts\\snapshots\\6c634293-cd2d-4e04-a68c-0a592fb5cf61\\frame-02-at-23s.png",
+        "time": 23,
+        "metadata": {
+          "width": 1920,
+          "height": 1080,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791996496304,
+        "contentHash": "2f8eb885324769c7a05bc8daf1246fbbd089c062bfc4742698df9b3032e818dc",
+        "revision": null,
+        "inputFingerprint": "cfc55c7b39740bb406ba3425ed6e311159b7d502c15866226de842d4c0588743",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "e86665dd-432e-4b37-b45c-752c86832298-3",
+        "image": "E:\\ps1\\videos\\study-companion-explainer\\.hyperframes\\artifacts\\snapshots\\6c634293-cd2d-4e04-a68c-0a592fb5cf61\\frame-03-at-32s.png",
+        "time": 32,
+        "metadata": {
+          "width": 1920,
+          "height": 1080,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791996496304,
+        "contentHash": "df1957cf8460793ff5c0d4c2ac8caca453b3b176807d4e44575516ec1fb7562b",
+        "revision": null,
+        "inputFingerprint": "cfc55c7b39740bb406ba3425ed6e311159b7d502c15866226de842d4c0588743",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "e86665dd-432e-4b37-b45c-752c86832298-4",
+        "image": "E:\\ps1\\videos\\study-companion-explainer\\.hyperframes\\artifacts\\snapshots\\6c634293-cd2d-4e04-a68c-0a592fb5cf61\\frame-04-at-40.5s.png",
+        "time": 40.5,
+        "metadata": {
+          "width": 1920,
+          "height": 1080,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791996496304,
+        "contentHash": "05c4be81910c5d87ed6d2d8be86fe89ada8fb3358315013031d63012f64b52cb",
+        "revision": null,
+        "inputFingerprint": "cfc55c7b39740bb406ba3425ed6e311159b7d502c15866226de842d4c0588743",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "e86665dd-432e-4b37-b45c-752c86832298-5",
+        "image": "E:\\ps1\\videos\\study-companion-explainer\\.hyperframes\\artifacts\\snapshots\\6c634293-cd2d-4e04-a68c-0a592fb5cf61\\frame-05-at-49.5s.png",
+        "time": 49.5,
+        "metadata": {
+          "width": 1920,
+          "height": 1080,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791996496305,
+        "contentHash": "69fa28eb39d12147dda8bd865cd7670116bca6b8a55b99688d72111d9d57ca35",
+        "revision": null,
+        "inputFingerprint": "cfc55c7b39740bb406ba3425ed6e311159b7d502c15866226de842d4c0588743",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "e86665dd-432e-4b37-b45c-752c86832298-6",
+        "image": "E:\\ps1\\videos\\study-companion-explainer\\.hyperframes\\artifacts\\snapshots\\6c634293-cd2d-4e04-a68c-0a592fb5cf61\\frame-06-at-58s.png",
+        "time": 58,
+        "metadata": {
+          "width": 1920,
+          "height": 1080,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791996496306,
+        "contentHash": "5474cd1f3dfd81659d47b01b9026ad8f2ec087190f9e244cbc4a13d5108746c8",
+        "revision": null,
+        "inputFingerprint": "cfc55c7b39740bb406ba3425ed6e311159b7d502c15866226de842d4c0588743",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "scope": "full",
+        "id": "e86665dd-432e-4b37-b45c-752c86832298-7",
+        "image": "E:\\ps1\\videos\\study-companion-explainer\\.hyperframes\\artifacts\\snapshots\\6c634293-cd2d-4e04-a68c-0a592fb5cf61\\frame-07-at-64.02s.png",
+        "time": 64.02,
+        "metadata": {
+          "width": 1920,
+          "height": 1080,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791996496307,
+        "contentHash": "e9e544cee4a3eeeab92be17535a26926e6ca06f607b261d6f32bea4c15a7c2c8",
+        "revision": null,
+        "inputFingerprint": "cfc55c7b39740bb406ba3425ed6e311159b7d502c15866226de842d4c0588743",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      }
+    ]
+  },
+  "renders": {
+    "latest": {
+      "id": "166d2008-f51c-4ca7-9c94-da399de258a0",
+      "completedAt": 1791996428937,
+      "output": "E:\\ps1\\videos\\study-companion-explainer\\renders\\video.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
+}
